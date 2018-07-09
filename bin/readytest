@@ -206,8 +206,8 @@ function loadAndRun(exit) {
 function nextRun(exit) {
   writeNewLine();
   // The test watcher is not simply re-running loaded tests
-  // but actually re-loading them, so need to empty here.
-  ReadyTest.empty();
+  // but actually reloading them, so need to clear here.
+  ReadyTest.clear();
   loadAndRun(exit);
 }
 

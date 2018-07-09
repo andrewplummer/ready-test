@@ -72,12 +72,12 @@
   }
 
   function setupRunner() {
-    empty();
+    clear();
   }
 
   // --- Reset Helpers
 
-  function empty() {
+  function clear() {
     rootSuite    = getRootSuite();
     currentSuite = rootSuite;
   }
@@ -2495,7 +2495,7 @@
     // Runner Utils
 
     target.run           = run;
-    target.empty         = empty;
+    target.clear         = clear;
     target.cancel        = cancel;
     target.isRunning     = isRunning;
     target.setStyler     = setStyler;
