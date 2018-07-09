@@ -2000,7 +2000,7 @@
   }
 
   function buildObjectAssertion(a, b, msg, type) {
-    var diff = getObjectDiff(a, b);
+    var diff = createObjectDiff(a, b);
     var pass = diff.pass;
     pushAssertion({
       pass: pass,
@@ -2009,7 +2009,7 @@
     });
   }
 
-  function getObjectDiff(a, b) {
+  function createObjectDiff(a, b) {
     var diff, keys, iDiff, comparedKeys = {};
 
     diff = {
@@ -2037,7 +2037,7 @@
 
       if (aHas !== bHas || aVal !== bVal) {
         if (isObjectOrArray(aVal) && isObjectOrArray(bVal)) {
-          iDiff = getObjectDiff(aVal, bVal);
+          iDiff = createObjectDiff(aVal, bVal);
           if (iDiff.pass) {
             pushDiffPass(diff, key, aVal);
           } else {
@@ -2474,6 +2474,7 @@
     target.assertOneOf       = assertOneOf;
     target.assertInstanceOf  = assertInstanceOf;
     target.createAssertion   = createAssertion;
+    target.createObjectDiff  = createObjectDiff;
 
   }
 
