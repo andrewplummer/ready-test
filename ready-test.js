@@ -2002,12 +2002,12 @@
 
   function buildObjectAssertion(a, b, msg, type) {
     pushAssertion({
-      diff: createObjectDiff(a, b),
+      diff: createDiff(a, b),
       message: msg || (type + 's should be equal')
     });
   }
 
-  function createObjectDiff(a, b) {
+  function createDiff(a, b) {
     var diff, keys, iDiff, comparedKeys = {};
 
     diff = {
@@ -2035,7 +2035,7 @@
 
       if (aHas !== bHas || aVal !== bVal) {
         if (isObjectOrArray(aVal) && isObjectOrArray(bVal)) {
-          iDiff = createObjectDiff(aVal, bVal);
+          iDiff = createDiff(aVal, bVal);
           if (iDiff.pass) {
             pushDiffPass(diff, key, aVal);
           } else {
@@ -2481,7 +2481,7 @@
     target.assertOneOf       = assertOneOf;
     target.assertInstanceOf  = assertInstanceOf;
     target.createAssertion   = createAssertion;
-    target.createObjectDiff  = createObjectDiff;
+    target.createDiff        = createDiff;
 
   }
 
