@@ -1279,7 +1279,7 @@
   function outputTokenizedValues(str, obj) {
     return str.replace(TOKEN_REG, function(m, text, key) {
       output(text);
-      if (obj.hasOwnProperty(key)) {
+      if (hasProp(obj, key)) {
         output(dump(obj[key]), 'token');
       }
     });
@@ -1309,18 +1309,18 @@
 
     if (dataset) {
 
-      if ('foldMode' in dataset) {
+      if (hasProp(dataset, 'foldMode')) {
         setFoldMode(dataset.foldMode);
       }
-      if ('seed' in dataset) {
+      if (hasProp(dataset, 'seed')) {
         setSeed(+dataset.seed);
       }
 
       // Boolean flags are always true unless explicitly "false"
-      if ('autoRun' in dataset) {
+      if (hasProp(dataset, 'autoRun')) {
         setAutoRun(dataset.autoRun !== 'false');
       }
-      if ('randomize' in dataset) {
+      if (hasProp(dataset, 'randomize')) {
         setRandomize(dataset.randomize !== 'false');
       }
 
@@ -2000,11 +2000,8 @@
   }
 
   function buildObjectAssertion(a, b, msg, type) {
-    var diff = createObjectDiff(a, b);
-    var pass = diff.pass;
     pushAssertion({
-      pass: pass,
-      diff: diff,
+      diff: createObjectDiff(a, b),
       message: msg || (type + 's should be equal')
     });
   }
@@ -2030,8 +2027,8 @@
         continue;
       }
 
-      var aHas = a.hasOwnProperty(key);
-      var bHas = b.hasOwnProperty(key);
+      var aHas = hasProp(a, key);
+      var bHas = hasProp(b, key);
       var aVal = a[key];
       var bVal = b[key];
 
@@ -2157,6 +2154,11 @@
   function pushAssertion(assertion) {
     assertCurrentTest();
     currentTest.assertions.push(assertion);
+
+    if (!hasProp(assertion, 'pass') && assertion.diff) {
+      assertion.pass = assertion.diff.pass;
+    }
+
     if (assertion.pass) {
       stats.assertPassed++;
     } else {
@@ -2286,6 +2288,10 @@
 
   function hasOwnToString(obj) {
     return obj.constructor.prototype.toString !== Object.prototype.toString;
+  }
+
+  function hasProp(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
   }
 
   // --- Built-in Helpers
