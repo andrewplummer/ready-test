@@ -84,7 +84,6 @@
 
   function reset() {
     resetStats();
-    resetContext();
     resetConsole();
     resetBrowser();
     resetRandomize();
@@ -564,9 +563,9 @@
 
   // --- Fold Mode Helpers
 
-  var FOLD_MODE_NONE = 'none';
-  var FOLD_MODE_TOP  = 'top';
   var FOLD_MODE_ALL  = 'all';
+  var FOLD_MODE_TOP  = 'top';
+  var FOLD_MODE_NONE = 'none';
 
   var foldMode = FOLD_MODE_NONE;
 
@@ -629,11 +628,7 @@
 
   // --- Context Helpers
 
-  var contextStack;
-
-  function resetContext() {
-    contextStack = [];
-  }
+  var contextStack = [];
 
   function openSuiteContext(suite) {
     if (suiteAddsContext(suite)) {
@@ -1290,6 +1285,126 @@
     });
   }
 
+  // --- Browser Init Helpers
+
+  function setupBrowser() {
+    if (IS_BROWSER) {
+      setupWindowLoad();
+      readScriptAttributes();
+
+      // Local storage overrides data attributes
+      // so make sure it comes after script setup.
+      setFoldModeFromStorage();
+
+      createFoldModeDropdown();
+      setupStateElement();
+    }
+  }
+
+  function readScriptAttributes() {
+
+    // Note IE may not handle currentScript or have dataset.
+    var el = document.currentScript;
+    var dataset = el && el.dataset;
+
+    if (dataset) {
+
+      if ('foldMode' in dataset) {
+        setFoldMode(dataset.foldMode);
+      }
+      if ('seed' in dataset) {
+        setSeed(+dataset.seed);
+      }
+
+      // Boolean flags are always true unless explicitly "false"
+      if ('autoRun' in dataset) {
+        setAutoRun(dataset.autoRun !== 'false');
+      }
+      if ('randomize' in dataset) {
+        setRandomize(dataset.randomize !== 'false');
+      }
+
+    }
+  }
+
+  function setupWindowLoad() {
+    window.addEventListener('load', onWindowLoaded);
+  }
+
+  function onWindowLoaded() {
+    if (autoRun !== false) {
+      run();
+    }
+  }
+
+  // --- Browser Fold Mode Helpers
+
+  var HAS_LOCAL_STORAGE = typeof localStorage !== 'undefined';
+  var LOCAL_STORAGE_KEY = 'foldMode';
+
+  var FOLD_MODES = [
+    {
+      label: 'All',
+      value: FOLD_MODE_ALL
+    },
+    {
+      label: 'Top',
+      value: FOLD_MODE_TOP
+    },
+    {
+      label: 'None',
+      value: FOLD_MODE_NONE
+    }
+  ];
+
+  function createFoldModeDropdown() {
+
+    openContext('fold-mode');
+    output('Fold:', 'fold-mode__title');
+    openContext('fold-mode__select');
+
+    FOLD_MODES.forEach(function(mode) {
+      var option;
+      openContext('fold-mode__option');
+      option = getContextElement();
+      option.value = mode.value;
+      option.textContent = mode.label;
+      option.selected = option.value === foldMode;
+      closeContext();
+    });
+
+    getContextElement().addEventListener('change', function(evt) {
+      var mode = evt.target.options[evt.target.selectedIndex].value;
+      storageSet(LOCAL_STORAGE_KEY, mode);
+      cancel(function() {
+        setFoldMode(mode);
+        run();
+      });
+    });
+
+    closeContext();
+    closeContext();
+  }
+
+  function setFoldModeFromStorage() {
+    var mode = storageGet(LOCAL_STORAGE_KEY);
+    if (mode) {
+      setFoldMode(mode);
+    }
+  }
+
+  function storageSet(key, val) {
+    if (HAS_LOCAL_STORAGE) {
+      return localStorage.setItem(key, val);
+    }
+  }
+
+  function storageGet(key) {
+    if (HAS_LOCAL_STORAGE) {
+      return localStorage.getItem(key);
+    }
+  }
+
   // --- Browser Output Helpers
 
   function outputBrowser(text) {
@@ -1343,6 +1458,10 @@
       case 'perf__header':  return 'th';
       case 'perf__cell':    return 'td';
 
+      case 'fold-mode__title':  return 'h6';
+      case 'fold-mode__select': return 'select';
+      case 'fold-mode__option': return 'option';
+
       case 'diff':
       case 'token':
       case 'stack':
@@ -1366,51 +1485,6 @@
     }
   }
 
-  // --- Browser Init Helpers
-
-  function setupBrowser() {
-    if (IS_BROWSER) {
-      setupWindowLoad();
-      readScriptAttributes();
-      setupStateElement();
-    }
-  }
-
-  function readScriptAttributes() {
-
-    // Note IE may not handle currentScript or have dataset.
-    var el = document.currentScript;
-    var dataset = el && el.dataset;
-
-    if (dataset) {
-
-      if ('foldMode' in dataset) {
-        setFoldMode(dataset.foldMode);
-      }
-      if ('seed' in dataset) {
-        setSeed(+dataset.seed);
-      }
-
-      // Boolean flags are always true unless explicitly "false"
-      if ('autoRun' in dataset) {
-        setAutoRun(dataset.autoRun !== 'false');
-      }
-      if ('randomize' in dataset) {
-        setRandomize(dataset.randomize !== 'false');
-      }
-
-    }
-  }
-
-  function setupWindowLoad() {
-    window.addEventListener('load', onWindowLoaded);
-  }
-
-  function onWindowLoaded() {
-    if (autoRun !== false) {
-      run();
-    }
-  }
 
   // --- Browser Context Helpers
 

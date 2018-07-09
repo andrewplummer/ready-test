@@ -358,6 +358,19 @@ h1,h2,h3,h4,h5,h6 {
   color: #b1b1b1;
 }
 
+/* ------------] Fold Mode Context [------------ */
+
+.fold-mode {
+  position: absolute;
+  top: 1.4em;
+  right: 1.4em;
+}
+
+.fold-mode__title {
+  display: inline-block;
+  margin-right: .5em;
+}
+
 /* ------------] Mobile Overrides [------------ */
 
 @media (max-width: 700px) {
