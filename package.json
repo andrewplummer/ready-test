@@ -1,0 +1,42 @@
+{
+  "name": "ready-test",
+  "version": "1.0.0",
+  "description": "Because JS unit testing shouldn't be complicated.",
+  "author": "Andrew Plummer <plummer.andrew@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewplummer/ready-test.git"
+  },
+  "keywords": [
+    "test",
+    "testing",
+    "unit"
+  ],
+  "bugs": {
+    "url": "https://github.com/andrewplummer/ready-test/issues"
+  },
+  "scripts": {
+    "test": "bin/readytest test/index.js",
+    "test-import": "bin/readytest test/tests/standalone/import.mjs --no-globals",
+    "test-require": "bin/readytest test/tests/standalone/require.js --no-globals --no-modules",
+    "coverage-node": "node test/coverage/node.js",
+    "coverage-clean": "rm -rf .nyc_output; rm -rf coverage; rm -rf test/coverage/instrumented",
+    "coverage-browser": "node test/coverage/browser.js",
+    "coverage-report": "nyc report --reporter=html"
+  },
+  "bin": "./bin/readytest",
+  "main": "./bin/readytest",
+  "browser": "./ready-test.js",
+  "@std/esm": "cjs",
+  "dependencies": {
+    "@std/esm": "^0.26.0",
+    "argv": "0.0.2",
+    "chalk": "^2.4.1",
+    "chokidar": "^2.0.4",
+    "glob": "^7.1.2"
+  },
+  "devDependencies": {
+    "nyc": "^12.0.2"
+  }
+}

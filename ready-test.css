@@ -1,0 +1,392 @@
+
+body {
+  font: 18px sans-serif;
+  color: #333;
+  background-color: #f6f6f6;
+  padding: .5em 1em;
+  margin 0;
+}
+
+/* ------------] Reset [------------ */
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
+dl,dt,dd,ol,ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol,ul {
+  list-style-type: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* ------------] Typography [------------ */
+
+body {
+  font-family: system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+code {
+  font-family: Monaco, monospace;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 600;
+}
+
+.stats {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+/* ------------] Icons [------------ */
+
+.icon {
+  margin-right: .3em;
+  vertical-align: middle;
+}
+
+.icon--pass {
+  color: #2d8e2d;
+}
+
+.icon--fail {
+  color: #b13d3d;
+}
+
+.icon--warn {
+  color: #f3d632;
+}
+
+/* ------------] State Context [------------ */
+
+.state {
+  margin: .7em;
+  font-size: 2.2em;
+}
+
+.state--fail {
+  color: #ab2929;
+}
+
+.state--pass {
+  color: #359835;
+}
+
+
+.state--empty,
+.state--pending,
+.state--running {
+  color: #bbb;
+}
+
+/* ------------] Suite Context [------------ */
+
+.suite {
+  padding: 1em 1.5em 1.2em 1.5em;
+  border-radius: 4px;
+  margin-bottom: 1.5em;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.suite__name {
+  margin: 0 0 .6em 0;
+  font-size: 1.2em;
+}
+
+.test {
+  display: inline-block;
+  text-align: center;
+  cursor: default;
+  padding: 0 .15em;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.test--pass {
+  background-color: #98e89c;
+}
+
+.test--fail,
+.test--error {
+  color: #8c2929;
+  background-color: #fd8b9e;
+  padding: 0 .1em;
+}
+
+.test--skip {
+  background-color: #eee;
+  color: #999;
+}
+
+.test--no-assertions {
+  background-color: #f3d632;
+}
+
+.throw {
+  display: block;
+  margin-top: 2em;
+}
+
+/* ------------] Nested Suite Context [------------ */
+
+.subsuites {
+  margin: 2em 1em;
+}
+
+.suite .suite {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  border-left: 1px solid #ddd;
+  padding-top: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+.subsuites .suite:first-child {
+  margin-top: 1em;
+}
+
+.subsuites .suite:last-child {
+  padding-bottom: 0;
+}
+
+/* ------------] Failure Context [------------ */
+
+.failures {
+  margin: 1em 0;
+}
+
+.failure {
+  margin: 1em 0;
+}
+
+.failure__title {
+  margin-bottom: .6em;
+}
+
+/* ------------] Assertion Context [------------ */
+
+.assertions {
+  margin-left: 1em;
+}
+
+.assertion {
+  line-height: 1.4;
+  overflow: auto;
+}
+
+.assertion:before {
+  width: 1em;
+  margin: 0 .3em;
+  font-size: 1.2em;
+  line-height: 1.2;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.assertion__num {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: .9em;
+  min-width: 1em;
+  margin-right: .5em;
+  color: #bbb;
+}
+
+.assertion__body {
+  font-size: 1.2em;
+  line-height: 1.2;
+  color: #333;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.stack {
+  display: block;
+  overflow: auto;
+  font-size: .9em;
+  color: #b13d3d;
+  white-space: pre;
+}
+
+.token {
+  font-size: .88em;
+  background-color: #f3f3f3;
+  border-radius: 3px;
+  padding: .1em .3em;
+}
+
+.text,
+.token {
+  margin-right: 0 .2em;
+}
+
+/* ------------] Diff Context [------------ */
+
+.diff {
+  display: block;
+  font-size: .8em;
+  margin-bottom: 1em;
+  padding: 0 1.8em;
+  margin-top: .5em;
+  line-height: 1.4;
+  color: #bbb;
+  overflow: auto;
+  white-space: pre;
+}
+
+.diff__line {
+  border-left: 3px solid #efefef;
+  padding: 0 .8em;
+}
+
+.diff__line--added {
+  background-color: #f4fbf4;
+  border-color: #30a93b;
+  color: #30a93b;
+  cursor: default;
+}
+
+.diff__line--removed {
+  background-color: #ffefef;
+  border-color: #c14141;
+  color: #c14141;
+  cursor: default;
+}
+
+.diff__line--changed {
+  border-color: #aaa;
+  background-color: #f7f7f7;
+  cursor: default;
+}
+
+.diff__line--changed .diff__token--key {
+  color: #333;
+}
+
+.diff__line--changed .diff__token--was {
+  color: #c14141;
+}
+
+.diff__token--was {
+  text-decoration: line-through;
+}
+
+.diff__token--is {
+  color: #53a95b;
+}
+
+.diff__token--skipped {
+  color: #c3c3c3;
+}
+
+.diff__meta {
+  margin-left: 1em;
+  color: #bbb;
+  visibility: hidden;
+  color: rgba(0,0,0,.3);
+}
+
+.diff__line:hover .diff__meta {
+  visibility: visible;
+}
+
+.diff__line--added .diff__meta {
+  color: #acc5b0;
+}
+
+.diff__line--removed .diff__meta {
+  color: #e0b1ad;
+}
+
+/* ------------] Perf Context [------------ */
+
+.perf {
+  margin: 1em 0;
+}
+
+.perf__head {
+}
+
+.perf__header {
+  text-align: left;
+  font-size: .9em;
+  text-decoration: underline;
+  padding: .5em;
+}
+
+.perf__cell {
+  padding: .2em .5em;
+}
+
+.perf__cell--fail {
+  color: #b13d3d;
+}
+
+.perf__cell--pass {
+  color: #2d8e2d;
+}
+
+.perf__row--winner {
+  background-color: #dff3f7;
+  border-radius: 2px;
+}
+
+/* ------------] Stats Context [------------ */
+
+.stats {
+  padding: 0 0 .5em 1.2em;
+}
+
+.stats__extra {
+  font-size: .85em;
+  margin-top: .5em;
+  color: #666;
+}
+
+.stat--skipped {
+  color: #b1b1b1;
+}
+
+/* ------------] Mobile Overrides [------------ */
+
+@media (max-width: 700px) {
+
+  body {
+  }
+
+  .suite {
+    padding: .9em 1.2em 1.2em 1.2em;
+  }
+
+  .subsuites {
+    margin: 1.2em 0;
+  }
+
+  .assertions {
+    margin-left: .5em;
+  }
+
+  .diff {
+    padding: 0 1em;
+  }
+
+  .stack {
+    font-size: .8em;
+  }
+
+  .stats {
+    padding-left: .5em;
+  }
+
+}

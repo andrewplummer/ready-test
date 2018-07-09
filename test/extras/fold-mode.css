@@ -1,0 +1,11 @@
+
+.fold-mode {
+  position: absolute;
+  top: 1.4em;
+  right: 1.4em;
+}
+
+.fold-mode__title {
+  display: inline-block;
+  margin-right: .5em;
+}
