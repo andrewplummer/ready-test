@@ -849,9 +849,9 @@
 
   function outputDiffEmptyObject(diff, inline, tab) {
     outputDiffOptionalContainer('diff__line--changed', !inline, function() {
-      outputDiffBraceToken(diff.aArr, '[]', '{}', tab, 'diff__token--was', 'First');
+      outputDiffBraceToken(diff.bArr, '[]', '{}', tab, 'diff__token--expected', 'Second');
       output(' ', 'diff__token');
-      outputDiffBraceToken(diff.bArr, '[]', '{}', tab, 'diff__token--is', 'Second');
+      outputDiffBraceToken(diff.aArr, '[]', '{}', tab, 'diff__token--actual', 'First');
       outputDiffBraceChangeMeta();
     }, 'properties differ');
   }
@@ -866,9 +866,9 @@
         outputDiffPass(diff, entry.key, entry.val, tab, last);
       } else if (entry.type === 'fail') {
         if (!entry.aHas && entry.bHas) {
-          outputDiffKeyAdded(diff, entry.key, entry.bVal, tab, last);
+          outputDiffKeyMissing(diff, entry.key, entry.bVal, tab, last);
         } else if (entry.aHas && !entry.bHas) {
-          outputDiffKeyRemoved(diff, entry.key, entry.aVal, tab, last);
+          outputDiffKeyAdded(diff, entry.key, entry.aVal, tab, last);
         } else {
           if (entry.diff) {
             outputDiffNestedObject(diff, entry.diff, entry.key, tab, last);
@@ -899,16 +899,17 @@
   function outputDiffValuesDiffer(diff, key, aVal, bVal, tab, last) {
     withContext('diff__line--changed', function() {
       outputDiffKey(diff, key, tab, 'diff__token--key');
-      output(dump(aVal), 'diff__token--was');
+      output(dump(bVal), 'diff__token--expected');
       output(' ', 'diff__token');
-      output(dump(bVal), 'diff__token--is');
+      output(dump(aVal), 'diff__token--actual');
       outputDiffTrailingComma(last);
       outputDiffChangeMeta(diff, key, 'differs');
     });
   }
 
   function outputDiffNestedObject(diff, iDiff, key, tab, last) {
-    openContext('diff__line' + (iDiff.sameType ? '' : '--changed'));
+    var ctx = 'diff__line' + (iDiff.sameType ? '' : '--changed');
+    openContext(ctx);
     outputDiffKey(diff, key, tab);
     if (!iDiff.lines.length) {
       outputDiffEmptyObject(iDiff, true);
@@ -916,7 +917,7 @@
       outputDiffOpenBrace(iDiff, true);
       closeContext();
       outputDiffProps(iDiff, tab);
-      openContext('diff__line');
+      openContext(ctx);
       outputDiffCloseBrace(iDiff, true, tab);
       outputDiffTrailingComma(last);
     }
@@ -926,11 +927,11 @@
   // --- Output Diff Key Helpers
 
   function outputDiffKeyAdded(diff, key, val, tab, last) {
-    outputDiffKeyChange(diff, 'added', 'is', key, val, tab, last);
+    outputDiffKeyChange(diff, 'added', 'actual', key, val, tab, last);
   }
 
-  function outputDiffKeyRemoved(diff, key, val, tab, last) {
-    outputDiffKeyChange(diff, 'removed', 'was', key, val, tab, last);
+  function outputDiffKeyMissing(diff, key, val, tab, last) {
+    outputDiffKeyChange(diff, 'missing', 'expected', key, val, tab, last);
   }
 
   function outputDiffKeyChange(diff, changeType, tokenType, key, val, tab, last) {
@@ -979,16 +980,16 @@
 
   function outputDiffBraceChanged(diff, arrToken, objToken, inline, tab) {
     outputDiffOptionalContainer('diff__line--changed', !inline, function() {
-      outputDiffBraceToken(diff.aArr, arrToken, objToken, tab, 'diff__token--was');
+      outputDiffBraceToken(diff.bArr, arrToken, objToken, tab, 'diff__token--expected');
       output(' ', 'diff__token');
-      outputDiffBraceToken(diff.bArr, arrToken, objToken, tab, 'diff__token--is');
+      outputDiffBraceToken(diff.aArr, arrToken, objToken, null, 'diff__token--actual');
       outputDiffBraceChangeMeta();
     });
   }
 
   function outputDiffBraceToken(isArr, arrToken, objToken, tab, ctx) {
-    var str = (tab || '') + (isArr ? arrToken : objToken);
-    output(str, ctx || 'diff__token');
+    output(tab || '');
+    output(isArr ? arrToken : objToken, ctx || 'diff__token');
   }
 
   function outputDiffBraceChangeMeta() {
@@ -1684,11 +1685,11 @@
         case 'icon--fail':
         case 'test--fail':
         case 'test--error':
-        case 'diff__token--was':
+        case 'diff__token--actual':
           return style.red;
         case 'icon--pass':
         case 'test--pass':
-        case 'diff__token--is':
+        case 'diff__token--expected':
           return style.green;
         case 'icon--warn':
         case 'test--no-assertions':

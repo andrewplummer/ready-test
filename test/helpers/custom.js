@@ -37,3 +37,11 @@ assertAllArgumentsEqualLast = createAssertion(function() {
   };
 });
 
+assertHasFooOrBar = createAssertion(function(obj) {
+  return {
+    pass: obj.foo || obj.bar,
+    diff: createObjectDiff(obj, { foo: 'foo', bar: 'bar' }),
+    message: 'object must have "foo" or "bar" property'
+  };
+});
+

@@ -107,6 +107,8 @@ describe('Should pass', function() {
     assertNumberEven(2);
     assertObjectsHaveIntersectingKey({foo:'bar'}, {'foo':'baz'});
     assertAllArgumentsEqualLast(1, 1, 1, 1, 1);
+    assertHasFooOrBar({foo:1});
+    assertHasFooOrBar({bar:1});
   });
 
 });

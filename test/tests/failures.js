@@ -123,6 +123,10 @@ describe('Should fail', function() {
     assertOneOf({}, [{},{},{}]);
   });
 
+  it('custom assertions', function() {
+    assertHasFooOrBar({});
+  });
+
   it('custom messages', function() {
     assert(true, false, 'assert custom message');
     assertEqual(true, false, 'assertEqual custom message');

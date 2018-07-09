@@ -251,16 +251,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .diff__line--added {
-  background-color: #f4fbf4;
-  border-color: #30a93b;
-  color: #30a93b;
-  cursor: default;
-}
-
-.diff__line--removed {
   background-color: #ffefef;
   border-color: #c14141;
   color: #c14141;
+  cursor: default;
+}
+
+.diff__line--missing {
+  background-color: #f4fbf4;
+  border-color: #30a93b;
+  color: #30a93b;
   cursor: default;
 }
 
@@ -274,16 +274,13 @@ h1,h2,h3,h4,h5,h6 {
   color: #333;
 }
 
-.diff__line--changed .diff__token--was {
+.diff__line--changed .diff__token--actual {
   color: #c14141;
 }
 
-.diff__token--was {
-  text-decoration: line-through;
-}
-
-.diff__token--is {
+.diff__token--expected {
   color: #53a95b;
+  text-decoration: line-through;
 }
 
 .diff__token--skipped {
@@ -302,11 +299,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .diff__line--added .diff__meta {
-  color: #acc5b0;
+  color: #e0b1ad;
 }
 
-.diff__line--removed .diff__meta {
-  color: #e0b1ad;
+.diff__line--missing .diff__meta {
+  color: #acc5b0;
 }
 
 /* ------------] Perf Context [------------ */
