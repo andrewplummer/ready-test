@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+        Docs - ReadyTest
+      
+    </title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/syntax.css">
+  </head>
+  <body>
+    <header class="header dark">
+  <section class="header__main">
+    <span class="header__area">
+      <a href="./" class="header-logo styled">
+        <div class="logo">
+  <div class="logo__icon">
+    <div class="logo__dot"></div>
+  </div>
+  <div class="logo__name">ReadyTest</div>
+</div>
+
+      </a>
+    </span>
+    <nav class="header__area">
+      <a class="header__link styled" href="./">Intro</a>
+      <a class="header__link styled" href="docs">Docs</a>
+      <a class="header__link styled" href="faq">FAQ</a>
+      <div class="search">
+        <div class="search__inner">
+          <img class="search__icon" src="images/icons/search.svg" alt="Search" width="22" height="22">
+          <input class="search__input dark" type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <ul class="search__dropdown hidden">
+            <li class="search__dropdown-item search__dropdown-item--empty">No Results</li>
+            
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#describe" data-name="describe">describe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#fdescribe" data-name="fdescribe">fdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#xdescribe" data-name="xdescribe">xdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#pdescribe" data-name="pdescribe">pdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#it" data-name="it">it</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#fit" data-name="fit">fit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#xit" data-name="xit">xit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#pit" data-name="pit">pit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#beforeAll" data-name="beforeAll">beforeAll</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#beforeEach" data-name="beforeEach">beforeEach</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#afterAll" data-name="afterAll">afterAll</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#afterEach" data-name="afterEach">afterEach</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setup" data-name="setup">setup</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#teardown" data-name="teardown">teardown</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assert" data-name="assert">assert</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertTrue" data-name="assertTrue">assertTrue</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertFalse" data-name="assertFalse">assertFalse</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertEqual" data-name="assertEqual">assertEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNotEqual" data-name="assertNotEqual">assertNotEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNull" data-name="assertNull">assertNull</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertUndefined" data-name="assertUndefined">assertUndefined</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertTruthy" data-name="assertTruthy">assertTruthy</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertFalsy" data-name="assertFalsy">assertFalsy</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertError" data-name="assertError">assertError</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNoError" data-name="assertNoError">assertNoError</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertObjectEqual" data-name="assertObjectEqual">assertObjectEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertArrayEqual" data-name="assertArrayEqual">assertArrayEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertDateEqual" data-name="assertDateEqual">assertDateEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertRegExpEqual" data-name="assertRegExpEqual">assertRegExpEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertInstanceOf" data-name="assertInstanceOf">assertInstanceOf</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertOneOf" data-name="assertOneOf">assertOneOf</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#createAssertion" data-name="createAssertion">createAssertion</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#createDiff" data-name="createDiff">createDiff</a>
+  </li>
+
+
+            
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setAutoRun" data-name="setAutoRun">setAutoRun</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setFoldMode" data-name="setFoldMode">setFoldMode</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setRandomize" data-name="setRandomize">setRandomize</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setSeed" data-name="setSeed">setSeed</a>
+  </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+</header>
+
+    <main>
+      <div class="docs-index">
+  <div class="docs-index__block">
+  <a href="#methods" class="docs-index__item docs-index__item--parent styled">Methods</a>
+  <ul class="docs-index__list">
+    
+      <li>
+        <a class="docs-index__item styled" href="#describe">describe</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#fdescribe">fdescribe</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#xdescribe">xdescribe</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#pdescribe">pdescribe</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#it">it</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#fit">fit</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#xit">xit</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#pit">pit</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#beforeAll">beforeAll</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#beforeEach">beforeEach</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#afterAll">afterAll</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#afterEach">afterEach</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#setup">setup</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#teardown">teardown</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assert">assert</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertTrue">assertTrue</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertFalse">assertFalse</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertEqual">assertEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertNotEqual">assertNotEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertNull">assertNull</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertUndefined">assertUndefined</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertTruthy">assertTruthy</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertFalsy">assertFalsy</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertError">assertError</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertNoError">assertNoError</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertObjectEqual">assertObjectEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertArrayEqual">assertArrayEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertDateEqual">assertDateEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertRegExpEqual">assertRegExpEqual</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertInstanceOf">assertInstanceOf</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertOneOf">assertOneOf</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#createAssertion">createAssertion</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#createDiff">createDiff</a>
+      </li>
+    
+  </ul>
+</div>
+
+  <div class="docs-index__block">
+  <a href="#config" class="docs-index__item docs-index__item--parent styled">Config</a>
+  <ul class="docs-index__list">
+    
+      <li>
+        <a class="docs-index__item styled" href="#setAutoRun">setAutoRun</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#setFoldMode">setFoldMode</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#setRandomize">setRandomize</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#setSeed">setSeed</a>
+      </li>
+    
+  </ul>
+</div>
+
+  <div class="docs-index__block">
+  <a href="#utils" class="docs-index__item docs-index__item--parent styled">Utils</a>
+  <ul class="docs-index__list">
+    
+      <li>
+        <a class="docs-index__item styled" href="#run">run</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#clear">clear</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#cancel">cancel</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#isRunning">isRunning</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#exportGlobals">exportGlobals</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+
+<div class="docs">
+  
+
+<div id="methods" class="docs__block docs__block--parent">
+  <h2 class="docs__header">
+    <a href="#methods" class="docs__header-link styled">
+      
+        Methods
+      
+    </a>
+  </h2>
+  
+<p>ReadyTest methods are accessible as globals by default. In the browser they
+are defined on <code class="highlighter-rouge">window</code>. In node they are defined on the <code class="highlighter-rouge">global</code> object, but
+this behavior can be turned off, requiring methods to be accessed via <code class="highlighter-rouge">require</code>
+or <code class="highlighter-rouge">import</code> statments.</p>
+
+
+</div>
+
+
+
+  
+
+<div id="describe" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#describe" class="docs__header-link styled">
+      
+        describe
+      
+    </a>
+  </h2>
+  
+<p>Defines a suite of tests. <code class="highlighter-rouge">describe</code> blocks can be nested. Code inside a
+<code class="highlighter-rouge">describe</code> block but outside of tests will be run only once. Returning a
+promise will wait for this code to run.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Tests...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">describe(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="fdescribe" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#fdescribe" class="docs__header-link styled">
+      
+        fdescribe
+      
+    </a>
+  </h2>
+  
+<p>Flags a test suite as "focused". If this flag is enabled, other suites will be
+ignored.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Tests...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">fdescribe(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="xdescribe" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#xdescribe" class="docs__header-link styled">
+      
+        xdescribe
+      
+    </a>
+  </h2>
+  
+<p>Flags a suite as "skipped", which is useful for temporarily disabling tests.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Tests...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">xdescribe(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="pdescribe" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#pdescribe" class="docs__header-link styled">
+      
+        pdescribe
+      
+    </a>
+  </h2>
+  
+<p>Flags a suite as "perf". If this flag is enabled, tests will additionally evaluate
+runtime performance and output results at the end. Perf suites can also carry
+"focused" or "skipped" flags like other suites using <code class="highlighter-rouge">fpdescribe</code>, <code class="highlighter-rouge">xpdescribe</code>,
+<code class="highlighter-rouge">pfdescribe</code> or <code class="highlighter-rouge">pxdescribe</code>.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Tests...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">pdescribe(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="it" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#it" class="docs__header-link styled">
+      
+        it
+      
+    </a>
+  </h2>
+  
+<p>Defines a test. <code class="highlighter-rouge">it</code> blocks can not be nested or used outside <code class="highlighter-rouge">describe</code> blocks.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Assertions...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">it(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="fit" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#fit" class="docs__header-link styled">
+      
+        fit
+      
+    </a>
+  </h2>
+  
+<p>Flags a test as "focused". If this flag is enabled, other tests will be
+ignored.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Assertions...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">fit(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="xit" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#xit" class="docs__header-link styled">
+      
+        xit
+      
+    </a>
+  </h2>
+  
+<p>Flags a test as "skipped", which is useful for temporarily disabling tests.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xit</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Assertions...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">xit(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="pit" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#pit" class="docs__header-link styled">
+      
+        pit
+      
+    </a>
+  </h2>
+  
+<p>Flags a test as "perf". If this flag is enabled, it will additionally evaluate
+runtime performance and output results at the end. Perf tests can also carry
+"focused" or "skipped" flags like other tests using <code class="highlighter-rouge">fpit</code>, <code class="highlighter-rouge">xpit</code>,
+<code class="highlighter-rouge">pfit</code> or <code class="highlighter-rouge">pxit</code>.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Assertions...</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">pit(str, fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="beforeAll" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#beforeAll" class="docs__header-link styled">
+      
+        beforeAll
+      
+    </a>
+  </h2>
+  
+<p>Defines a block that will run once before all tests in the suite run. This method
+is functionally the same as code directly in the <code class="highlighter-rouge">describe</code> block, except that it
+will run each time the suite is re-run instead of only once on init.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">beforeAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes before all tests start.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">beforeAll(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="beforeEach" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#beforeEach" class="docs__header-link styled">
+      
+        beforeEach
+      
+    </a>
+  </h2>
+  
+<p>Defines a block that will run before each test in the suite runs.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes before each test.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">beforeEach(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="afterAll" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#afterAll" class="docs__header-link styled">
+      
+        afterAll
+      
+    </a>
+  </h2>
+  
+<p>Defines a block that will run once after all tests in the suite run.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">afterAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes after all tests finish.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">afterAll(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="afterEach" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#afterEach" class="docs__header-link styled">
+      
+        afterEach
+      
+    </a>
+  </h2>
+  
+<p>Defines a block that will run after each test in the suite runs.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes after each test.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">afterEach(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="setup" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#setup" class="docs__header-link styled">
+      
+        setup
+      
+    </a>
+  </h2>
+  
+<p>Alias for <a href="#beforeEach">beforeEach</a>.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">setup</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes before each test.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">setup(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="teardown" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#teardown" class="docs__header-link styled">
+      
+        teardown
+      
+    </a>
+  </h2>
+  
+<p>Alias for <a href="#afterEach">afterEach</a>.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">teardown</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="c1">// Executes after each test.</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">teardown(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assert" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assert" class="docs__header-link styled">
+      
+        assert
+      
+    </a>
+  </h2>
+  
+<p>When called with one argument, this method is functionally equvalent to
+<a href="#assertTruthy">assertTruthy</a>. When called with two arguments
+it is equivalent to <a href="#assertEqual">assertEqual</a>. An optional
+third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span>    <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>     <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assert(arg1, [arg2], [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertTrue" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertTrue" class="docs__header-link styled">
+      
+        assertTrue
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is <code class="highlighter-rouge">true</code>. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertTrue(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertFalse" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertFalse" class="docs__header-link styled">
+      
+        assertFalse
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is <code class="highlighter-rouge">false</code>. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertFalse</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertFalse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertFalse(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertEqual" class="docs__header-link styled">
+      
+        assertEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts both arguments are strictly equal. Equivalent to the <code class="highlighter-rouge">===</code> operator. An
+optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertEqual(arg1, arg2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertNotEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertNotEqual" class="docs__header-link styled">
+      
+        assertNotEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts both arguments are not strictly equal. Equivalent to the <code class="highlighter-rouge">!==</code> operator.
+An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertNotEqual(arg1, arg2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertNull" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertNull" class="docs__header-link styled">
+      
+        assertNull
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is <code class="highlighter-rouge">null</code>. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="o">*</span>       <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>          <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertNull(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertUndefined" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertUndefined" class="docs__header-link styled">
+      
+        assertUndefined
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is <code class="highlighter-rouge">undefined</code>. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>         <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="o">*</span>      <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertUndefined(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertTruthy" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertTruthy" class="docs__header-link styled">
+      
+        assertTruthy
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is truthy. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertTruthy(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertFalsy" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertFalsy" class="docs__header-link styled">
+      
+        assertFalsy
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the passed argument is falsy. An optional second argument
+will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertFalsy(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertError" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertError" class="docs__header-link styled">
+      
+        assertError
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the function passed as the first argument throws an error. The
+second argument will restrict the assertion to only checking for a specific error
+type. An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">throwsError</span><span class="p">);</span><span class="o">*</span>                 <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">throwsTypeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">doesNotThrowError</span><span class="p">);</span><span class="o">*</span>           <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">throwsRangeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertError(fn, [error], [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertNoError" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertNoError" class="docs__header-link styled">
+      
+        assertNoError
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the function passed as the first argument does not throw an
+error. The second argument will restrict the assertion to only checking for
+a specific error type. An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">doesNotThrowError</span><span class="p">);</span><span class="o">*</span>           <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">throwsRangeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">throwsError</span><span class="p">);</span><span class="o">*</span>                 <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">throwsTypeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertNoError(fn, [error], [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertObjectEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertObjectEqual" class="docs__header-link styled">
+      
+        assertObjectEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts that both objects are deeply equal. This method will recursively
+check each property and perform a strict equality check <code class="highlighter-rouge">===</code> on all properties
+that are not themselves objects. If any property is not equivalent, a diff will
+be output highlighting all properties that differ. This assertion will fail if
+either argument is not an object, and only enumerable properties will be compared.
+An optional third argument will output a custom message.</p>
+
+<p>Note that although argument order will not affect the outcome, diff output uses
+messages like "property missing" which are more readable when the expected object
+is the second argument.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({},</span> <span class="p">{});</span><span class="o">*</span>         <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">});</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">});</span><span class="o">*</span>      <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="s1">'1'</span><span class="p">});</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertObjectEqual(obj1, obj2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertArrayEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertArrayEqual" class="docs__header-link styled">
+      
+        assertArrayEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts that both arrays are deeply equal. An optional third argument will
+output a custom message. This method is an alias for
+<a href="#assertObjectEqual">assertObjectEqual</a> but reads better when
+working with arrays.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([],</span> <span class="p">[]);</span><span class="o">*</span>     <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="o">*</span>    <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">'1'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertArrayEqual(arr1, arr2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertDateEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertDateEqual" class="docs__header-link styled">
+      
+        assertDateEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts that both dates are equivalent. An optional third argument will output a
+custom message. This method is required as dates do not have enumerable properties
+exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code> will not work.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertDateEqual</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertDateEqual</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertDateEqual(date1, date2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertRegExpEqual" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertRegExpEqual" class="docs__header-link styled">
+      
+        assertRegExpEqual
+      
+    </a>
+  </h2>
+  
+<p>Asserts that both regexes are equivalent. An optional third argument will output a
+custom message. This method is required as regexes do not have enumerable properties
+exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code> will not work.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertRegExpEqual</span><span class="p">(</span><span class="sr">/a/</span><span class="p">,</span> <span class="sr">/a/</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertRegExpEqual</span><span class="p">(</span><span class="sr">/a/</span><span class="p">,</span> <span class="sr">/a/i</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertRegExpEqual(reg1, reg2, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertInstanceOf" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertInstanceOf" class="docs__header-link styled">
+      
+        assertInstanceOf
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the object passed as the first argument is an instance of the class
+passed as the second. An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertInstanceOf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">Number</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertInstanceOf</span><span class="p">(</span><span class="s1">'3'</span><span class="p">,</span> <span class="nb">Number</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertInstanceOf(instance, class, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertOneOf" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertOneOf" class="docs__header-link styled">
+      
+        assertOneOf
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the first argument is strictly equal <code class="highlighter-rouge">===</code> to at least one of the
+elements in an array passed as the second. An optional third argument will output
+a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="s1">'d'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertOneOf(arg, arr, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="createAssertion" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#createAssertion" class="docs__header-link styled">
+      
+        createAssertion
+      
+    </a>
+  </h2>
+  
+<p>Creates a custom assertion. This method takes a single function that can accept
+any number of arguments and returns an object with the following properties:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">pass</code>: Whether or not the test has passed.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">message</code>: The failure message. Any properties set on the return object can be
+referenced here by wrapping them in curly braces.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">diff</code>: An optional object that outputs the diff on failure. Note that if no
+<code class="highlighter-rouge">pass</code> property is set, it will be implied by the state of the diff. For more, see
+<a href="#createDiff">createDiff</a>.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">assertEven</span> <span class="o">=</span> <span class="nx">createAssertion</span><span class="p">(</span><span class="nx">arg</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">pass</span><span class="p">:</span> <span class="nx">arg</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'{num} should be an even number'</span><span class="p">,</span>
+    <span class="na">num</span><span class="p">:</span> <span class="nx">arg</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+<span class="nx">assertEven</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// Pass</span>
+<span class="nx">assertEven</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// Fail</span>
+<span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">createAssertion(fn)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="createDiff" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#createDiff" class="docs__header-link styled">
+      
+        createDiff
+      
+    </a>
+  </h2>
+  
+<p>Creates a diff object that can be attached to a custom assertion to output the
+diff of two objects (or arrays) on test failure. Both arguments must be
+non-primitives of <code class="highlighter-rouge">object</code> type.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">createAssertion</span><span class="p">(</span><span class="nx">obj</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">diff</span><span class="p">:</span> <span class="nx">createDiff</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">expected</span><span class="p">),</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'object must match expected'</span>
+  <span class="p">};</span>
+<span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">createDiff(obj1, obj2)</p>
+
+
+</div>
+
+
+
+
+
+  
+
+<div id="config" class="docs__block docs__block--parent">
+  <h2 class="docs__header">
+    <a href="#config" class="docs__header-link styled">
+      
+        Config
+      
+    </a>
+  </h2>
+  
+<p>ReadyTest has a few settings that can configure the runner behvaior. In the
+browser these are exposed as methods on the <code class="highlighter-rouge">ReadyTest</code> global as well as
+data attributes on the loading script tag. In node they can be used via
+<code class="highlighter-rouge">require</code> or <code class="highlighter-rouge">import</code> as well as options to the shell script.</p>
+
+<p>Note that the shell script also has some additional configurations like the
+ability to watch and re-run. Run this script with the <code class="highlighter-rouge">--help</code> flag for more
+details.</p>
+
+
+</div>
+
+
+
+  
+
+<div id="setAutoRun" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#setAutoRun" class="docs__header-link styled">
+      
+        setAutoRun
+      
+    </a>
+  </h2>
+  
+<p>In the browser the test runner will start on page load, however for various reasons
+you may want to manually control when the runner starts. You can achieve this using
+this method together with <a href="#run">run</a>. This setting can be retrieved with
+<code class="highlighter-rouge">getAutoRun</code>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setAutoRun</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>This setting can also be a data attribute on the loading script tag:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">*<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span> <span class="na">data-auto-run=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/script&gt;</span>*</code></pre></figure>
+
+<p>In node this flag has no effect as the shell script always begins the run once tests are
+loaded. To manually run tests you can simply create your own runner by requiring the main
+script and calling <code class="highlighter-rouge">run</code> as needed.</p>
+
+<p class="docs__signature">setAutoRun(bool)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="setFoldMode" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#setFoldMode" class="docs__header-link styled">
+      
+        setFoldMode
+      
+    </a>
+  </h2>
+  
+<p>Setting the fold mode will change the way test result output is displayed. <code class="highlighter-rouge">none</code>
+will output all nested suites. Conversely, <code class="highlighter-rouge">all</code> will output all tests together
+as if they were part of a single suite. <code class="highlighter-rouge">top</code> will only output the top level suites.
+The default setting is <code class="highlighter-rouge">none</code> except when using the shell script in node which sets
+the default to <code class="highlighter-rouge">all</code>. This setting can be retrieved with <code class="highlighter-rouge">getFoldMode</code>.</p>
+
+<p>Note that this only affects output. The execution order of tests as well as
+<code class="highlighter-rouge">before</code> and <code class="highlighter-rouge">after</code> blocks will remain the same.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>This setting can also be a data attribute on the loading script tag:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">*<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span> <span class="na">data-fold-mode=</span><span class="s">"all"</span><span class="nt">&gt;&lt;/script&gt;</span>*</code></pre></figure>
+
+<p>In the node shell script:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="p">.</span><span class="o">/</span><span class="nx">node_modules</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">readytest</span> <span class="o">--</span><span class="nx">fold</span><span class="o">-</span><span class="nx">mode</span><span class="o">=</span><span class="nx">none</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span></code></pre></figure>
+
+<p class="docs__signature">setFoldMode(str)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="setRandomize" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#setRandomize" class="docs__header-link styled">
+      
+        setRandomize
+      
+    </a>
+  </h2>
+  
+<p>Sometimes the order in which tests are run may cause them to fail. These kind of
+failures can be hard to track down, so ReadyTest provides the ability to randomize
+tests and re-run them in a specific order so you can track down a failure. Running
+with randomization on will randomize all tests differently on each run. The final
+output will show the seed that was used, which can then be passed back into the
+runner using <a href="#setSeed">setSeed</a> to run the tests in the same order.
+This setting can be retrieved with <code class="highlighter-rouge">getRandomize</code>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setRandomize</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>This setting can also be a data attribute on the loading script tag:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">*<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span> <span class="na">data-randomize=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/script&gt;</span>*</code></pre></figure>
+
+<p>In the node shell script:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="p">.</span><span class="o">/</span><span class="nx">node_modules</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">readytest</span> <span class="o">--</span><span class="nx">randomize</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setRandomize</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span></code></pre></figure>
+
+<p class="docs__signature">setRandomize(bool)</p>
+
+
+</div>
+
+
+
+  
+
+<div id="setSeed" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#setSeed" class="docs__header-link styled">
+      
+        setSeed
+      
+    </a>
+  </h2>
+  
+<p>Use this method to fix the order of a test run that was randomized using
+<a href="#setRandomize">setRandomize</a>. The seed used will be shown along
+with the final output when a run was randomized. This setting can be retrieved
+with <code class="highlighter-rouge">getSeed</code>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setSeed</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>This setting can also be a data attribute on the loading script tag:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">*<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span> <span class="na">data-seed=</span><span class="s">"1234"</span><span class="nt">&gt;&lt;/script&gt;</span>*</code></pre></figure>
+
+<p>In the node shell script:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="p">.</span><span class="o">/</span><span class="nx">node_modules</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">readytest</span> <span class="o">--</span><span class="nx">seed</span><span class="o">=</span><span class="mi">1234</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setSeed</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span></code></pre></figure>
+
+<p class="docs__signature">setRandomize(num)</p>
+
+
+</div>
+
+
+
+
+
+  
+
+<div id="utils" class="docs__block docs__block--parent">
+  <h2 class="docs__header">
+    <a href="#utils" class="docs__header-link styled">
+      
+        Utils
+      
+    </a>
+  </h2>
+  
+<p>Utils are most commonly used to create a custom test runner. They are exposed
+in the browser through a <code class="highlighter-rouge">ReadyTest</code> global, and in node as methods that can be
+used through <code class="highlighter-rouge">require</code> or <code class="highlighter-rouge">import</code>.</p>
+
+
+</div>
+
+
+
+  
+
+<div id="run" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#run" class="docs__header-link styled">
+      
+        run
+      
+    </a>
+  </h2>
+  
+<p>Begins the test run. A callback can also be passed that will execute when the
+run is complete. In the browser this function should be used with
+<a href="#setAutoRun">setAutoRun</a>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">onRunComplete</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">onRunComplete</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p class="docs__signature">run([fn])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="clear" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#clear" class="docs__header-link styled">
+      
+        clear
+      
+    </a>
+  </h2>
+  
+<p>Clears all tests and suites previously defined. This method is useful when
+dynamically reloading tests and is used by the shell script to watch and reload.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span></code></pre></figure>
+
+<p class="docs__signature">clear()</p>
+
+
+</div>
+
+
+
+  
+
+<div id="cancel" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#cancel" class="docs__header-link styled">
+      
+        cancel
+      
+    </a>
+  </h2>
+  
+<p>Cancels the test run. This method can be used with custom test runners or to
+extend the functionality of a browser setup. Tests may be asynchronous so a
+function can be passed that will run when the cancel operation has completed.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">onCancelComplete</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">onCancelComplete</span><span class="p">);</span></code></pre></figure>
+
+<p class="docs__signature">cancel([fn])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="isRunning" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#isRunning" class="docs__header-link styled">
+      
+        isRunning
+      
+    </a>
+  </h2>
+  
+<p>Returns true if the test run is in progress. This method can be used with custom
+test runners or to extend the functionality of a browser setup. Note that this
+method should only return true if asynchronous tests exist that have not yet
+completed.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">isRunning</span><span class="p">();</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">isRunning</span><span class="p">();</span></code></pre></figure>
+
+<p class="docs__signature">isRunning()</p>
+
+
+</div>
+
+
+
+  
+
+<div id="exportGlobals" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#exportGlobals" class="docs__header-link styled">
+      
+        exportGlobals
+      
+    </a>
+  </h2>
+  
+<p>This method is useful in custom test runners to export all methods onto the
+global object so that tests do not have to require them. It has no effect in the
+browser as methods are already exported on the <code class="highlighter-rouge">window</code> object.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">exportGlobals</span><span class="p">();</span></code></pre></figure>
+
+<p class="docs__signature">exportGlobals()</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+    </main>
+    <footer class="footer dark">
+  <section>
+    <a href="https://github.com/andrewplummer/ready-test" target="_blank" class="footer__icon-link">
+      <img src="images/icons/github.svg" alt="GitHub" width="28" height="28">
+    </a>
+    Released under MIT license.
+  </section>
+</footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+        ReadyTest - Because JS unit testing shouldn't be complicated.
+      
+    </title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/syntax.css">
+  </head>
+  <body>
+    <header class="header dark">
+  <section class="header__main">
+    <span class="header__area">
+      <a href="./" class="header-logo styled invisible">
+        <div class="logo">
+  <div class="logo__icon">
+    <div class="logo__dot"></div>
+  </div>
+  <div class="logo__name">ReadyTest</div>
+</div>
+
+      </a>
+    </span>
+    <nav class="header__area">
+      <a class="header__link styled" href="./">Intro</a>
+      <a class="header__link styled" href="docs">Docs</a>
+      <a class="header__link styled" href="faq">FAQ</a>
+      <div class="search">
+        <div class="search__inner">
+          <img class="search__icon" src="images/icons/search.svg" alt="Search" width="22" height="22">
+          <input class="search__input dark" type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <ul class="search__dropdown hidden">
+            <li class="search__dropdown-item search__dropdown-item--empty">No Results</li>
+            
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#describe" data-name="describe">describe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#fdescribe" data-name="fdescribe">fdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#xdescribe" data-name="xdescribe">xdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#pdescribe" data-name="pdescribe">pdescribe</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#it" data-name="it">it</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#fit" data-name="fit">fit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#xit" data-name="xit">xit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#pit" data-name="pit">pit</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#beforeAll" data-name="beforeAll">beforeAll</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#beforeEach" data-name="beforeEach">beforeEach</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#afterAll" data-name="afterAll">afterAll</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#afterEach" data-name="afterEach">afterEach</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setup" data-name="setup">setup</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#teardown" data-name="teardown">teardown</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assert" data-name="assert">assert</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertTrue" data-name="assertTrue">assertTrue</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertFalse" data-name="assertFalse">assertFalse</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertEqual" data-name="assertEqual">assertEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNotEqual" data-name="assertNotEqual">assertNotEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNull" data-name="assertNull">assertNull</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertUndefined" data-name="assertUndefined">assertUndefined</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertTruthy" data-name="assertTruthy">assertTruthy</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertFalsy" data-name="assertFalsy">assertFalsy</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertError" data-name="assertError">assertError</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNoError" data-name="assertNoError">assertNoError</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertObjectEqual" data-name="assertObjectEqual">assertObjectEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertArrayEqual" data-name="assertArrayEqual">assertArrayEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertDateEqual" data-name="assertDateEqual">assertDateEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertRegExpEqual" data-name="assertRegExpEqual">assertRegExpEqual</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertInstanceOf" data-name="assertInstanceOf">assertInstanceOf</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertOneOf" data-name="assertOneOf">assertOneOf</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#createAssertion" data-name="createAssertion">createAssertion</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#createDiff" data-name="createDiff">createDiff</a>
+  </li>
+
+
+            
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setAutoRun" data-name="setAutoRun">setAutoRun</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setFoldMode" data-name="setFoldMode">setFoldMode</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setRandomize" data-name="setRandomize">setRandomize</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#setSeed" data-name="setSeed">setSeed</a>
+  </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+</header>
+
+    <main>
+      <div class="hero logo logo--hero">
+  <div class="logo__icon logo__icon--hero">
+    <div class="logo__dot logo__dot--hero"></div>
+  </div>
+  <div>
+    <h1 class="logo__name">ReadyTest</h1>
+  </div>
+</div>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>A dead-simple setup because you just want to test your code.</li>
+  <li>Familiar test definition methods because they make sense.</li>
+  <li>Plain assertion methods because code.is.not.text.</li>
+  <li>Predictable naming because you're tired of looking at docs.</li>
+  <li>ES5 support because you're not always babelifying everything.</li>
+  <li>Both browser and node support because your project could be anything.</li>
+  <li>Concise output with diffs because you just want to see what went wrong.</li>
+  <li>Global, require, and ES6 import support because that part is up to you.</li>
+  <li>Baked in performance testing because perf matters.</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">npm <span class="nb">install </span>ready-test</code></pre></figure>
+
+<h2 id="browser">Browser</h2>
+
+<p>To get up and running in the browser, link the included CSS/JS:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    *<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"node_modules/ready-test/ready-test.css"</span><span class="nt">&gt;</span>*
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    *<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span><span class="nt">&gt;&lt;/script&gt;</span>*
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>Then link your source files and tests:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"node_modules/ready-test/ready-test.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"node_modules/ready-test/ready-test.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    *<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"src/user.js"</span><span class="nt">&gt;&lt;/script&gt;</span>*
+    *<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"test/userTest.js"</span><span class="nt">&gt;&lt;/script&gt;</span>*
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>The tests will run and output in the browser:</p>
+
+<p><a href="images/screenshots/browser.png" target="_blank" class="screenshot">
+  <img src="images/screenshots/browser.png" alt="Browser Test Run" class="screenshot__image" width="360" height="223" />
+</a></p>
+
+<h2 id="node">Node</h2>
+
+<p>To run in node, simply run the shell command provided:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="o">&gt;</span> ./node_modules/ready-test/bin/readytest</code></pre></figure>
+
+<p>The tests will run and output in the console:</p>
+
+<p><a href="images/screenshots/node.png" target="_blank" class="screenshot">
+  <img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" width="346" height="169" />
+</a></p>
+
+<p>It will find and run any tests like <code class="highlighter-rouge">test/userTest.js</code>, <code class="highlighter-rouge">test/tests/user.js</code>,
+etc. You can also add it to your <code class="highlighter-rouge">package.json</code> file to run with <code class="highlighter-rouge">npm test</code>:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readytest"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>Define tests with familiar describe and it blocks:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="nx">assertTrue</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">());</span>
+    <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<ul>
+  <li>Quickly describe your code with readable assertion methods:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">());</span><span class="o">*</span>
+  <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>Focus or skip tests or suites with a single character:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="o">*</span><span class="p">(</span><span class="s1">'Focused test'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">xit</span><span class="o">*</span><span class="p">(</span><span class="s1">'Skipped test'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">fdescribe</span><span class="o">*</span><span class="p">(</span><span class="s1">'Focused suite'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">xdescribe</span><span class="o">*</span><span class="p">(</span><span class="s1">'Skipped suite'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
+
+<ul>
+  <li>Run async tests simply by returning a Promise:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="k">return</span> <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+    <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>Standard setup methods:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">beforeEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">afterEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">beforeAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">afterAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
+
+<h2 id="other-features">Other Features</h2>
+
+<ul>
+  <li>All code is run synchronously unless a function returns a promise.</li>
+  <li>Easy browser configuration with data attributes.</li>
+  <li>Nestable suites to help organize your tests.</li>
+  <li>Fold mode to output nesting at different levels of detail.</li>
+  <li>Runner watches directories and re-runs tests in node.</li>
+  <li>Test randomization and features to help track down race conditions.</li>
+  <li>Older IE support with polyfills.</li>
+  <li>Custom assertions.</li>
+</ul>
+
+    </main>
+    <footer class="footer dark">
+  <section>
+    <a href="https://github.com/andrewplummer/ready-test" target="_blank" class="footer__icon-link">
+      <img src="images/icons/github.svg" alt="GitHub" width="28" height="28">
+    </a>
+    Released under MIT license.
+  </section>
+</footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
