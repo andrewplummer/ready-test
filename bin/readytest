@@ -124,7 +124,7 @@ function initReadyTest() {
     ReadyTest.exportGlobals();
   }
   if (!args.options['no-modules']) {
-    require = require('@std/esm')(module);
+    require = require('esm')(module);
   }
   if (args.options['randomize']) {
     ReadyTest.setRandomize(true);

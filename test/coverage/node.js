@@ -12,7 +12,7 @@ function run(cmd) {
 console.info('Running all tests...');
 
 run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest -r test/index.js');
-run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest --no-globals test/tests/standalone/import.mjs');
+run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest --no-globals test/tests/standalone/import.js');
 run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest --no-globals test/tests/standalone/require.js');
 run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest test/tests/standalone/utils.js');
 run('./node_modules/nyc/bin/nyc.js -s --no-clean bin/readytest test/tests/standalone/focused-suite.js');
