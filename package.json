@@ -1,7 +1,8 @@
 {
   "name": "ready-test",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Because JS unit testing shouldn't be complicated.",
+  "homepage": "https://andrewplummer.github.io/ready-test/",
   "author": "Andrew Plummer <plummer.andrew@gmail.com>",
   "license": "MIT",
   "repository": {
