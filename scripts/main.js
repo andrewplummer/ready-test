@@ -422,6 +422,6 @@
   highlightHtmlBlocks();
   setupSearchFilter();
   setupScrollLink('.docs-index', '.docs__block', '.docs-index__item', 40);
-  setupVisibilityToggle('.hero', '.header-logo');
+  setupVisibilityToggle('.logo--hero', '.header-logo');
 
 })();

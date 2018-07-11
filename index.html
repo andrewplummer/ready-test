@@ -26,18 +26,28 @@
     <span class="header__area">
       <a href="./" class="header-logo styled invisible">
         <div class="logo">
-  <div class="logo__icon">
-    <div class="logo__dot"></div>
+  <div>
+    <div class="logo__icon">
+      <div class="logo__dot"></div>
+    </div>
   </div>
-  <div class="logo__name">ReadyTest</div>
+  <div>
+    <img class="logo__image" src="images/logos/white-light.svg" alt="ReadyTest">
+  </div>
 </div>
 
       </a>
     </span>
     <nav class="header__area">
-      <a class="nav__link styled" href="./">Intro</a>
-      <a class="nav__link styled" href="docs">Docs</a>
-      <a class="nav__link styled" href="faq">FAQ</a>
+      
+<a class="styled nav__link nav__link--active" href=".">Intro</a>
+
+      
+<a class="styled nav__link" href="docs">Docs</a>
+
+      
+<a class="styled nav__link" href="faq">FAQ</a>
+
       <div class="search">
         <div class="search__inner">
           <img class="search__icon" src="images/icons/search.svg" alt="Search" width="22" height="22">
@@ -204,12 +214,17 @@
 </header>
 
     <main>
-      <div class="hero logo logo--hero">
-  <div class="logo__icon logo__icon--hero">
-    <div class="logo__dot logo__dot--hero"></div>
+      <div class="logo logo--hero">
+  <div>
+    <div class="logo__icon">
+      <div class="logo__dot"></div>
+    </div>
   </div>
   <div>
-    <h1 class="logo__name">ReadyTest</h1>
+    <h1>
+      <img class="logo__image" src="images/logos/black-ultralight.svg" width="180" alt="ReadyTest" />
+    </h1>
+    <h2 class="logo__copy">Because JS unit testing shouldn't be complicated.</h2>
   </div>
 </div>
 
@@ -221,9 +236,9 @@
   <li>Plain assertion methods because code.is.not.text.</li>
   <li>Predictable naming because you're tired of looking at docs.</li>
   <li>ES5 support because you're not always babelifying everything.</li>
-  <li>Both browser and node support because your project could be anything.</li>
+  <li>Browser and node support because your project could be anything.</li>
   <li>Concise output with diffs because you just want to see what went wrong.</li>
-  <li>Global, require, and ES6 import support because that part is up to you.</li>
+  <li>Global, require, and import support because that part is up to you.</li>
   <li>Baked in performance testing because perf matters.</li>
 </ul>
 
@@ -272,16 +287,18 @@
 <p>The tests will run and output in the console:</p>
 
 <p><a href="images/screenshots/node.png" target="_blank" class="screenshot">
-  <img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" width="346" height="169" />
+  <img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" width="377" height="220" />
 </a></p>
 
-<p>It will find and run any tests like <code class="highlighter-rouge">test/userTest.js</code>, <code class="highlighter-rouge">test/tests/user.js</code>,
-etc. You can also add it to your <code class="highlighter-rouge">package.json</code> file to run with <code class="highlighter-rouge">npm test</code>:</p>
+<p>By default the runner will find tests like <code class="highlighter-rouge">test/userTest.js</code>,
+<code class="highlighter-rouge">test/tests/user.js</code>, <code class="highlighter-rouge">spec/userSpec.js</code> <code class="highlighter-rouge">spec/specs/user.js</code>
+etc.</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readytest"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<p>You can also add it to your <code class="highlighter-rouge">package.json</code> file to run with
+<code class="highlighter-rouge">npm test</code>:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readytest"</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <h2 id="usage">Usage</h2>
@@ -298,7 +315,7 @@ etc. You can also add it to your <code class="highlighter-rouge">package.json</c
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
 <ul>
-  <li>Quickly describe your code with readable assertion methods:</li>
+  <li>Test your code with readable assertion methods:</li>
 </ul>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -316,7 +333,7 @@ etc. You can also add it to your <code class="highlighter-rouge">package.json</c
 <span class="o">*</span><span class="nx">xdescribe</span><span class="o">*</span><span class="p">(</span><span class="s1">'Skipped suite'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
 
 <ul>
-  <li>Run async tests simply by returning a Promise:</li>
+  <li>Return a promise to wait for code to run:</li>
 </ul>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -326,7 +343,7 @@ etc. You can also add it to your <code class="highlighter-rouge">package.json</c
 <span class="p">});</span></code></pre></figure>
 
 <ul>
-  <li>Standard setup methods:</li>
+  <li>Run support code with standard before/after methods:</li>
 </ul>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">beforeEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -337,7 +354,7 @@ etc. You can also add it to your <code class="highlighter-rouge">package.json</c
 <h2 id="other-features">Other Features</h2>
 
 <ul>
-  <li>All code is run synchronously unless a function returns a promise.</li>
+  <li>All code blocks run synchronously unless they return a promise.</li>
   <li>Easy browser configuration with data attributes.</li>
   <li>Nestable suites to help organize your tests.</li>
   <li>Fold mode to output nesting at different levels of detail.</li>

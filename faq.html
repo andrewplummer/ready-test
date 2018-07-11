@@ -26,18 +26,28 @@
     <span class="header__area">
       <a href="./" class="header-logo styled">
         <div class="logo">
-  <div class="logo__icon">
-    <div class="logo__dot"></div>
+  <div>
+    <div class="logo__icon">
+      <div class="logo__dot"></div>
+    </div>
   </div>
-  <div class="logo__name">ReadyTest</div>
+  <div>
+    <img class="logo__image" src="images/logos/white-light.svg" alt="ReadyTest">
+  </div>
 </div>
 
       </a>
     </span>
     <nav class="header__area">
-      <a class="nav__link styled" href="./">Intro</a>
-      <a class="nav__link styled" href="docs">Docs</a>
-      <a class="nav__link styled" href="faq">FAQ</a>
+      
+<a class="styled nav__link" href=".">Intro</a>
+
+      
+<a class="styled nav__link" href="docs">Docs</a>
+
+      
+<a class="styled nav__link nav__link--active" href="faq">FAQ</a>
+
       <div class="search">
         <div class="search__inner">
           <img class="search__icon" src="images/icons/search.svg" alt="Search" width="22" height="22">
@@ -227,7 +237,7 @@ to.be or not.to.be?</p>
 
 <p>No. Mocking object methods is simple to do in JS and is often very use
 case specific. A convoluted mocking API just gets in your way. Write
-your own mocks in setup methods or tuck them away in a custom assertion
+your own mocks in setup methods or tuck them away in custom assertions
 with <a href="docs#createAssertion">createAssertion</a>. If you need to
 mock native objects, have a look at
 <a href="http://sinonjs.org/" target="_blank">Sinon.js</a>. It's great.</p>
@@ -242,10 +252,8 @@ code, not its internals.</p>
 
 <h2 id="but-that-slows-down-my-entire-suite">But that slows down my entire suite!</h2>
 
-<p>Why do you have so many async tests anyway? These are unit tests. You want
-to test your code not your wait time. Mock async methods away! ReadyTest
-runs synchronously if possible, but begrudgingly runs async tests anywhere
-a promise can be returned.</p>
+<p>These are unit tests. You want to test your code not your wait time.
+Mock async methods away!</p>
 
 <h2 id="will-readytest-randomize-my-tests">Will ReadyTest randomize my tests?</h2>
 

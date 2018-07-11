@@ -7,8 +7,9 @@
   --logo-bg: #bf6e66;
   --logo--hero-bg: #85c64f;
   --logo--hero-dot-bg: #55a426;
-  --method-highlight-bg: #f5f1d1;
-  --nav-highlight-bg: #bb6a62;
+  --method-focus-bg: #f5f1d1;
+  --nav-focus-bg: #bb6a62;
+  --text-xl: 22px;
   --text-lg: 20px;
   --text-md: 18px;
   --text-sm: 16px;
@@ -54,6 +55,18 @@ a.styled {
   text-decoration: none;
 }
 
+@media (max-width: 767px) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-size: var(--text-xl);
+  }
+
+}
+
 /* ----------------- ] Atomic [ ------------------ */
 
 .hidden {
@@ -78,8 +91,8 @@ a.styled {
   background-color: var(--header-bg);
   color: #fff;
   box-shadow: 0px 0px 2px rgba(0,0,0,.4);
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: .25em;
+  padding-bottom: .25em;
 }
 
 .header__main {
@@ -93,17 +106,47 @@ a.styled {
   align-items: center;
 }
 
+@media (max-width: 767px) {
+
+  .header {
+    padding-top: .4em;
+    padding-bottom: .4em;
+  }
+
+}
+
 /* ----------------- ] Nav [ ------------------ */
 
 .nav__link {
+  position: relative;
   display: inline-block;
-  padding: .3em .5em;
+  padding: .1em .5em;
+  outline: none;
+  font-size: var(--text-lg);
 }
 
 .nav__link:focus,
 .nav__link:hover {
-  background-color: var(--nav-highlight-bg);
-  outline: none;
+  background-color: var(--nav-focus-bg);
+}
+
+
+.nav__link--active:after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: var(--nav-focus-bg);
+}
+
+@media (max-width: 767px) {
+
+  .nav__link {
+    padding: .1em .4em;
+  }
+
 }
 
 /* ----------------- ] Logo [ ------------------ */
@@ -114,52 +157,44 @@ a.styled {
 }
 
 .logo {
-  font-size: 24px;
   display: flex;
   align-items: center;
-}
-
-.logo--hero {
-  margin: 1em 0;
-  font-size: 90px;
 }
 
 .logo__icon {
+  width: 14px;
+  height: 24px;
+  margin-right: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: .62em;
-  height: 1em;
-  margin-right: .2em;
   background-color: var(--logo-bg);
+}
+
+.logo__copy {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: sans-serif;
+  color: #aaa;
+  margin: 0;
 }
 
 .logo__dot {
   display: block;
-  width: .25em;
-  height: .25em;
+  width: 6px;
+  height: 6px;
   border-radius: 100%;
   background-color: var(--header-bg);
 }
 
-.logo__icon--hero {
-  background-color: var(--logo--hero-bg);
-}
-
-.logo__dot--hero {
-  background-color: var(--logo--hero-dot-bg);
-}
-
 .logo__name {
-  font-size: 1em;
-  font-weight: 300;
-  letter-spacing: -.01em;
-  line-height: 1.1;
-  margin: 0;
+  line-height: 20px;
 }
 
-.logo--hero .logo__name {
-  font-weight: 100;
+.logo__image {
+  display: block;
+  width: 100px;
+  margin-top: 5px;
 }
 
 .logo__title {
@@ -168,10 +203,48 @@ a.styled {
   color: #aaa;
 }
 
+.logo--hero {
+  align-items: start;
+  margin: 100px 0;
+}
+
+.logo--hero .logo__icon {
+  width: 56px;
+  height: 90px;
+  margin-right: 20px;
+  background-color: var(--logo--hero-bg);
+}
+
+.logo--hero .logo__dot {
+  width: 23px;
+  height: 23px;
+  background-color: var(--logo--hero-dot-bg);
+}
+
+.logo--hero .logo__image {
+  width: 350px;
+  margin-top: 0;
+}
+
 @media (max-width: 767px) {
 
   .logo--hero {
-    font-size: 60px;
+    margin: 60px 0;
+  }
+
+  .logo--hero .logo__icon {
+    width: 37px;
+    height: 60px;
+    margin-right: 16px;
+  }
+
+  .logo--hero .logo__dot {
+    width: 15px;
+    height: 15px;
+  }
+
+  .logo--hero .logo__image {
+    width: 250px;
   }
 
 }
@@ -190,6 +263,11 @@ a.styled {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
+  opacity: .5;
+}
+
+.footer__icon-link:hover {
+  opacity: 1;
 }
 
 /* ----------------- ] Search [ ------------------ */
@@ -198,11 +276,12 @@ a.styled {
   position: relative;
   width: 28px;
   height: 28px;
+  margin-left: 5px;
 }
 
 .search__inner {
   position: absolute;
-  top: -2px;
+  top: -3px;
   right: 0;
   transition: background-color 150ms linear;
   border-radius: 3px;
@@ -217,14 +296,14 @@ a.styled {
   width: 0;
   opacity: 0;
   transition: width 150ms ease-in-out, padding 150ms ease-in-out, opacity 150ms linear;
-  padding: 7px 28px 7px 0px;
+  padding: 8px 28px 8px 0px;
   outline: none;
 }
 
 .search__icon {
   position: absolute;
   z-index: 1;
-  top: 0;
+  top: 1px;
   left: 0;
   width: 28px;
   height: 32px;
@@ -239,7 +318,7 @@ a.styled {
 }
 
 .search--active .search__input {
-  width: 13em;
+  width: 14em;
   opacity: 1;
   padding-left: 34px;
   padding-right: 12px;
@@ -286,29 +365,37 @@ a.styled {
 .search__dropdown-link:focus,
 .search__dropdown-link:hover,
 .search__dropdown-link:active {
-  background-color: var(--method-highlight-bg);
+  background-color: var(--method-focus-bg);
+}
+
+@media (max-width: 767px) {
+
+  .search__dropdown-item {
+    font-size: var(--text-lg);
+  }
+
 }
 
 /* ----------------- ] Main [ ------------------ */
 
 main,
 section {
-  max-width: 1000px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--section-padding);
   padding-right: var(--section-padding);
 }
 
-main h1 {
+main > h1 {
   margin: 1em 0;
 }
 
-main h2 {
+main > h2 {
   margin: 2em 0 .5em 0;
 }
 
-main ul {
+main > ul {
   list-style: disc;
   margin: 1em;
 }
@@ -323,6 +410,11 @@ main > ul:last-child {
   main h2 {
     font-size: 26px;
     margin-top: 1em;
+  }
+
+  main img {
+    max-width: 100%;
+    height: auto;
   }
 
 }
@@ -363,7 +455,6 @@ li > code {
   float: left;
   overflow-y: auto;
   padding: 1em 1em 2em 0;
-  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 
@@ -407,7 +498,7 @@ li > code {
 .docs-index__item:focus,
 .docs-index__item:hover {
   outline: none;
-  background-color: var(--method-highlight-bg);
+  background-color: var(--method-focus-bg);
 }
 
 @media (max-width: 767px) {
@@ -445,7 +536,7 @@ li > code {
 
 .docs__header-link:focus {
   outline: none;
-  background-color: var(--method-highlight-bg);
+  background-color: var(--method-focus-bg);
 }
 
 .docs__header-link:hover:before {
