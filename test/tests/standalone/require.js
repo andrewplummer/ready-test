@@ -1,6 +1,6 @@
 'use strict';
 
-var { describe, it, assertEqual } = require('../../../ready-test');
+const { describe, it, assertEqual } = require('../../../ready-test');
 require('../../helpers/async');
 
 describe('should run as a required module', function() {
