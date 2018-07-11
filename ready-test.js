@@ -483,6 +483,8 @@
   function setState(state) {
     if (IS_BROWSER) {
       setStateBrowser(state);
+    } else {
+      setStateConsole(state);
     }
     rootSuite.state = state;
   }
@@ -1570,6 +1572,14 @@
     currentNewLines = 0;
   }
 
+  function setStateConsole(state) {
+    if (state === States.PASS) {
+      output(state.text, 'state--pass');
+    } else if (state === States.FAIL) {
+      output(state.text, 'state--fail');
+    }
+  }
+
   function outputConsole(text, ctx) {
     var style = getStyleForContext(ctx);
     consoleWrite(style ? style(text) : text);
@@ -1636,6 +1646,7 @@
       case 'assertion__result':
       case 'assertion__message':
         return 'inline';
+      case 'state':
       case 'stack':
       case 'suite':
       case 'suite__name':
@@ -1685,10 +1696,12 @@
         case 'icon--fail':
         case 'test--fail':
         case 'test--error':
+        case 'state--fail':
         case 'diff__token--actual':
           return style.red;
         case 'icon--pass':
         case 'test--pass':
+        case 'state--pass':
         case 'diff__token--expected':
           return style.green;
         case 'icon--warn':
