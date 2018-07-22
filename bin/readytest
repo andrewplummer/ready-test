@@ -7,8 +7,8 @@ const EXIT_CODE_PASS =  0;
 const EXIT_CODE_FAIL = -1;
 
 const DEFAULT_TARGETS = [
-  'test/**/tests/',
-  'spec/**/specs/',
+  'test/**/tests/**/*' + JS_EXT,
+  'spec/**/specs/**/*' + JS_EXT,
   'test/**{t,T}est' + JS_EXT,
   'spec/**{s,S}pec' + JS_EXT
 ];
@@ -171,15 +171,14 @@ function collectTestPaths() {
   });
 
   if (!result.length) {
-    console.error(chalk.red('Nothing to test!'));
-    process.exit(EXIT_CODE_FAIL);
+    throwError('Nothing to test!');
   }
 
   return result;
 }
 
 function throwError(msg) {
-  process.stdout.write('\n' + chalk.red(new Error(msg).stack));
+  process.stdout.write('\n' + chalk.red(msg));
   process.exit(EXIT_CODE_FAIL);
 }
 
