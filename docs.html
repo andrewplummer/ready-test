@@ -148,6 +148,14 @@
   </li>
 
   <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertMatch" data-name="assertMatch">assertMatch</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#assertNoMatch" data-name="assertNoMatch">assertNoMatch</a>
+  </li>
+
+  <li class="search__dropdown-item">
     <a class="search__dropdown-link styled" href="docs#assertError" data-name="assertError">assertError</a>
   </li>
 
@@ -309,6 +317,14 @@
     
       <li>
         <a class="docs-index__item styled" href="#assertFalsy">assertFalsy</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertMatch">assertMatch</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#assertNoMatch">assertNoMatch</a>
       </li>
     
       <li>
@@ -1029,6 +1045,58 @@ will output a custom message.</p>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertFalsy(arg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertMatch" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertMatch" class="docs__header-link styled">
+      
+        assertMatch
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the string passed as the first argument matches the regex passed as
+the second argument. An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertMatch(str, reg, [msg])</p>
+
+
+</div>
+
+
+
+  
+
+<div id="assertNoMatch" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#assertNoMatch" class="docs__header-link styled">
+      
+        assertNoMatch
+      
+    </a>
+  </h2>
+  
+<p>Asserts that the string passed as the first argument does not match the regex
+passed as the second argument. An optional third argument will output a custom message.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<span class="p">});</span></code></pre></figure>
+
+<p class="docs__signature">assertMatch(str, reg, [msg])</p>
 
 
 </div>

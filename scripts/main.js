@@ -122,7 +122,6 @@
       if (!filteredLinks.length) {
         show(empty);
       } else {
-        filteredLinks[0].classList.add('search__dropdown-link--focused');
         hide(empty);
       }
 
