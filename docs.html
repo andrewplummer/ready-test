@@ -1066,7 +1066,7 @@ will output a custom message.</p>
 the second argument. An optional third argument will output a custom message.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
@@ -1092,11 +1092,11 @@ the second argument. An optional third argument will output a custom message.</p
 passed as the second argument. An optional third argument will output a custom message.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
-<p class="docs__signature">assertMatch(str, reg, [msg])</p>
+<p class="docs__signature">assertNoMatch(str, reg, [msg])</p>
 
 
 </div>
