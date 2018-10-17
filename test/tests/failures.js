@@ -12,6 +12,14 @@ describe('Should fail', function() {
   it('assertEqual', function() {
     assertEqual(0, 1);
     assertEqual(1, 0);
+    assertEqual(1, '1');
+    assertEqual('1', 1);
+    assertEqual('str', new String('str'));
+    assertEqual(new String('str'), 'str');
+    assertEqual(8, new Number(8));
+    assertEqual(new Number(8), 8);
+    assertEqual(true, new Boolean(true));
+    assertEqual(new Boolean(true), true);
   });
 
   it('assertTrue', function() {

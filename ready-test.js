@@ -2323,6 +2323,24 @@
     return obj && obj.constructor && !isBuiltInClass(obj.constructor);
   }
 
+  function isWrappedPrimitive(obj) {
+    return obj && typeof obj === 'object' && isPrimitiveConstructor(obj.constructor);
+  }
+
+  function isPrimitiveConstructor(fn) {
+    return fn === String || fn === Number || fn === Boolean;
+  }
+
+  function hasOwnToString(obj) {
+    return obj.constructor.prototype.toString !== Object.prototype.toString;
+  }
+
+  function hasProp(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+  }
+
+  // --- Stringify helpers
+
   function dump(obj, short) {
     if (obj === '') {
       return '""';
@@ -2334,6 +2352,8 @@
       return obj.name;
     } else if (isCustomObject(obj) && !hasOwnToString(obj)) {
       return '[object ' + getFunctionName(obj.constructor) + ']';
+    } else if (isWrappedPrimitive(obj)) {
+      return '[' + getFunctionName(obj.constructor) + ': ' + dump(obj.valueOf()) + ']';
     } else if (short && isArray(obj)) {
       return '[...]';
     } else if (short && isObject(obj)) {
@@ -2342,14 +2362,6 @@
       return JSON.stringify(obj);
     }
     return String(obj);
-  }
-
-  function hasOwnToString(obj) {
-    return obj.constructor.prototype.toString !== Object.prototype.toString;
-  }
-
-  function hasProp(obj, key) {
-    return Object.prototype.hasOwnProperty.call(obj, key);
   }
 
   // --- Built-in Helpers
