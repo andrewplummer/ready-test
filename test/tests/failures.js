@@ -47,6 +47,18 @@ describe('Should fail', function() {
     assertNoError(throwsTypeError, TypeError);
   });
 
+  it('assertMatch', function() {
+    assertMatch('foo', /bar/);
+    assertMatch('foo', null);
+    assertMatch('foo', 'foo');
+  });
+
+  it('assertNoMatch', function() {
+    assertNoMatch('foo', /foo/);
+    assertNoMatch('foo', null);
+    assertNoMatch('foo', 'foo');
+  });
+
   it('assertObjectEqual', function() {
     assertObjectEqual(null);
     assertObjectEqual(null, {});
@@ -67,6 +79,9 @@ describe('Should fail', function() {
     assertObjectEqual(objectLongFlat1, objectLongFlat2);
     assertObjectEqual({a:['a']}, {a:{0:'a'}});
     assertObjectEqual({a:{0:'a'}}, {a:['a']});
+    assertObjectEqual(cyclicObjFoo, cyclicObjFooNum);
+    assertObjectEqual(cyclicObjFoo, cyclicObjBar);
+    assertObjectEqual(cyclicObjFoo, cyclicObjFooNested);
   });
 
   it('assertArrayEqual', function() {

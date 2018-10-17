@@ -126,3 +126,40 @@ fnObject2 = {
   fn: function fn2() {}
 };
 
+cyclicObjFoo = {
+  'num': 4,
+  'str': 'str'
+};
+cyclicObjFoo.foo = cyclicObjFoo;
+
+cyclicObjFooClone = {
+  'num': 4,
+  'str': 'str'
+};
+cyclicObjFooClone.foo = cyclicObjFooClone;
+
+cyclicObjBar = {
+  'num': 4,
+  'str': 'str'
+};
+cyclicObjBar.bar = cyclicObjBar;
+
+cyclicObjFooNum = {
+  'num': 5,
+  'str': 'str'
+};
+cyclicObjFooNum.foo = cyclicObjFooNum;
+
+cyclicObjFooNested = {
+  'num': 4,
+  'str': 'str',
+  'foo': {}
+};
+cyclicObjFooNested.foo.foo = cyclicObjFooNested;
+
+cyclicObjFooNestedClone = {
+  'num': 4,
+  'str': 'str',
+  'foo': {}
+};
+cyclicObjFooNestedClone.foo.foo = cyclicObjFooNestedClone;

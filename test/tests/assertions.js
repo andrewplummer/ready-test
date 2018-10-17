@@ -54,6 +54,19 @@ describe('Should pass', function() {
     assertNoError(throwsTypeError, RangeError);
   });
 
+  it('assertMatch', function() {
+    assertMatch('foo', /foo/);
+    assertMatch('foo', /\w+/);
+    assertMatch('4', /^\d$/);
+    assertMatch(4, /4/);
+    assertMatch(null, /null/);
+  });
+
+  it('assertNoMatch', function() {
+    assertNoMatch('foo', /bar/);
+    assertNoMatch(null, /foo/);
+  });
+
   it('assertObjectEqual', function() {
     assertObjectEqual({}, {});
     assertObjectEqual({a:''}, {a:''});
@@ -61,6 +74,9 @@ describe('Should pass', function() {
     assertObjectEqual({a:undefined}, {a:undefined});
     assertObjectEqual({a:noop}, {a:noop});
     assertObjectEqual(user1, user1);
+    assertObjectEqual(cyclicObjFoo, cyclicObjFoo);
+    assertObjectEqual(cyclicObjFoo, cyclicObjFooClone);
+    assertObjectEqual(cyclicObjFooNested, cyclicObjFooNestedClone);
   });
 
   it('assertArrayEqual', function() {

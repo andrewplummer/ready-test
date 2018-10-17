@@ -1919,6 +1919,18 @@
     runErrorAssert(arguments, false);
   }
 
+  function assertMatch(str, reg, msg) {
+    if (runTypeCheck(reg, isRegExp, 'a regex', msg)) {
+      buildAssertion(reg.test(str), msg, '{a} should match {reg}', str, reg);
+    }
+  }
+
+  function assertNoMatch(str, reg, msg) {
+    if (runTypeCheck(reg, isRegExp, 'a regex', msg)) {
+      buildAssertion(!reg.test(str), msg, '{a} should not match {reg}', str, reg);
+    }
+  }
+
   function assertArrayEqual(a, b, msg) {
     runObjectAssert(a, b, isArray, 'array', msg);
   }
@@ -2008,7 +2020,7 @@
   // --- Object Assertion Helpers
 
   function runObjectAssert(a, b, checkFn, type, msg) {
-    if (runTypeCheck(a, b, checkFn, 'an ' + type, msg)) {
+    if (runMatchingTypeCheck(a, b, checkFn, 'an ' + type, msg)) {
       buildObjectAssertion(a, b, msg, type);
     }
   }
@@ -2020,8 +2032,11 @@
     });
   }
 
-  function createDiff(a, b) {
-    var diff, keys, iDiff, comparedKeys = {};
+  function createDiff(a, b, aStack, bStack) {
+    var diff, iDiff, keys, comparedKeys = {};
+
+    if (!aStack) aStack = [];
+    if (!bStack) bStack = [];
 
     diff = {
       lines: [],
@@ -2047,8 +2062,26 @@
       var bVal = b[key];
 
       if (aHas !== bHas || aVal !== bVal) {
-        if (isObjectOrArray(aVal) && isObjectOrArray(bVal)) {
-          iDiff = createDiff(aVal, bVal);
+
+        if (isObjectOrArray(aVal, aStack) && isObjectOrArray(bVal, bStack)) {
+
+          if (isCyclicObject(aVal, aStack) || isCyclicObject(bVal, bStack)) {
+            // Cyclic objects will be traversed once before they are pushed to
+            // the stack. If we are still encountering them at this point it
+            // means they have already passed their checks, so don't step into
+            // them anymore.
+            pushDiffPass(diff, key, aVal);
+            continue;
+          }
+
+          aStack.push(aVal);
+          bStack.push(bVal);
+
+          iDiff = createDiff(aVal, bVal, aStack, bStack);
+
+          aStack.pop();
+          bStack.pop();
+
           if (iDiff.pass) {
             pushDiffPass(diff, key, aVal);
           } else {
@@ -2066,6 +2099,16 @@
     foldDiffLines(diff);
 
     return diff;
+  }
+
+  function isCyclicObject(obj, stack) {
+    var i = stack.length;
+    while (i--) {
+      if (stack[i] === obj) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function pushDiffPass(diff, key, val) {
@@ -2130,13 +2173,13 @@
   // --- Builtin Assertion Helpers
 
   function runDateAssert(a, b, msg) {
-    if (runTypeCheck(a, b, isDate, 'a date', msg)) {
+    if (runMatchingTypeCheck(a, b, isDate, 'a date', msg)) {
       buildAssertion(a.getTime() === b.getTime(), msg, '{a} should equal {b}', a, b);
     }
   }
 
   function runRegExpAssert(a, b, msg) {
-    if (runTypeCheck(a, b, isRegExp, 'a regex', msg)) {
+    if (runMatchingTypeCheck(a, b, isRegExp, 'a regex', msg)) {
       buildAssertion(a.toString() === b.toString(), msg, '{a} should equal {b}', a, b);
     }
   }
@@ -2196,16 +2239,17 @@
     pushAssertion(assertion);
   }
 
-  function runTypeCheck(a, b, checkFn, type, msg) {
-    if (!checkFn(a)) {
-      buildAssertion(false, msg, '{a} should be ' + type, a);
+  function runTypeCheck(obj, checkFn, type, msg) {
+    if (!checkFn(obj)) {
+      buildAssertion(false, msg, '{a} should be ' + type, obj);
       return false;
-    } else if (!checkFn(b)) {
-      buildAssertion(false, msg, '{a} should be ' + type, b);
-      return false;
-    } else {
-      return true;
     }
+    return true;
+  }
+
+  function runMatchingTypeCheck(a, b, checkFn, type, msg) {
+    return runTypeCheck(a, checkFn, type, msg) &&
+           runTypeCheck(b, checkFn, type, msg);
   }
 
   // --- Type Helpers
@@ -2492,6 +2536,8 @@
     target.assertDateEqual   = assertDateEqual;
     target.assertRegExpEqual = assertRegExpEqual;
     target.assertOneOf       = assertOneOf;
+    target.assertMatch       = assertMatch;
+    target.assertNoMatch     = assertNoMatch;
     target.assertInstanceOf  = assertInstanceOf;
     target.createAssertion   = createAssertion;
     target.createDiff        = createDiff;
