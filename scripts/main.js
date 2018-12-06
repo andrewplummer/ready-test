@@ -65,7 +65,7 @@
   }
 
   function setupSearchFilter() {
-    var container, icon, input, dropdown, links, filteredLinks, empty, isMobile;
+    var container, icon, input, dropdown, links, filteredLinks, focusedLink, empty, isMobile;
 
     container = document.querySelector('.search');
     icon      = container.querySelector('.search__icon');
@@ -82,8 +82,9 @@
 
     function getAllLinks() {
       var els = dropdown.querySelectorAll('a');
-      for (var i = 0; i < els.length; i++) {
-        els[i].addEventListener('blur', onControlBlur);
+      for (var i = 0, el; el = els[i]; i++) {
+        el.addEventListener('focus', onLinkFocus);
+        el.addEventListener('blur', onLinkBlur);
       }
       return els;
     }
@@ -110,7 +111,6 @@
 
       for (var i = 0, link; i < links.length; i++) {
         link = links[i];
-        link.classList.remove('search__dropdown-link--focused');
         if (reg.test(link.dataset.name)) {
           filteredLinks.push(link);
           show(link.parentElement);
@@ -123,6 +123,10 @@
         show(empty);
       } else {
         hide(empty);
+      }
+
+      if (filteredLinks.length) {
+        setLinkFocused(filteredLinks[0], true);
       }
 
       show(dropdown);
@@ -148,39 +152,53 @@
     }
 
     function onInputKeyDown(evt) {
-      if (evt.key === 'Enter' && filteredLinks.length) {
+      if (evt.key === 'Enter' && focusedLink) {
         // Scrolling will not occur unless input is blurred first!
         input.blur();
-        filteredLinks[0].click();
+        focusedLink.click();
+        clearFocusedLink();
       }
     }
 
     function handleDownKey() {
       if (!filteredLinks.length) {
-        filterLinks();
-      } else if (document.activeElement === input) {
-        filteredLinks[0].focus();
-      } else {
-        var index = getFocusedLinkIndex();
-        if (index >= 0 && index < filteredLinks.length - 1) {
-          filteredLinks[index + 1].focus();
-        }
+        return;
       }
+      var index = getFocusedLinkIndex();
+      filteredLinks[(index + 1) % filteredLinks.length].focus();
     }
 
     function handleUpKey() {
+      if (!filteredLinks.length) {
+        return;
+      }
       var index = getFocusedLinkIndex();
       if (index === 0) {
         input.focus();
-      } else if (index > 0) {
+        clearFocusedLink();
+      } else if (index === -1) {
+        filteredLinks[filteredLinks.length - 1].focus();
+      } else {
         filteredLinks[index - 1].focus();
       }
     }
 
     function getFocusedLinkIndex() {
       return filteredLinks.findIndex(function(link) {
-        return document.activeElement === link;
+        return link === focusedLink;
       });
+    }
+
+    function setLinkFocused(link) {
+      link.classList.add('search__dropdown-link--focused');
+      focusedLink = link;
+    }
+
+    function clearFocusedLink() {
+      if (focusedLink) {
+        focusedLink.classList.remove('search__dropdown-link--focused');
+        focusedLink = null;
+      }
     }
 
     function onIconClick() {
@@ -193,9 +211,18 @@
     }
 
     function onInputBlur() {
-      if (filteredLinks.length) {
-        filteredLinks[0].classList.remove('search__dropdown-link--focused');
-      }
+      onControlBlur();
+    }
+
+    function onLinkFocus(evt) {
+      // Previous link may not be actually
+      // focused so force a clear here.
+      clearFocusedLink();
+      setLinkFocused(evt.target);
+    }
+
+    function onLinkBlur() {
+      clearFocusedLink();
       onControlBlur();
     }
 
@@ -211,7 +238,7 @@
     }
 
     function searchHasFocus() {
-      return document.activeElement === input || (getFocusedLinkIndex() !== -1);
+      return document.activeElement === input || !!focusedLink;
     }
 
     function setActive(on) {
