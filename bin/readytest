@@ -121,6 +121,7 @@ function writeNewLine(str) {
 function initReadyTest() {
   ReadyTest.setStyler(chalk);
   if (!args.options['no-globals']) {
+    global.ReadyTest = ReadyTest;
     ReadyTest.exportGlobals();
   }
   if (!args.options['no-modules']) {

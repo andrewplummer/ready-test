@@ -17,4 +17,5 @@ require('./tests/failures');
 require('./tests/suites');
 require('./tests/config');
 require('./tests/errors');
+require('./tests/utils');
 require('./tests/perf');

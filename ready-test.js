@@ -2486,6 +2486,16 @@
     return x - Math.floor(x);
   }
 
+  // --- Misc Helpers
+
+  function getCurrentSuite() {
+    return currentSuite && currentSuite !== rootSuite ? currentSuite.name : null;
+  }
+
+  function getCurrentTest() {
+    return currentTest ? currentTest.name : null;
+  }
+
   // --- Export Helpers
 
   function createExports() {
@@ -2573,12 +2583,14 @@
 
     // Runner Utils
 
-    target.run           = run;
-    target.clear         = clear;
-    target.cancel        = cancel;
-    target.isRunning     = isRunning;
-    target.setStyler     = setStyler;
-    target.exportGlobals = exportGlobals;
+    target.run             = run;
+    target.clear           = clear;
+    target.cancel          = cancel;
+    target.isRunning       = isRunning;
+    target.setStyler       = setStyler;
+    target.exportGlobals   = exportGlobals;
+    target.getCurrentTest  = getCurrentTest;
+    target.getCurrentSuite = getCurrentSuite;
 
   }
 
