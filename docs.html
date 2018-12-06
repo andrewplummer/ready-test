@@ -214,6 +214,36 @@
   </li>
 
 
+            
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#run" data-name="run">run</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#clear" data-name="clear">clear</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#cancel" data-name="cancel">cancel</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#isRunning" data-name="isRunning">isRunning</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#exportGlobals" data-name="exportGlobals">exportGlobals</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#getCurrentTest" data-name="getCurrentTest">getCurrentTest</a>
+  </li>
+
+  <li class="search__dropdown-item">
+    <a class="search__dropdown-link styled" href="docs#getCurrentSuite" data-name="getCurrentSuite">getCurrentSuite</a>
+  </li>
+
+
           </ul>
         </div>
       </div>
@@ -415,6 +445,14 @@
     
       <li>
         <a class="docs-index__item styled" href="#exportGlobals">exportGlobals</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#getCurrentTest">getCurrentTest</a>
+      </li>
+    
+      <li>
+        <a class="docs-index__item styled" href="#getCurrentSuite">getCurrentSuite</a>
       </li>
     
   </ul>
@@ -1764,6 +1802,64 @@ browser as methods are already exported on the <code class="highlighter-rouge">w
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">exportGlobals</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">exportGlobals()</p>
+
+
+</div>
+
+
+
+  
+
+<div id="getCurrentTest" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#getCurrentTest" class="docs__header-link styled">
+      
+        getCurrentTest
+      
+    </a>
+  </h2>
+  
+<p>Returns the name of the current test running or <code class="highlighter-rouge">null</code>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentTest</span><span class="p">();</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentTest</span><span class="p">();</span></code></pre></figure>
+
+<p class="docs__signature">getCurrentTest()</p>
+
+
+</div>
+
+
+
+  
+
+<div id="getCurrentSuite" class="docs__block">
+  <h2 class="docs__header">
+    <a href="#getCurrentSuite" class="docs__header-link styled">
+      
+        getCurrentSuite
+      
+    </a>
+  </h2>
+  
+<p>Returns the name of the current suite running or <code class="highlighter-rouge">null</code>.</p>
+
+<p>In the browser:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentSuite</span><span class="p">();</span><span class="o">*</span></code></pre></figure>
+
+<p>In a custom node runner:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentSuite</span><span class="p">();</span></code></pre></figure>
+
+<p class="docs__signature">getCurrentSuite()</p>
 
 
 </div>
