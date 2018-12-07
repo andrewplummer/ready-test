@@ -2212,6 +2212,8 @@
 
   // --- Misc Assertion Helpers
 
+  var EPSILON = Number.EPSILON || 1e-16;
+
   function pushAssertion(assertion) {
     assertCurrentTest();
     currentTest.assertions.push(assertion);
@@ -2247,7 +2249,15 @@
     if (a === b) {
       return true;
     }
-    return a !== a && b !== b;
+    if (a !== a) {
+      // NaN should be equal to NaN
+      return b !== b;
+    }
+    if (isNumber(a) && isNumber(b)) {
+      // Handle floating point issues.
+      return Math.abs(a - b) < EPSILON;
+    }
+    return false;
   }
 
   function runTypeCheck(obj, checkFn, type, msg) {
@@ -2296,6 +2306,10 @@
 
   function isInheritedError(klass) {
     return klass.prototype.name && klass.prototype.name !== 'Error';
+  }
+
+  function isNumber(obj) {
+    return typeof obj === 'number';
   }
 
   function isString(obj) {

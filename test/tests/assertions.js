@@ -19,6 +19,8 @@ describe('Should pass', function() {
     assertEqual(undefined, undefined);
     assertEqual(NaN, NaN);
     assertEqual(Infinity, Infinity);
+    assertEqual(0.1 + 0.2, 0.3);
+    assertEqual(-0.1 + -0.2, -0.3);
   });
 
   it('assertNotEqual', function() {
@@ -37,6 +39,8 @@ describe('Should pass', function() {
     assertNotEqual(Infinity, -Infinity);
     assertNotEqual([], []);
     assertNotEqual({}, {});
+    assertNotEqual(0.0000000005, 0.0000000006);
+    assertNotEqual(-0.0000000005, -0.0000000006);
   });
 
   it('assertTrue', function() {
