@@ -11,6 +11,14 @@ describe('Should pass', function() {
   it('assertEqual', function() {
     assertEqual(0, 0);
     assertEqual(1, 1);
+    assertEqual('', '');
+    assertEqual('a', 'a');
+    assertEqual(true, true);
+    assertEqual(false, false);
+    assertEqual(null, null);
+    assertEqual(undefined, undefined);
+    assertEqual(NaN, NaN);
+    assertEqual(Infinity, Infinity);
   });
 
   it('assertNotEqual', function() {
@@ -18,6 +26,15 @@ describe('Should pass', function() {
     assertNotEqual(0, '1');
     assertNotEqual(1, 0);
     assertNotEqual('1', 0);
+    assertNotEqual(true, false);
+    assertNotEqual(false, true);
+    assertNotEqual(null, undefined);
+    assertNotEqual(undefined, null);
+    assertNotEqual(NaN, null);
+    assertNotEqual(NaN, undefined);
+    assertNotEqual(NaN, false);
+    assertNotEqual(NaN, '');
+    assertNotEqual(Infinity, -Infinity);
     assertNotEqual([], []);
     assertNotEqual({}, {});
   });
@@ -114,6 +131,7 @@ describe('Should pass', function() {
 
   it('other assertions', function() {
     assertNull(null);
+    assertNaN(NaN);
     assertUndefined(undefined);
     assertDateEqual(new Date(1), new Date(1));
     assertRegExpEqual(/foo/, /foo/);

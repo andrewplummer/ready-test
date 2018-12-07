@@ -22,6 +22,10 @@ describe('Should fail', function() {
     assertEqual(new Boolean(true), true);
   });
 
+  it('assertNotEqual', function() {
+    assertNotEqual(NaN, NaN);
+  });
+
   it('assertTrue', function() {
     assertTrue(false);
     assertTrue('true');
@@ -141,6 +145,8 @@ describe('Should fail', function() {
   it('other assertions', function() {
     assertNull(undefined);
     assertUndefined(null);
+    assertNaN(null);
+    assertNaN('');
     assertOneOf(4, [5,6,7]);
     assertOneOf({}, []);
     assertOneOf({}, [{},{},{}]);

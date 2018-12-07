@@ -119,7 +119,7 @@
       return;
     }
     currentSuite = suite;
-    return executePotentiallyAsyncFunction(suite.fn, onSuiteInitError, onSuiteInitNext);
+    return executeFunction(suite.fn, onSuiteInitError, onSuiteInitNext);
   }
 
   function onSuiteInitError(err) {
@@ -158,7 +158,7 @@
   }
 
   function runBeforeAllBlocks(fn) {
-    return executePotentiallyAsyncFunction(fn, onSuiteHelperBlockError);
+    return executeFunction(fn, onSuiteHelperBlockError);
   }
 
   function onBeforeAllComplete() {
@@ -190,7 +190,7 @@
   }
 
   function runAfterAllBlocks(fn) {
-    return executePotentiallyAsyncFunction(fn, onSuiteHelperBlockError);
+    return executeFunction(fn, onSuiteHelperBlockError);
   }
 
   function onAfterAllComplete() {
@@ -247,7 +247,7 @@
   }
 
   function runBeforeEachBlock(fn) {
-    return executePotentiallyAsyncFunction(fn, onTestHelperBlockError);
+    return executeFunction(fn, onTestHelperBlockError);
   }
 
   function onTestHelperBlockError(err) {
@@ -279,7 +279,7 @@
 
   function executeTest() {
     markBlockStart(currentTest);
-    return executePotentiallyAsyncFunction(currentTest.fn, onTestError, onTestExecuted);
+    return executeFunction(currentTest.fn, onTestError, onTestExecuted);
   }
 
   function onTestExecuted() {
@@ -288,7 +288,7 @@
   }
 
   function runAfterEachBlock(fn) {
-    return executePotentiallyAsyncFunction(fn, onTestHelperBlockError);
+    return executeFunction(fn, onTestHelperBlockError);
   }
 
   function onAfterEachComplete() {
@@ -370,7 +370,7 @@
     // handler. If an error is encountered it will simply jump
     // to the end of the queue. Errors must be handled by the
     // tasks themselves and re-raised to use this behavior.
-    return executePotentiallyAsyncFunction(fn, onError, onNext);
+    return executeFunction(fn, onError, onNext);
   }
 
   // Executes a potentially asynchronous function and returns a promise
@@ -378,7 +378,7 @@
   // synchronously or asynchronously simply by returning a promise. Note
   // that we don't want potential errors in the onComplete function to
   // trigger onError, so moving it out of the try block.
-  function executePotentiallyAsyncFunction(fn, onError, onComplete) {
+  function executeFunction(fn, onError, onComplete) {
     var promise;
     try {
       promise = fn();
@@ -1887,6 +1887,10 @@
     assertEqual(a, null, msg);
   }
 
+  function assertNaN(a, msg) {
+    assertEqual(a, NaN, msg);
+  }
+
   function assertUndefined(a, msg) {
     assertEqual(a, undefined, msg);
   }
@@ -1904,11 +1908,11 @@
   }
 
   function assertEqual(a, b, msg) {
-    buildAssertion(a === b, msg, '{a} should equal {b}', a, b);
+    buildAssertion(isEqual(a, b), msg, '{a} should equal {b}', a, b);
   }
 
   function assertNotEqual(a, b, msg) {
-    buildAssertion(a !== b, msg, '{a} should not equal {b}', a, b);
+    buildAssertion(!isEqual(a, b), msg, '{a} should not equal {b}', a, b);
   }
 
   function assertError() {
@@ -2239,6 +2243,13 @@
     pushAssertion(assertion);
   }
 
+  function isEqual(a, b) {
+    if (a === b) {
+      return true;
+    }
+    return a !== a && b !== b;
+  }
+
   function runTypeCheck(obj, checkFn, type, msg) {
     if (!checkFn(obj)) {
       buildAssertion(false, msg, '{a} should be ' + type, obj);
@@ -2548,6 +2559,7 @@
     target.assertEqual       = assertEqual;
     target.assertNotEqual    = assertNotEqual;
     target.assertNull        = assertNull;
+    target.assertNaN         = assertNaN;
     target.assertUndefined   = assertUndefined;
     target.assertTruthy      = assertTruthy;
     target.assertFalsy       = assertFalsy;
