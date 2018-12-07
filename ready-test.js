@@ -2212,7 +2212,7 @@
 
   // --- Misc Assertion Helpers
 
-  var EPSILON = Number.EPSILON || 1e-16;
+  var EPSILON = Number.EPSILON || Math.pow(2, -52);
 
   function pushAssertion(assertion) {
     assertCurrentTest();
