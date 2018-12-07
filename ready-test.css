@@ -4,7 +4,6 @@ body {
   color: #333;
   background-color: #f6f6f6;
   padding: .5em 1em;
-  margin 0;
 }
 
 /* ------------] Reset [------------ */
@@ -364,7 +363,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .fold-mode__title {
-  display: inline-block;
+  display: inline;
+  vertical-align: middle;
   margin-right: .5em;
 }
 

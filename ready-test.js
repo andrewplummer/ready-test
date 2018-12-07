@@ -2,7 +2,6 @@
 (function(exports) {
 
   var IS_BROWSER   = typeof window  !== 'undefined';
-  var HAS_PROMISES = typeof Promise !== 'undefined';
 
   // --- Runner
 
@@ -771,12 +770,9 @@
     }
     output(stack, 'stack');
 
-    // Older IEs don't have an error stack so provide
-    // a link to rethrow to make it easier to debug.
-    if (!err.stack) {
-      createThrowLink('Throw', 'throw', function() {
-        throw err;
-      });
+    // Provide a link to rethrow the error to make it easier to debug.
+    if (IS_BROWSER) {
+      createThrowLink('Throw', 'throw', err);
     }
   }
 
@@ -1245,16 +1241,13 @@
 
   // --- Output Link Helpers
 
-  function createThrowLink(text, ctx, fn) {
-    if (IS_BROWSER) {
-      openContext(ctx);
-      outputBrowser(text);
-      getContextElement().addEventListener('click', function(evt) {
-        evt.preventDefault();
-        fn();
-      });
-      closeContext();
-    }
+  function createThrowLink(text, ctx, err) {
+    openContext(ctx);
+    outputBrowser(text);
+    addEventListener(getContextElement(), 'click', function(evt) {
+      throw err;
+    });
+    closeContext();
   }
 
   // --- Output Base Helpers
@@ -1331,7 +1324,7 @@
   }
 
   function setupWindowLoad() {
-    window.addEventListener('load', onWindowLoaded);
+    addEventListener(window, 'load', onWindowLoaded);
   }
 
   function onWindowLoaded() {
@@ -1371,13 +1364,14 @@
       openContext('fold-mode__option');
       option = getContextElement();
       option.value = mode.value;
-      option.textContent = mode.label;
+      setTextContent(option, mode.label);
       option.selected = option.value === foldMode;
       closeContext();
     });
 
-    getContextElement().addEventListener('change', function(evt) {
-      var mode = evt.target.options[evt.target.selectedIndex].value;
+    addEventListener(getContextElement(), 'change', function(evt) {
+      var select = evt.target || evt.srcElement;
+      var mode = select.options[select.selectedIndex].value;
       storageSet(LOCAL_STORAGE_KEY, mode);
       cancel(function() {
         setFoldMode(mode);
@@ -1411,7 +1405,7 @@
   // --- Browser Output Helpers
 
   function outputBrowser(text) {
-    getContextElement().textContent = text;
+    setTextContent(getContextElement(), text);
   }
 
   function getContextElement() {
@@ -1473,6 +1467,7 @@
       case 'throw':
         return 'button';
 
+      case 'test':
       case 'text':
       case 'stat':
       case 'icon':
@@ -1491,6 +1486,8 @@
 
   // --- Browser Context Helpers
 
+  var resultElements = [];
+
   // Allowing contexts to open and close freely greatly simplifies the queueing
   // logic, however we also want to flush results to the browser as soon as
   // possible, so append the element as soon as the context opens, but remove
@@ -1499,6 +1496,9 @@
   function openContextBrowser(ctx, meta) {
     var el = getElementForContext(ctx, meta);
     getContextElement().appendChild(el);
+    if (ctx === 'suite' || ctx === 'stats') {
+      resultElements.push(el);
+    }
     contextStack.push(el);
   }
 
@@ -1513,7 +1513,7 @@
 
   function setStateBrowser(state) {
     stateElement.className = 'state state--' + state.name;
-    stateElement.textContent = state.text;
+    setTextContent(stateElement, state.text);
     setPageTitle(state);
   }
 
@@ -1535,19 +1535,20 @@
 
   function resetBrowser() {
     if (IS_BROWSER) {
-      removeBySelector('.suite');
-      removeBySelector('.stats');
+      clearBrowserResults();
     }
   }
 
-  function removeBySelector(selector) {
-    var els = document.querySelectorAll(selector);
-    for (var i = 0, el; el = els[i]; i++) {
+  function clearBrowserResults() {
+    while (resultElements.length) {
+      var el = resultElements.pop();
       el.parentNode.removeChild(el);
     }
   }
 
   // --- Browser Misc Helpers
+
+  var HAS_PROMISES = typeof Promise !== 'undefined';
 
   // Waits for a single frame to allow DOM
   // painting to catch up before continuing.
@@ -1558,6 +1559,27 @@
       }).then(fn);
     } else {
       fn();
+    }
+  }
+
+  // --- Browser Compat Helpers
+
+  function addEventListener(obj, name, fn) {
+    if (obj.attachEvent) {
+      obj.attachEvent('on' + name, fn);
+    } else {
+      obj.addEventListener(name, fn);
+    }
+  }
+
+  function setTextContent(el, text) {
+    if ('textContent' in el) {
+      el.textContent = text;
+    } else {
+      // In early IEs the error object "name" property appears to throw
+      // errors when passed to innerText, even though it reports back
+      // as a string. An extra call to toString seems to prevent this.
+      el.innerText = text.toString();;
     }
   }
 
