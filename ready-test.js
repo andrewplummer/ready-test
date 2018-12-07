@@ -2192,8 +2192,8 @@
 
   function runOneOfAssert(a, list, msg) {
     var pass = false;
-    for (var i = 0, el; el = list[i]; i++) {
-      if (a === el) {
+    for (var i = 0; i < list.length; i++) {
+      if (a === list[i]) {
         pass = true;
         break;
       }

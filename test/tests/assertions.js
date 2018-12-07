@@ -130,6 +130,7 @@ describe('Should pass', function() {
   it('assertOneOf', function() {
     var obj = {};
     assertOneOf(4, [3,4,5]);
+    assertOneOf(0, [0]);
     assertOneOf(obj, [{},obj,{}]);
   });
 
