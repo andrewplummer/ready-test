@@ -1511,6 +1511,8 @@
 
   // --- Browser State Helpers
 
+  var documentTitle = IS_BROWSER && document.title;
+
   function setStateBrowser(state) {
     stateElement.className = 'state state--' + state.name;
     setTextContent(stateElement, state.text);
@@ -1528,7 +1530,12 @@
   }
 
   function setPageTitle(state) {
-    document.title = 'Tests ' + state.text + 'ed | ReadyTest';
+    var title = '';
+    if (state === States.FAIL) {
+      title += '(' + stats.assertFailed + ') ';
+    }
+    title += (documentTitle || 'ReadyTest') + ' | ' + state.text;
+    document.title = title;
   }
 
   // --- Browser Reset Helpers
