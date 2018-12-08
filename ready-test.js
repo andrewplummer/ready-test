@@ -1531,8 +1531,9 @@
 
   function setPageTitle(state) {
     var title = '';
-    if (state === States.FAIL) {
-      title += '(' + stats.assertFailed + ') ';
+    var failures = stats.assertFailed + stats.testsErrored;
+    if (failures) {
+      title += '(' + failures + ') ';
     }
     title += (documentTitle || 'ReadyTest') + ' | ' + state.text;
     document.title = title;
