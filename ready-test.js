@@ -1285,8 +1285,9 @@
 
   function setupBrowser() {
     if (IS_BROWSER) {
+      loadFavicon();
+      loadScriptAttributes();
       setupWindowLoad();
-      readScriptAttributes();
 
       // Local storage overrides data attributes
       // so make sure it comes after script setup.
@@ -1297,7 +1298,7 @@
     }
   }
 
-  function readScriptAttributes() {
+  function loadScriptAttributes() {
 
     // Note IE may not handle currentScript or have dataset.
     var el = document.currentScript;
@@ -1321,6 +1322,26 @@
       }
 
     }
+  }
+
+  function loadFavicon() {
+    var script = document.currentScript, link;
+    // IE may not have currentScript or querySelector.
+    if (!script || !document.querySelector) {
+      return;
+    }
+    link = document.querySelector("link[rel*='icon']");
+    if (!link) {
+      var url = script.src.replace(/ready-test\.js$/, 'ready-test.ico');
+      if (url !== script.src) {
+        link = document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = url;
+        document.querySelector('head').appendChild(link);
+      }
+    }
+
   }
 
   function setupWindowLoad() {
@@ -2028,18 +2049,20 @@
       pass = !tErr || (eName && (eName !== tName));
     }
 
+    msg = getFunctionName(args.fn) ? '{fn} ' : '';
+
     if (args.msg) {
       msg = args.msg;
     } else if (!pass && tErr && eName && eName !== tName) {
-      msg = '{fn} should throw {expected} but threw {thrown}';
+      msg += 'should throw {expected} but threw {thrown}';
     } else if (eName && !expected) {
-      msg = '{fn} should not throw {thrown}';
+      msg += 'should not throw {thrown}';
     } else if (eName && expected) {
-      msg = '{fn} should throw {expected}';
+      msg += 'should throw {expected}';
     } else if (!expected) {
-      msg = '{fn} should not throw an error';
+      msg += 'should not throw an error';
     } else if (expected) {
-      msg = '{fn} should throw an error';
+      msg += 'should throw an error';
     }
 
     pushAssertion({
