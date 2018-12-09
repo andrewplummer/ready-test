@@ -2447,7 +2447,7 @@
   var BUILT_INS = getBuiltIns('Array,Boolean,Date,Float32Array,Float64Array,Function,Int16Array,Int32Array,Int8Array,Map,Number,Object,Promise,RegExp,Set,String,Symbol,Uint16Array,Uint32Array,Uint8Array,Uint8ClampedArray,WeakMap,WeakSet,Error,TypeError,RangeError,ReferenceError,URIError,SyntaxError,EvalError');
 
   function getBuiltIns(str) {
-    var global = getGlobal();
+    var global = getGlobalContext();
     return str.split(',').map(function(name) {
       return global[name];
     }).filter(function(obj) {
@@ -2455,8 +2455,12 @@
     });
   }
 
-  function getGlobal() {
-    return typeof global !== 'undefined' ? global : window;
+  function getGlobalContext() {
+    // Get global context by keyword here to avoid issues with libraries
+    // that can potentially alter this script's context object.
+    return (typeof global !== 'undefined' && global) ||
+           (typeof window !== 'undefined' && window) ||
+           (typeof self   !== 'undefined' && self);
   }
 
   // --- Legacy Helpers
@@ -2583,7 +2587,7 @@
 
   function exportGlobals() {
     if (!IS_BROWSER) {
-      exportFunctions(getGlobal());
+      exportFunctions(getGlobalContext());
     }
   }
 
