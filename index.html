@@ -316,9 +316,7 @@
 
 <p>The tests will run and output in the browser:</p>
 
-<p><a href="images/screenshots/browser.png" target="_blank" class="screenshot">
-  <img src="images/screenshots/browser.png" alt="Browser Test Run" class="screenshot__image" srcset="images/screenshots/browser.png 1x, images/screenshots/browser@2x.png 2x" width="360" height="223" />
-</a></p>
+<p><img src="images/screenshots/browser.png" alt="Browser Test Run" class="screenshot__image" srcset="images/screenshots/browser.png 1x, images/screenshots/browser@2x.png 2x" width="360" height="223" /></p>
 
 <h2 id="node">Node</h2>
 
@@ -332,9 +330,7 @@
 
 <p>The tests will run and output in the console:</p>
 
-<p><a href="images/screenshots/node.png" target="_blank" class="screenshot">
-  <img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" srcset="images/screenshots/node.png 1x, images/screenshots/node@2x.png 2x" width="377" height="220" />
-</a></p>
+<p><img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" srcset="images/screenshots/node.png 1x, images/screenshots/node@2x.png 2x" width="377" height="220" /></p>
 
 <p>By default the runner will find tests like <code class="highlighter-rouge">test/userTest.js</code>,
 <code class="highlighter-rouge">test/tests/user.js</code>, <code class="highlighter-rouge">spec/userSpec.js</code> <code class="highlighter-rouge">spec/specs/user.js</code>
@@ -392,22 +388,22 @@ etc.</p>
   <li>Run support code with standard before/after methods:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">beforeEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">afterEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">beforeAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">afterAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">beforeEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">...</span>
+<span class="o">*</span><span class="nx">afterEach</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">...</span>
+<span class="o">*</span><span class="nx">beforeAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">...</span>
+<span class="o">*</span><span class="nx">afterAll</span><span class="o">*</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">...</span></code></pre></figure>
 
 <h2 id="other-features">Other Features</h2>
 
 <ul>
   <li>All code blocks run synchronously unless they return a promise.</li>
-  <li>Easy browser configuration with data attributes.</li>
+  <li>Easy browser configuration with <a href="docs#config">data attributes</a>.</li>
   <li>Nestable suites to help organize your tests.</li>
-  <li>Fold mode to output nesting at different levels of detail.</li>
+  <li><a href="docs#setFoldMode">Fold mode</a> to output nesting at different levels of detail.</li>
   <li>Runner watches directories and re-runs tests in node.</li>
-  <li>Test randomization and features to help track down race conditions.</li>
+  <li>Test <a href="docs#setRandomize">randomization</a> and features to help track down race conditions.</li>
   <li>Older IE support with polyfills.</li>
-  <li>Custom assertions.</li>
+  <li><a href="docs#createAssertion">Custom assertions</a>.</li>
 </ul>
 
     </main>
