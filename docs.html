@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
     <title>
       
         Docs - ReadyTest
@@ -1222,8 +1222,8 @@ a specific error type. An optional third argument will output a custom message.<
 check each property and perform a strict equality check <code class="highlighter-rouge">===</code> on all properties
 that are not themselves objects. If any property is not equivalent, a diff will
 be output highlighting all properties that differ. This assertion will fail if
-either argument is not an object, and only enumerable properties will be compared.
-An optional third argument will output a custom message.</p>
+either argument is not an object, and only enumerable, non-inherited properties
+will be compared. An optional third argument will output a custom message.</p>
 
 <p>Note that although argument order will not affect the outcome, diff output uses
 messages like "property missing" which are more readable when the expected object
@@ -1255,9 +1255,9 @@ is the second argument.</p>
   </h2>
   
 <p>Asserts that both arrays are deeply equal. An optional third argument will
-output a custom message. This method is an alias for
-<a href="#assertObjectEqual">assertObjectEqual</a> but reads better when
-working with arrays.</p>
+output a custom message. With the exception of testing that array lengths
+are equal up front, this method is an alias for
+<a href="#assertObjectEqual">assertObjectEqual</a>.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([],</span> <span class="p">[]);</span><span class="o">*</span>     <span class="c1">// Pass</span>
