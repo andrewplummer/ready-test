@@ -1987,11 +1987,11 @@
   }
 
   function assertArrayEqual(a, b, msg) {
-    runObjectAssert(a, b, isArray, 'array', msg);
+    runArrayAssert(a, b, msg);
   }
 
   function assertObjectEqual(a, b, msg) {
-    runObjectAssert(a, b, isObject, 'object', msg);
+    runObjectAssert(a, b, msg);
   }
 
   function assertDateEqual(a, b, msg) {
@@ -2076,17 +2076,27 @@
 
   // --- Object Assertion Helpers
 
-  function runObjectAssert(a, b, checkFn, type, msg) {
-    if (runMatchingTypeCheck(a, b, checkFn, 'an ' + type, msg)) {
-      buildObjectAssertion(a, b, msg, type);
+
+  function runObjectAssert(a, b, msg) {
+    if (runMatchingTypeCheck(a, b, isObject, 'an object', msg)) {
+      pushAssertion({
+        diff: createDiff(a, b),
+        message: msg || 'objects should be equal'
+      });
     }
   }
 
-  function buildObjectAssertion(a, b, msg, type) {
-    pushAssertion({
-      diff: createDiff(a, b),
-      message: msg || (type + 's should be equal')
-    });
+  function runArrayAssert(a, b, msg) {
+    if (runMatchingTypeCheck(a, b, isArray, 'an array', msg)) {
+      if (a.length !== b.length) {
+        buildAssertion(false, msg, 'array length should be equal');
+      } else {
+        pushAssertion({
+          diff: createDiff(a, b),
+          message: msg || 'arrays should be equal'
+        });
+      }
+    }
   }
 
   function createDiff(a, b, aStack, bStack) {

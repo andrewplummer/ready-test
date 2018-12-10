@@ -109,7 +109,8 @@ describe('Should fail', function() {
     assertArrayEqual([user1], [user2]);
     assertArrayEqual([user1], [user1, user2]);
     assertArrayEqual([user1, user2], [user1]);
-    assertArrayEqual(deepNestedArray, deepNestedArray2);
+    assertArrayEqual(deepNestedArrayHi, deepNestedArrayHu);
+    assertArrayEqual(sparseArray2, sparseArray3);
   });
 
   it('assertInstanceOf', function() {

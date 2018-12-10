@@ -1,6 +1,6 @@
 
 body {
-  font: 18px sans-serif;
+  font: 18px/1.6 sans-serif;
   color: #333;
   background-color: #f6f6f6;
   padding: .5em 1em;
@@ -179,7 +179,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .assertion {
-  line-height: 1.4;
   overflow: auto;
 }
 
@@ -195,7 +194,6 @@ h1,h2,h3,h4,h5,h6 {
 
 .assertion__num {
   display: inline-block;
-  vertical-align: middle;
   font-size: .9em;
   min-width: 1em;
   margin-right: .5em;

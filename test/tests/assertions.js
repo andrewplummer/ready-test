@@ -109,7 +109,8 @@ describe('Should pass', function() {
     assertArrayEqual([null], [null]);
     assertArrayEqual([undefined], [undefined]);
     assertArrayEqual(users, users.concat());
-    assertArrayEqual(deepNestedArray, deepNestedArrayCopy);
+    assertArrayEqual(deepNestedArrayHi, deepNestedArrayHiCopy);
+    assertArrayEqual(sparseArray3, sparseArray3Copy);
   });
 
   it('assertInstanceOf', function() {

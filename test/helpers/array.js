@@ -16,6 +16,10 @@ users = [
   }
 ];
 
-deepNestedArray     = [[[[[[[['hi']]]]]]]];
-deepNestedArrayCopy = [[[[[[[['hi']]]]]]]];
-deepNestedArray2    = [[[[[[[['hu']]]]]]]];
+deepNestedArrayHi     = [[[[[[[['hi']]]]]]]];
+deepNestedArrayHiCopy = [[[[[[[['hi']]]]]]]];
+deepNestedArrayHu    = [[[[[[[['hu']]]]]]]];
+
+sparseArray2     = [,];
+sparseArray3     = [,,];
+sparseArray3Copy = [,,];
