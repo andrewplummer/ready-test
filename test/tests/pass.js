@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Should pass', function() {
+describe('Assertions', function() {
 
   it('assert', function() {
     assert(1);
@@ -151,40 +151,41 @@ describe('Should pass', function() {
     assertHasFooOrBar({bar:1});
   });
 
-});
+  describe('Async', function() {
 
-describe('Should pass async', function() {
+    function assertAfterWait() {
+      return wait(function() {
+        assertEqual(5, 5);
+      });
+    }
 
-  function assertAfterWait() {
-    return wait(function() {
-      assertEqual(5, 5);
-    });
-  }
+    it('should assert after wait 1', assertAfterWait);
+    it('should assert after wait 2', assertAfterWait);
+    it('should assert after wait 3', assertAfterWait);
 
-  it('Should assert after wait 1', assertAfterWait);
-  it('Should assert after wait 2', assertAfterWait);
-  it('Should assert after wait 3', assertAfterWait);
-
-  it('Should not have an issue with nested promises', function() {
-    return wait(function() {
+    it('should not have an issue with nested promises', function() {
       return wait(function() {
         return wait(function() {
-          assertEqual(5, 5);
+          return wait(function() {
+            assertEqual(5, 5);
+          });
         });
       });
     });
-  });
 
-  it('Should catch a rejected promise', function() {
-    return Promise.reject()['catch'](function() {
-      assert(true);
+    it('should catch a rejected promise', function() {
+      return Promise.reject()['catch'](function() {
+        assert(true);
+      });
     });
-  });
 
-  it('Should assert after a resolved promise', function() {
-    return Promise.resolve().then(function() {
-      assert(true);
+    it('should assert after a resolved promise', function() {
+      return Promise.resolve().then(function() {
+        assert(true);
+      });
     });
+
   });
 
 });
+

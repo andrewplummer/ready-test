@@ -2,14 +2,14 @@
 
 describe('Config', function() {
 
-  it('Should set autoRun', function() {
+  it('should set autoRun', function() {
     assertTrue(ReadyTest.getAutoRun());
     ReadyTest.setAutoRun(false);
     assertFalse(ReadyTest.getAutoRun());
     ReadyTest.setAutoRun(true);
   });
 
-  it('Should set foldMode', function() {
+  it('should set foldMode', function() {
     var init = ReadyTest.getFoldMode();
     ReadyTest.setFoldMode('all');
     assertEqual(ReadyTest.getFoldMode(), 'all');
@@ -20,14 +20,14 @@ describe('Config', function() {
     ReadyTest.setFoldMode(init);
   });
 
-  it('Should set randomize', function() {
+  it('should set randomize', function() {
     assertFalse(ReadyTest.getRandomize());
     ReadyTest.setRandomize(true);
     assertTrue(ReadyTest.getRandomize());
     ReadyTest.setRandomize(false);
   });
 
-  it('Should set seed', function() {
+  it('should set seed', function() {
     assertEqual(ReadyTest.getSeed(), null);
     ReadyTest.setSeed(1234);
     assertEqual(ReadyTest.getSeed(), 1234);

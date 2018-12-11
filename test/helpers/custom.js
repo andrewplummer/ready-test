@@ -9,6 +9,7 @@ assertNumberEven = createAssertion(function(arg) {
 assertObjectsHaveIntersectingKey = createAssertion(function(arg1, arg2) {
   var pass = false;
   for (var key in arg1) {
+    /* istanbul ignore if */
     if(!arg1.hasOwnProperty(key)) continue;
     if (arg2.hasOwnProperty(key)) {
       pass = true;

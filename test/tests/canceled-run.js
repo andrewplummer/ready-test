@@ -1,8 +1,9 @@
 'use strict';
 
-var ReadyTest = require('../../../ready-test');
 var cancelCallbackRun = false;
 
+// Note the runner is exporting globals,
+// so we don't need to require here.
 ReadyTest.cancel();
 
 ReadyTest.cancel(function() {
@@ -10,13 +11,13 @@ ReadyTest.cancel(function() {
 });
 
 describe('Cancel', function() {
-  it('Should do nothing if suite is already running', function() {
+  it('should do nothing if suite is already running', function() {
     ReadyTest.run();
   });
 });
 
 describe('Cancel', function() {
-  it('Should have run the cancel callback', function() {
+  it('should have run the cancel callback', function() {
     assertTrue(cancelCallbackRun);
   });
 });
@@ -28,7 +29,7 @@ describe('Cancelling in the middle of a run', function() {
     ReadyTest.cancel();
   });
 
-  it('Should not be reachable', function() {
+  it('should not be reachable', function() {
     assertTrue(false);
   });
 });

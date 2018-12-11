@@ -1,3 +1,5 @@
+noop = function() {};
+
 throwsError = function() {
   throw new Error('Bad!');
 };
@@ -15,5 +17,13 @@ throwsReferenceError = function() {
 };
 
 throwsErrorInPromise = function() {
-  return new Promise(errors);
+  return new Promise(throwsError);
+};
+
+wait = function(fn) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        resolve(fn());
+    }, 200);
+  });
 };

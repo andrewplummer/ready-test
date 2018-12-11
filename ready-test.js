@@ -1,7 +1,7 @@
 'use strict';
 (function(exports) {
 
-  var IS_BROWSER   = typeof window  !== 'undefined';
+  var IS_BROWSER = typeof window !== 'undefined';
 
   // --- Runner
 
@@ -238,11 +238,11 @@
     }
     resetTest(test);
     currentTest = test;
-    return runBeforeEach();
+    return runBeforeEach(currentTest.parent);
   }
 
-  function runBeforeEach() {
-    return runQueue(currentTest.parent.beforeEach, runBeforeEachBlock, onBeforeEachComplete);
+  function runBeforeEach(suite) {
+    return runQueue(suite.beforeEach, runBeforeEachBlock, onBeforeEachComplete.bind(null, suite));
   }
 
   function runBeforeEachBlock(fn) {
@@ -262,7 +262,7 @@
     pushTestFailure(currentTest, 'error');
   }
 
-  function onBeforeEachComplete() {
+  function onBeforeEachComplete(suite) {
     if (currentTest.err) {
       // If the test has errored in the beforeEach
       // phase then immediately move to the end.
@@ -271,6 +271,8 @@
       // If the test is a perf test then it may take
       // a while to run, so allow painting to catch up.
       return allowPaint(executeTest);
+    } else if (suite.parent && suite.parent.beforeEach) {
+      return runBeforeEach(suite.parent);
     } else {
       return executeTest();
     }
@@ -283,15 +285,23 @@
 
   function onTestExecuted() {
     markBlockEnd(currentTest);
-    return runQueue(currentTest.parent.afterEach, runAfterEachBlock, onAfterEachComplete);
+    return runAfterEach(currentTest.parent);
+  }
+
+  function runAfterEach(suite) {
+    return runQueue(suite.afterEach, runAfterEachBlock, onAfterEachComplete.bind(null, suite));
   }
 
   function runAfterEachBlock(fn) {
     return executeFunction(fn, onTestHelperBlockError);
   }
 
-  function onAfterEachComplete() {
-    onTestRunComplete();
+  function onAfterEachComplete(suite) {
+    if (suite.parent && suite.parent.afterEach) {
+      return runAfterEach(suite.parent);
+    } else {
+      onTestRunComplete();
+    }
   }
 
   function onTestRunComplete() {

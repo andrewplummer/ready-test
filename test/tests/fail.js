@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Should fail', function() {
+describe('Failing Assertions', function() {
 
   it('assert', function() {
     assert(null);
@@ -184,11 +184,7 @@ describe('Should fail', function() {
     assertAllArgumentsEqualLast(1, 1, 1, 1, 2);
   });
 
-});
-
-describe('Should fail async', function() {
-
-  it('Should support async via promises', function() {
+  it('should fail async', function() {
     return wait(function() {
       assertEqual(5, 6);
     });
