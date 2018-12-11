@@ -3,7 +3,8 @@ body {
   font: 18px/1.6 sans-serif;
   color: #333;
   background-color: #f6f6f6;
-  padding: .5em 1em;
+  padding: 1.5em;
+  margin: 0;
 }
 
 /* ------------] Reset [------------ */
@@ -66,7 +67,7 @@ h1,h2,h3,h4,h5,h6 {
 /* ------------] State Context [------------ */
 
 .state {
-  margin: .7em;
+  margin: 0 .7em .7em;
   font-size: 2.2em;
 }
 
@@ -350,9 +351,7 @@ h1,h2,h3,h4,h5,h6 {
 /* ------------] Fold Mode Context [------------ */
 
 .fold-mode {
-  position: absolute;
-  top: 1.4em;
-  right: 1.4em;
+  text-align: right;
 }
 
 .fold-mode__title {
@@ -366,6 +365,11 @@ h1,h2,h3,h4,h5,h6 {
 @media (max-width: 700px) {
 
   body {
+    padding: .9em;
+  }
+
+  .state {
+    margin: 0 .5em .5em;
   }
 
   .suite {
@@ -377,7 +381,7 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   .assertions {
-    margin-left: .5em;
+    margin-left: 0;
   }
 
   .diff {
