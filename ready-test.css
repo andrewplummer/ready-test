@@ -22,10 +22,6 @@ ol,ul {
   list-style-type: none;
 }
 
-table {
-  border-collapse: collapse;
-}
-
 /* ------------] Typography [------------ */
 
 body {
@@ -303,20 +299,45 @@ h1,h2,h3,h4,h5,h6 {
 
 .perf {
   margin: 1em 0;
+  border: 3px solid #f5f5f5;
+  border-collapse: collapse;
 }
 
-.perf__head {
+.perf__title {
+  caption-side: top;
+  text-align: left;
+  padding: .3em 0;
+  font-weight: bold;
+}
+
+.perf__body .perf__row:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.perf__body .perf__row .perf__cell {
+  opacity: .15;
+}
+
+.perf__body .perf__row--winner .perf__cell {
+  opacity: 1;
 }
 
 .perf__header {
   text-align: left;
   font-size: .9em;
-  text-decoration: underline;
-  padding: .5em;
 }
 
-.perf__cell {
+.perf__cell,
+.perf__header {
   padding: .2em .5em;
+}
+
+.perf__cell:last-child,
+.perf__cell:first-child,
+.perf__header:first-child,
+.perf__header:last-child {
+  padding-left: .8em;
+  padding-right: .8em;
 }
 
 .perf__cell--fail {
@@ -325,11 +346,6 @@ h1,h2,h3,h4,h5,h6 {
 
 .perf__cell--pass {
   color: #2d8e2d;
-}
-
-.perf__row--winner {
-  background-color: #dff3f7;
-  border-radius: 2px;
 }
 
 /* ------------] Stats Context [------------ */

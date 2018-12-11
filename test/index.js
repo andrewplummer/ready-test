@@ -14,7 +14,6 @@ require('./helpers/perf');
 // Tests
 require('./tests/pass');
 require('./tests/fail');
-require('./tests/config');
 require('./tests/errors');
 require('./tests/suite');
 require('./tests/helpers');

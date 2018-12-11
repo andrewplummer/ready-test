@@ -1046,16 +1046,21 @@
 
   function outputSuitePerf(suite) {
     if (suite.perfTests.length) {
-      calculatePerfResults(suite.perfTests);
-      outputPerfTable(suite.perfTests);
+      if (foldMode === FOLD_MODE_NONE) {
+        outputPerfTable(suite.perfTests);
+      } else {
+        outputPerfTableGrouped(suite.perfTests);
+      }
     }
   }
 
-  function outputPerfTable(tests) {
+  function outputPerfTable(tests, caption) {
+    calculatePerfResults(tests);
     var data = buildTableData(tests, {
       headers: [
         getPerfHeaderContext('Test'),
-        getPerfHeaderContext('Runtime')
+        getPerfHeaderContext('Runtime'),
+        getPerfHeaderContext('')
       ],
       fetchers: [
         getPerfTestName,
@@ -1066,7 +1071,18 @@
         return test.winner ? 'winner' : null;
       }
     });
-    outputTable(data, 'perf');
+    outputTable(data, caption, 'perf');
+  }
+
+  function outputPerfTableGrouped(tests) {
+    var groups = tests.reduce(function(groups, test) {
+      var suiteName = test.parent.name;
+      groups[suiteName] = (groups[suiteName] || []).concat(test);
+      return groups;
+    }, {});
+    Object.keys(groups).forEach(function(suiteName) {
+      outputPerfTable(groups[suiteName], suiteName);
+    });
   }
 
   function getPerfTestName(test) {
@@ -1080,6 +1096,8 @@
   function getPerfTestResult(test) {
     if (test.winner) {
       return getContextObj(PASS_ICON, 'icon--pass');
+    } else {
+      return getContextObj('');
     }
   }
 
@@ -1113,11 +1131,18 @@
 
   // --- Output Table Helpers
 
-  function outputTable(rows, ctx) {
+  function outputTable(rows, caption, ctx) {
     withContext(ctx, function() {
+      outputTableCaption(rows, caption, ctx);
       outputTableHead(rows, ctx);
       outputTableBody(rows, ctx);
     });
+  }
+
+  function outputTableCaption(rows, caption, ctx) {
+    if (caption) {
+      output(caption, ctx + '__title');
+    }
   }
 
   function outputTableHead(rows, ctx) {
@@ -1480,11 +1505,12 @@
       case 'assertion':        return 'li';
 
       case 'perf':          return 'table';
-      case 'perf__head':    return 'thead';
-      case 'perf__body':    return 'tbody';
       case 'perf__row':     return 'tr';
       case 'perf__header':  return 'th';
       case 'perf__cell':    return 'td';
+      case 'perf__head':    return 'thead';
+      case 'perf__body':    return 'tbody';
+      case 'perf__title':   return 'caption';
 
       case 'fold-mode__title':  return 'h6';
       case 'fold-mode__select': return 'select';
@@ -1535,9 +1561,14 @@
 
   function closeContextBrowser() {
     var el = contextStack.pop();
-    if (!el.childNodes.length) {
+    // Empty table cells will throw off table alignment so leave them in.
+    if (!el.childNodes.length && !isTableCell(el)) {
       el.parentNode.removeChild(el);
     }
+  }
+
+  function isTableCell(el) {
+    return el.nodeName === 'TD' || el.nodeName === 'TH';
   }
 
   // --- Browser State Helpers
@@ -1718,6 +1749,8 @@
       case 'assertion':
       case 'warning':
       case 'perf':
+      case 'perf__title':
+      case 'perf__head':
       case 'perf__body':
       case 'perf__row':
       case 'diff__line':
@@ -1776,6 +1809,8 @@
         case 'diff__line':
         case 'test--skip':
           return style.dim;
+        case 'perf__title':
+          return style.cyan;
         default:
           return style;
       }
