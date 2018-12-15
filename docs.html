@@ -706,7 +706,7 @@ runtime performance and output results at the end. Perf tests can also carry
 <p>Defines a block that will run before all tests in the suite start. This method
 is functionally the same as code directly in the <code class="highlighter-rouge">describe</code> block, except that it
 will run each time the suite is re-run instead of only once on init.
-Before blocks always run outside in when nested.</p>
+Before blocks always run outside in when inside nested suites.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -733,7 +733,8 @@ Before blocks always run outside in when nested.</p>
   </h2>
   
 <p>Defines a block that will run before each test starts.
-Before blocks always run outside in when nested.</p>
+Before blocks always run outside in when inside nested
+suites.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -760,7 +761,8 @@ Before blocks always run outside in when nested.</p>
   </h2>
   
 <p>Defines a block that will run after all tests in the suite
-are finished. After blocks always run inside out when nested.</p>
+are finished. After blocks always run inside out when inside
+nested suites.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -787,7 +789,8 @@ are finished. After blocks always run inside out when nested.</p>
   </h2>
   
 <p>Defines a block that will run after each test finishes.
-After blocks always run inside out when nested.</p>
+After blocks always run inside out when inside nested
+suites.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
