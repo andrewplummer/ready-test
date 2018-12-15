@@ -57,9 +57,9 @@ describe('Helpers', function() {
       });
 
       afterEach(function() {
-        // Reset to 1 as we need to match the state
-        // just after the suite beforeAll ran.
-        val = 1;
+        // Reset to 3 as the outer afterEach and afterAll
+        // will contiue to decrement back to 0.
+        val = 3;
       });
 
       it('should execute innermost helper block last', function() {

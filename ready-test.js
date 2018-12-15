@@ -1944,7 +1944,7 @@
   }
 
   function afterEach(fn) {
-    currentSuite.afterEach.push(fn);
+    currentSuite.afterEach.unshift(fn);
   }
 
   function beforeAll(fn) {
@@ -1952,7 +1952,7 @@
   }
 
   function afterAll(fn) {
-    currentSuite.afterAll.push(fn);
+    currentSuite.afterAll.unshift(fn);
   }
 
   // --- Assertion Public Methods
