@@ -30,7 +30,7 @@ describe('Helpers', function() {
       assert(val, 3);
     });
 
-    describe('Inside nested suite', function() {
+    describe('Nested', function() {
 
       beforeAll(incrementValue);
       beforeEach(incrementValue);
@@ -50,25 +50,116 @@ describe('Helpers', function() {
 
     });
 
-    describe('Helper order', function() {
+  });
 
-      beforeEach(function() {
-        val *= 2;
-      });
+  describe('Order', function() {
 
-      afterEach(function() {
-        // Reset to 3 as the outer afterEach and afterAll
-        // will contiue to decrement back to 0.
-        val = 3;
-      });
+    var values;
+    var previousValues;
 
-      it('should execute innermost helper block last', function() {
-        assert(val, 6);
-      });
+    function onSuiteStart() {
+      values = [];
+    }
 
-      it('should not get confused with multiple nested tests', function() {
-        assert(val, 6);
-      });
+    function onSuiteEnd() {
+      previousValues = values;
+      values = null;
+    }
+
+    function push(arg) {
+      return function() {
+        values.push(arg);
+      };
+    }
+
+    beforeAll(onSuiteStart);
+
+    beforeAll(push('Outer beforeAll 1'));
+    beforeAll(push('Outer beforeAll 2'));
+    beforeEach(push('Outer beforeEach 1'));
+    beforeEach(push('Outer beforeEach 2'));
+
+    afterEach(push('Outer afterEach 1'));
+    afterEach(push('Outer afterEach 2'));
+    afterAll(push('Outer afterAll 1'));
+    afterAll(push('Outer afterAll 2'));
+
+    afterAll(onSuiteEnd);
+
+    describe('Nested', function() {
+
+      var testRan = false;
+
+      beforeAll(push('Inner beforeAll 1'));
+      beforeAll(push('Inner beforeAll 2'));
+      beforeEach(push('Inner beforeEach 1'));
+      beforeEach(push('Inner beforeEach 2'));
+
+      afterAll(push('Inner afterAll 1'));
+      afterAll(push('Inner afterAll 2'));
+      afterEach(push('Inner afterEach 1'));
+      afterEach(push('Inner afterEach 2'));
+
+      var expectedBeforeAll = [
+        'Outer beforeAll 1',
+        'Outer beforeAll 2',
+        'Inner beforeAll 1',
+        'Inner beforeAll 2'
+      ];
+
+      var expectedBeforeEach = [
+        'Outer beforeEach 1',
+        'Outer beforeEach 2',
+        'Inner beforeEach 1',
+        'Inner beforeEach 2'
+      ];
+
+      var expectedAfterAll = [
+        'Inner afterAll 1',
+        'Inner afterAll 2',
+        'Outer afterAll 1',
+        'Outer afterAll 2'
+      ];
+
+      var expectedAfterEach = [
+        'Inner afterEach 1',
+        'Inner afterEach 2',
+        'Outer afterEach 1',
+        'Outer afterEach 2'
+      ];
+
+      function assertPreviousRun() {
+        var expected = [].concat(
+          expectedBeforeAll,
+          expectedBeforeEach,
+          expectedAfterEach,
+          expectedBeforeEach,
+          expectedAfterEach,
+          expectedAfterAll
+        );
+        assertArrayEqual(previousValues, expected);
+      }
+
+      function assertCurrentRun() {
+        var expected = expectedBeforeAll.concat(expectedBeforeEach);
+        if (testRan) {
+          expected = expected.concat(expectedAfterEach);
+          expected = expected.concat(expectedBeforeEach);
+        }
+        assertArrayEqual(values, expected);
+        // Don't add more tests!
+        testRan = !testRan;
+      }
+
+      function assertHelperOrder() {
+        if (previousValues) {
+          assertPreviousRun();
+        }
+        assertCurrentRun();
+      }
+
+      it('should have executed helpers in correct order', assertHelperOrder);
+      it('should not get confused by multiple runs', assertHelperOrder);
 
     });
 

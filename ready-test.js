@@ -283,11 +283,24 @@
 
   function onTestExecuted() {
     markBlockEnd(currentTest);
-    return runAfterEach();
+    return runAfterEach(currentTest.parent);
   }
 
-  function runAfterEach() {
-    return runQueue(currentTest.parent.afterEach, runAfterEachBlock, onAfterEachComplete);
+  // Note that beforeEach and afterEach have to be handled a bit
+  // differently here as the order is important when nesting.
+  // beforeEach blocks are run "outside in" while afterEach blocks
+  // are run "inside out", however they still have to maintain their
+  // internal order for the same nesting level. Handling this by
+  // inheriting blocks in the case of beforeEach and running up
+  // the chain in the case of afterEach. afterAll does not require
+  // this as its execution order is tied to suites, which are
+  // already handled in this fashion.
+  function runAfterEach(suite) {
+    if (suite.afterEach) {
+      return runQueue(suite.afterEach, runAfterEachBlock, runAfterEach.bind(null, suite.parent));
+    } else {
+      return onAfterEachComplete();
+    }
   }
 
   function runAfterEachBlock(fn) {
@@ -1833,8 +1846,10 @@
       perfTests: [],
       flags: flags,
       parent: currentSuite,
+      // See runAfterEach
       beforeEach: cloneArray(currentSuite.beforeEach),
-      afterEach: cloneArray(currentSuite.afterEach)
+      afterEach: []
+
     };
     setBranchFlags(suite);
     currentSuite.suites.push(suite);
@@ -1944,7 +1959,7 @@
   }
 
   function afterEach(fn) {
-    currentSuite.afterEach.unshift(fn);
+    currentSuite.afterEach.push(fn);
   }
 
   function beforeAll(fn) {
@@ -1952,7 +1967,7 @@
   }
 
   function afterAll(fn) {
-    currentSuite.afterAll.unshift(fn);
+    currentSuite.afterAll.push(fn);
   }
 
   // --- Assertion Public Methods
