@@ -703,10 +703,10 @@ runtime performance and output results at the end. Perf tests can also carry
     </a>
   </h2>
   
-<p>Defines a block that will run once before all tests in the suite run. This method
+<p>Defines a block that will run before all tests in the suite start. This method
 is functionally the same as code directly in the <code class="highlighter-rouge">describe</code> block, except that it
-will run each time the suite is re-run instead of only once on init. Note that
-blocks will always run in the order encountered, regardless of nesting.</p>
+will run each time the suite is re-run instead of only once on init.
+Before blocks always run outside in when nested.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -732,9 +732,8 @@ blocks will always run in the order encountered, regardless of nesting.</p>
     </a>
   </h2>
   
-<p>Defines a block that will run before each test in the suite runs.
-Note that blocks will always run in the order encountered,
-regardless of nesting.</p>
+<p>Defines a block that will run before each test starts.
+Before blocks always run outside in when nested.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -760,9 +759,8 @@ regardless of nesting.</p>
     </a>
   </h2>
   
-<p>Defines a block that will run once after all tests in the suite run.
-Note that blocks will always run in the order encountered, regardless
-of nesting.</p>
+<p>Defines a block that will run after all tests in the suite
+are finished. After blocks always run inside out when nested.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
@@ -788,9 +786,8 @@ of nesting.</p>
     </a>
   </h2>
   
-<p>Defines a block that will run after each test in the suite runs.
-Note that blocks will always run in the order encountered,
-regardless of nesting.</p>
+<p>Defines a block that will run after each test finishes.
+After blocks always run inside out when nested.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
