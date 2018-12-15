@@ -1,4 +1,3 @@
-
 const opn  = require('opn');
 const path = require('path');
 const exec = require('child_process').execSync;
@@ -9,7 +8,7 @@ module.exports = {
       exec(cmd, {
         stdio: 'ignore'
       });
-    } catch(err) {
+    } catch (err) {
       // Do nothing
     }
   },
@@ -20,5 +19,4 @@ module.exports = {
     });
   }
 
-}
-
+};

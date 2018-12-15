@@ -50,6 +50,28 @@ describe('Helpers', function() {
 
     });
 
+    describe('Helper order', function() {
+
+      beforeEach(function() {
+        val *= 2;
+      });
+
+      afterEach(function() {
+        // Reset to 1 as we need to match the state
+        // just after the suite beforeAll ran.
+        val = 1;
+      });
+
+      it('should execute innermost helper block last', function() {
+        assert(val, 6);
+      });
+
+      it('should not get confused with multiple nested tests', function() {
+        assert(val, 6);
+      });
+
+    });
+
   });
 
   describe('Async', function() {

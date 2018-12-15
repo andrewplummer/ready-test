@@ -238,11 +238,11 @@
     }
     resetTest(test);
     currentTest = test;
-    return runBeforeEach(currentTest.parent);
+    return runBeforeEach();
   }
 
-  function runBeforeEach(suite) {
-    return runQueue(suite.beforeEach, runBeforeEachBlock, onBeforeEachComplete.bind(null, suite));
+  function runBeforeEach() {
+    return runQueue(currentTest.parent.beforeEach, runBeforeEachBlock, onBeforeEachComplete);
   }
 
   function runBeforeEachBlock(fn) {
@@ -256,13 +256,7 @@
     throw err;
   }
 
-  function onTestError(err) {
-    currentTest.err = err;
-    stats.testsErrored++;
-    pushTestFailure(currentTest, 'error');
-  }
-
-  function onBeforeEachComplete(suite) {
+  function onBeforeEachComplete() {
     if (currentTest.err) {
       // If the test has errored in the beforeEach
       // phase then immediately move to the end.
@@ -271,8 +265,6 @@
       // If the test is a perf test then it may take
       // a while to run, so allow painting to catch up.
       return allowPaint(executeTest);
-    } else if (suite.parent && suite.parent.beforeEach) {
-      return runBeforeEach(suite.parent);
     } else {
       return executeTest();
     }
@@ -283,25 +275,27 @@
     return executeFunction(currentTest.fn, onTestError, onTestExecuted);
   }
 
-  function onTestExecuted() {
-    markBlockEnd(currentTest);
-    return runAfterEach(currentTest.parent);
+  function onTestError(err) {
+    currentTest.err = err;
+    stats.testsErrored++;
+    pushTestFailure(currentTest, 'error');
   }
 
-  function runAfterEach(suite) {
-    return runQueue(suite.afterEach, runAfterEachBlock, onAfterEachComplete.bind(null, suite));
+  function onTestExecuted() {
+    markBlockEnd(currentTest);
+    return runAfterEach();
+  }
+
+  function runAfterEach() {
+    return runQueue(currentTest.parent.afterEach, runAfterEachBlock, onAfterEachComplete);
   }
 
   function runAfterEachBlock(fn) {
     return executeFunction(fn, onTestHelperBlockError);
   }
 
-  function onAfterEachComplete(suite) {
-    if (suite.parent && suite.parent.afterEach) {
-      return runAfterEach(suite.parent);
-    } else {
-      onTestRunComplete();
-    }
+  function onAfterEachComplete() {
+    onTestRunComplete();
   }
 
   function onTestRunComplete() {
@@ -475,7 +469,7 @@
       name: 'empty',
       text: 'no tests run'
     }
- };
+  };
 
   function setResultState() {
     if (stats.suitesErrored || stats.testsErrored) {
@@ -563,7 +557,7 @@
     }
     // Otherwise check each parent block to see if it
     // has the flag but with no other children that do.
-    while (block = block.parent) {
+    while ((block = block.parent)) {
       if (blockHasFlag(block, flag) && !block[prop]) {
         return true;
       }
@@ -1279,7 +1273,7 @@
   function createThrowLink(text, ctx, err) {
     openContext(ctx);
     outputBrowser(text);
-    addEventListener(getContextElement(), 'click', function(evt) {
+    addEventListener(getContextElement(), 'click', function() {
       throw err;
     });
     closeContext();
@@ -1649,7 +1643,7 @@
       // In early IEs the error object "name" property appears to throw
       // errors when passed to innerText, even though it reports back
       // as a string. An extra call to toString seems to prevent this.
-      el.innerText = text.toString();;
+      el.innerText = text.toString();
     }
   }
 
@@ -1833,14 +1827,14 @@
       name: name,
       tests: [],
       suites: [],
-      beforeEach: [],
-      afterEach: [],
       beforeAll: [],
       afterAll: [],
       failures: [],
       perfTests: [],
       flags: flags,
-      parent: currentSuite
+      parent: currentSuite,
+      beforeEach: cloneArray(currentSuite.beforeEach),
+      afterEach: cloneArray(currentSuite.afterEach)
     };
     setBranchFlags(suite);
     currentSuite.suites.push(suite);
@@ -1880,13 +1874,13 @@
   }
 
   function setParentsFocused(block) {
-    while (block = block.parent) {
+    while ((block = block.parent)) {
       block.hasFocused = true;
     }
   }
 
   function setParentsPerf(block) {
-    while (block = block.parent) {
+    while ((block = block.parent)) {
       block.hasPerf = true;
     }
   }
@@ -2084,7 +2078,7 @@
   function buildErrorAssertion(args, tErr, expected) {
     var eErr, tName, eName, pass, msg;
 
-    eErr   = args.err && new args.err;
+    eErr   = args.err && new args.err();
     eName  = eErr && eErr.name;
     tName  = tErr && tErr.name;
 
@@ -2381,7 +2375,7 @@
            runTypeCheck(b, checkFn, type, msg);
   }
 
-  // --- Type Helpers
+  // --- Identity Helpers
 
   function isInstanceOf(obj, klass) {
     // Note that instanceof can fail on built-ins so fall back to
@@ -2391,8 +2385,11 @@
     if (isRootBuiltInClass(klass)) {
       var str = toStringInternal(obj);
       try {
-        return str === toStringInternal(new klass);
+        return str === toStringInternal(new klass());
       } catch (e) {
+        // Note that the check below is ideal as built-ins constructors
+        // like Promise error without arguments, however older IEs return
+        // [object Object] for prototypes so the initial check is required.
         return str === toStringInternal(klass.prototype);
       }
     } else {
@@ -2464,12 +2461,18 @@
     return fn === String || fn === Number || fn === Boolean;
   }
 
+  // --- Misc Helpers
+
   function hasOwnToString(obj) {
     return obj.constructor.prototype.toString !== Object.prototype.toString;
   }
 
   function hasProp(obj, key) {
     return Object.prototype.hasOwnProperty.call(obj, key);
+  }
+
+  function cloneArray(arr) {
+    return arr ? arr.slice() : [];
   }
 
   // --- Stringify helpers

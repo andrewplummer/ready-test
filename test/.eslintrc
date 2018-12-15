@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "no-console": ["off"],
+    "no-sparse-arrays": ["off"],
+    "no-undef": ["off"],
+  }
+}

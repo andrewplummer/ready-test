@@ -85,10 +85,10 @@ describe('Failing Assertions', function() {
     assertObjectEqual({a:undefined}, {a:''});
     assertObjectEqual({a:undefined}, {a:null});
     assertObjectEqual(user1, user2);
-    assertObjectEqual(fnObject1, fnObject2);
-    assertObjectEqual(complexObject1, complexObject2);
-    assertObjectEqual(objectNestedFoo1, objectNestedFoo2);
-    assertObjectEqual(objectLongFlat1, objectLongFlat2);
+    assertObjectEqual(fnObj1, fnObj2);
+    assertObjectEqual(complexObj1, complexObj2);
+    assertObjectEqual(nestedObjFoo1, nestedObjFoo2);
+    assertObjectEqual(longFlatObj1, longFlatObj2);
     assertObjectEqual({a:['a']}, {a:{0:'a'}});
     assertObjectEqual({a:{0:'a'}}, {a:['a']});
     assertObjectEqual(cyclicObjFoo, cyclicObjFooNum);
@@ -123,10 +123,10 @@ describe('Failing Assertions', function() {
     assertInstanceOf(new Error(), TypeError);
     assertInstanceOf(new TypeError(), RangeError);
     assertInstanceOf(/foo/, Function);
-    assertInstanceOf(new Date, Number);
+    assertInstanceOf(new Date(), Number);
     assertInstanceOf(Promise.resolve(), Date);
-    assertInstanceOf(new CustomClass, OtherCustomClass);
-    assertInstanceOf(new OtherCustomClass, CustomClass);
+    assertInstanceOf(new CustomClass(), OtherCustomClass);
+    assertInstanceOf(new OtherCustomClass(), CustomClass);
   });
 
   it('assertDateEqual', function() {

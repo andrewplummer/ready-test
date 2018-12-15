@@ -96,8 +96,8 @@ describe('Assertions', function() {
     assertObjectEqual({a:noop}, {a:noop});
     assertObjectEqual(user1, user1);
     assertObjectEqual(cyclicObjFoo, cyclicObjFoo);
-    assertObjectEqual(cyclicObjFoo, cyclicObjFooClone);
-    assertObjectEqual(cyclicObjFooNested, cyclicObjFooNestedClone);
+    assertObjectEqual(cyclicObjFoo, cyclicObjFooCopy);
+    assertObjectEqual(cyclicObjFooNested, cyclicObjFooNestedCopy);
   });
 
   it('assertArrayEqual', function() {
@@ -123,9 +123,9 @@ describe('Assertions', function() {
     assertInstanceOf(new Error(), Error);
     assertInstanceOf(new TypeError(), TypeError);
     assertInstanceOf(/foo/, RegExp);
-    assertInstanceOf(new Date, Date);
+    assertInstanceOf(new Date(), Date);
     assertInstanceOf(Promise.resolve(), Promise);
-    assertInstanceOf(new CustomClass, CustomClass);
+    assertInstanceOf(new CustomClass(), CustomClass);
   });
 
   it('assertOneOf', function() {

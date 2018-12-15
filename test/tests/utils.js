@@ -1,4 +1,3 @@
-
 var wasRunningOutside = ReadyTest.isRunning();
 var currentTestOutside = ReadyTest.getCurrentTest();
 var currentSuiteOutside = ReadyTest.getCurrentSuite();

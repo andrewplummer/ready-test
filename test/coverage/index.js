@@ -3,7 +3,7 @@
 const path = require('path');
 const { run, open } = require('./helpers');
 
-const outputDir = path.resolve(__dirname, 'output')
+const outputDir = path.resolve(__dirname, 'output');
 
 console.info('Running all tests...');
 

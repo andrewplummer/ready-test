@@ -21,9 +21,9 @@ throwsErrorInPromise = function() {
 };
 
 wait = function(fn) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     setTimeout(function() {
-        resolve(fn());
+      resolve(fn());
     }, 200);
   });
 };

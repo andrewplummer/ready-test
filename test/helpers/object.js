@@ -1,4 +1,4 @@
-emptyObject = {};
+emptyObj = {};
 
 user1 = {
   name: 'Homer',
@@ -18,7 +18,7 @@ user3 = {
   address: '1600 Pennsylvania Ave'
 };
 
-complexObject1 = {
+complexObj1 = {
   a1: 'a1',
   a2: 'a2',
   str: 'str',
@@ -47,7 +47,7 @@ complexObject1 = {
   a4: 'a4'
 };
 
-complexObject2 = {
+complexObj2 = {
   a1: 'a1',
   a2: 'a2',
   str: 'str',
@@ -76,21 +76,21 @@ complexObject2 = {
   a4: 'a4'
 };
 
-objectNestedFoo1 = {
+nestedObjFoo1 = {
   foo: {
     foo: 1
   },
   bar: 'bar'
 };
 
-objectNestedFoo2 = {
+nestedObjFoo2 = {
   foo: {
     foo: 2
   },
   whu: 'bar'
 };
 
-objectLongFlat1 = {
+longFlatObj1 = {
   a: 'a',
   b: 'b',
   c: 'c',
@@ -104,7 +104,7 @@ objectLongFlat1 = {
   k: 'k'
 };
 
-objectLongFlat2 = {
+longFlatObj2 = {
   a: 'a',
   b: 'b',
   c: 'c',
@@ -118,11 +118,11 @@ objectLongFlat2 = {
   k: 'k'
 };
 
-fnObject1 = {
+fnObj1 = {
   fn: function fn1() {}
 };
 
-fnObject2 = {
+fnObj2 = {
   fn: function fn2() {}
 };
 
@@ -132,11 +132,11 @@ cyclicObjFoo = {
 };
 cyclicObjFoo.foo = cyclicObjFoo;
 
-cyclicObjFooClone = {
+cyclicObjFooCopy = {
   'num': 4,
   'str': 'str'
 };
-cyclicObjFooClone.foo = cyclicObjFooClone;
+cyclicObjFooCopy.foo = cyclicObjFooCopy;
 
 cyclicObjBar = {
   'num': 4,
@@ -157,9 +157,9 @@ cyclicObjFooNested = {
 };
 cyclicObjFooNested.foo.foo = cyclicObjFooNested;
 
-cyclicObjFooNestedClone = {
+cyclicObjFooNestedCopy = {
   'num': 4,
   'str': 'str',
   'foo': {}
 };
-cyclicObjFooNestedClone.foo.foo = cyclicObjFooNestedClone;
+cyclicObjFooNestedCopy.foo.foo = cyclicObjFooNestedCopy;
