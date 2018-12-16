@@ -837,7 +837,7 @@
       output(n + '.', 'assertion__num');
       outputAssertionResultIcon(ass.pass);
       withContext('assertion__message', function() {
-        outputTokenizedValues(ass.message, ass);
+        outputAssertionMessage(ass.message, ass);
       });
     });
   }
@@ -1312,7 +1312,10 @@
     output(', ');
   }
 
-  function outputTokenizedValues(str, obj) {
+  function outputAssertionMessage(str, obj) {
+    if (typeof str !== 'string') {
+      throw new Error('Non-string passed as assertion message');
+    }
     return str.replace(TOKEN_REG, function(m, text, key) {
       output(text);
       if (hasProp(obj, key)) {
