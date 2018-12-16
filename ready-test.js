@@ -18,7 +18,7 @@
     setState(States.PENDING);
     rootSuite.onRunComplete = onRunComplete;
     openSuiteContext(rootSuite);
-    initializeAllSuites(onAllSuitesInitialized);
+    initializeAllSuites();
   }
 
   function cancel(fn) {
@@ -105,12 +105,8 @@
 
   // --- Suite Initialization
 
-  function initializeAllSuites(onComplete) {
-    initializeSuites(rootSuite.suites, onComplete);
-  }
-
-  function initializeSuites(suites, onComplete) {
-    return runQueue(suites, initializeSuite, onComplete);
+  function initializeAllSuites() {
+    runQueue(rootSuite.suites, initializeSuite, onAllSuitesInitialized);
   }
 
   function initializeSuite(suite) {
@@ -127,7 +123,7 @@
   }
 
   function onSuiteInitNext() {
-    return initializeSuites(currentSuite.suites, onSuiteInitComplete);
+    return runQueue(currentSuite.suites, initializeSuite, onSuiteInitComplete);
   }
 
   function onSuiteInitComplete() {
@@ -153,10 +149,10 @@
   }
 
   function runBeforeAll() {
-    return runQueue(currentSuite.beforeAll, runBeforeAllBlocks, onBeforeAllComplete);
+    return runQueue(currentSuite.beforeAll, runBeforeAllBlock, onBeforeAllComplete, true);
   }
 
-  function runBeforeAllBlocks(fn) {
+  function runBeforeAllBlock(fn) {
     return executeFunction(fn, onSuiteHelperBlockError);
   }
 
@@ -185,10 +181,10 @@
   }
 
   function runAfterAll() {
-    return runQueue(currentSuite.afterAll, runAfterAllBlocks, onAfterAllComplete);
+    return runQueue(currentSuite.afterAll, runAfterAllBlock, onAfterAllComplete, true);
   }
 
-  function runAfterAllBlocks(fn) {
+  function runAfterAllBlock(fn) {
     return executeFunction(fn, onSuiteHelperBlockError);
   }
 
@@ -242,7 +238,7 @@
   }
 
   function runBeforeEach() {
-    return runQueue(currentTest.parent.beforeEach, runBeforeEachBlock, onBeforeEachComplete);
+    return runQueue(currentTest.parent.beforeEach, runBeforeEachBlock, onBeforeEachComplete, true);
   }
 
   function runBeforeEachBlock(fn) {
@@ -297,7 +293,8 @@
   // already handled in this fashion.
   function runAfterEach(suite) {
     if (suite.afterEach) {
-      return runQueue(suite.afterEach, runAfterEachBlock, runAfterEach.bind(null, suite.parent));
+      var onComplete = runAfterEach.bind(null, suite.parent);
+      return runQueue(suite.afterEach, runAfterEachBlock, onComplete, true);
     } else {
       return onAfterEachComplete();
     }
@@ -355,14 +352,16 @@
 
   // --- Exectution Helpers
 
-  function runQueue(queue, task, onComplete) {
-    return runNextInQueue(queue.concat(), task, onComplete);
+  function runQueue(queue, task, onComplete, swallowErrors) {
+    return runNextInQueue(queue.concat(), task, onComplete, swallowErrors);
   }
 
-  // Runs the next task in the queue, then moves on.
-  // If any member of the queue returns a promise, it
-  // will be waited for, otherwise will move on immediately.
-  function runNextInQueue(queue, task, onComplete) {
+  // Runs the next task in the queue, then moves on. If any task in
+  // the queue returns a promise, it will be waited for, otherwise
+  // it will move on immediately. If an error is encountered the
+  // queue will be halted. The last argument allows a way for tasks
+  // that are expected to error to still be able to halt the queue.
+  function runNextInQueue(queue, task, onComplete, swallowErrors) {
 
     function fn() {
       return task(obj);
@@ -372,7 +371,10 @@
       return runNextInQueue(queue, task, onComplete);
     }
 
-    function onError() {
+    function onError(err) {
+      if (!swallowErrors) {
+        throw err;
+      }
       return onComplete();
     }
 
@@ -382,10 +384,6 @@
       return onComplete();
     }
 
-    // Note that an initiator of a queue run cannot pass an error
-    // handler. If an error is encountered it will simply jump
-    // to the end of the queue. Errors must be handled by the
-    // tasks themselves and re-raised to use this behavior.
     return executeFunction(fn, onError, onNext);
   }
 
