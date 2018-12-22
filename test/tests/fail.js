@@ -178,6 +178,13 @@ describe('Failing Assertions', function() {
     assertOneOf({}, [], 'assertOneOf custom message');
   });
 
+  it('custom messages as object', function() {
+    assertTrue(false, {
+      message: '{var} should be true',
+      var: false
+    });
+  });
+
   it('custom assertions', function() {
     assertNumberEven(3);
     assertObjectsHaveIntersectingKey({foo:'bar'}, {'bar':'foo'});

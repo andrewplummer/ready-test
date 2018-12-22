@@ -1312,11 +1312,12 @@
     output(', ');
   }
 
-  function outputAssertionMessage(str, obj) {
-    if (typeof str !== 'string') {
-      throw new Error('Non-string passed as assertion message');
+  function outputAssertionMessage(message, obj) {
+    if (typeof message === 'object') {
+      obj = message;
+      message = obj.message;
     }
-    return str.replace(TOKEN_REG, function(m, text, key) {
+    return message.replace(TOKEN_REG, function(m, text, key) {
       output(text);
       if (hasProp(obj, key)) {
         output(dump(obj[key]), 'token');
