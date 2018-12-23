@@ -826,7 +826,7 @@
   function outputTestAssertion(ass, n) {
     withContext('assertion', function() {
       outputAssertionTitle(ass, n);
-      if (ass.diff) {
+      if (!ass.pass && ass.diff) {
         outputAssertionDiff(ass);
       }
     });
