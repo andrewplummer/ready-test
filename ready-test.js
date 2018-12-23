@@ -1315,9 +1315,11 @@
   function outputAssertionMessage(message, obj) {
     if (typeof message === 'object') {
       obj = message;
-      message = obj.message;
+      // Fall back to object if no message could be
+      // extracted in case the wrong object is passed.
+      message = obj.message || obj;
     }
-    return message.replace(TOKEN_REG, function(m, text, key) {
+    return String(message).replace(TOKEN_REG, function(m, text, key) {
       output(text);
       if (hasProp(obj, key)) {
         output(dump(obj[key]), 'token');
@@ -2145,7 +2147,11 @@
   function runArrayAssert(a, b, msg) {
     if (runMatchingTypeCheck(a, b, isArray, 'an array', msg)) {
       if (a.length !== b.length) {
-        buildAssertion(false, msg, 'array length should be equal');
+        buildAssertion(false, msg, {
+          a: a.length,
+          b: b.length,
+          message: 'array length should be {b} but was {a}'
+        });
       } else {
         pushAssertion({
           diff: createDiff(a, b),
