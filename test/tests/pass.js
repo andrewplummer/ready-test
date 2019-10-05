@@ -128,6 +128,14 @@ describe('Assertions', function() {
     assertInstanceOf(new CustomClass(), CustomClass);
   });
 
+  it('assertType', function() {
+    assertType(3, 'number');
+    assertType('foo', 'string');
+    assertType(true, 'boolean');
+    assertType({}, 'object');
+    assertType(null, 'object')
+  });
+
   it('assertOneOf', function() {
     var obj = {};
     assertOneOf(4, [3,4,5]);

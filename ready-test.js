@@ -2012,6 +2012,10 @@
     buildAssertion(!a, msg, '{a} should be falsy', a);
   }
 
+  function assertType(a, b, msg) {
+    buildAssertion(typeof a === b, msg, '{a} should be of type {b}', a, b);
+  }
+
   function assertInstanceOf(a, b, msg) {
     buildAssertion(isInstanceOf(a, b), msg, '{a} should be an instance of {b}', a, b);
   }
@@ -2724,6 +2728,7 @@
     target.assertOneOf       = assertOneOf;
     target.assertMatch       = assertMatch;
     target.assertNoMatch     = assertNoMatch;
+    target.assertType        = assertType;
     target.assertInstanceOf  = assertInstanceOf;
     target.createAssertion   = createAssertion;
     target.createDiff        = createDiff;

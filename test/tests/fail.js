@@ -129,6 +129,14 @@ describe('Failing Assertions', function() {
     assertInstanceOf(new OtherCustomClass(), CustomClass);
   });
 
+  it('assertType', function() {
+    assertType(3, 'string');
+    assertType('foo', 'number');
+    assertType(true, 'string');
+    assertType({}, 'number');
+    assertType(null, 'undefined')
+  });
+
   it('assertDateEqual', function() {
     assertDateEqual(1, 1);
     assertDateEqual(null, null);
