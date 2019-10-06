@@ -214,12 +214,12 @@ function nextRun(exit) {
 function clearCache(id) {
   const module = require.cache[id];
   if (module) {
+    delete require.cache[id];
     module.children.forEach(m => {
       if (m.id !== READY_TEST_PATH) {
         clearCache(m.id);
       }
     });
-    delete require.cache[id];
   }
 }
 
