@@ -2150,7 +2150,9 @@
 
   function runArrayAssert(a, b, msg) {
     if (runMatchingTypeCheck(a, b, isArray, 'an array', msg)) {
-      if (a.length !== b.length) {
+      var diff = createDiff(a, b);
+      if (diff.pass && a.length !== b.length) {
+        // Handle sparse arrays as custom assertion.
         buildAssertion(false, msg, {
           a: a.length,
           b: b.length,
@@ -2158,7 +2160,7 @@
         });
       } else {
         pushAssertion({
-          diff: createDiff(a, b),
+          diff: diff,
           message: msg || 'arrays should be equal'
         });
       }
