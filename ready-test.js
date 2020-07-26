@@ -878,15 +878,15 @@
       } else if (entry.type === 'pass') {
         outputDiffPass(diff, entry.key, entry.val, tab, last);
       } else if (entry.type === 'fail') {
-        if (!entry.aHas && entry.bHas) {
-          outputDiffKeyMissing(diff, entry.key, entry.bVal, tab, last);
-        } else if (entry.aHas && !entry.bHas) {
-          outputDiffKeyAdded(diff, entry.key, entry.aVal, tab, last);
+        if (!entry.a.has && entry.b.has) {
+          outputDiffKeyMissing(diff, entry.key, entry.b, tab, last);
+        } else if (entry.a.has && !entry.b.has) {
+          outputDiffKeyAdded(diff, entry.key, entry.a, tab, last);
         } else {
           if (entry.diff) {
             outputDiffNestedObject(diff, entry.diff, entry.key, tab, last);
           } else {
-            outputDiffValuesDiffer(diff, entry.key, entry.aVal, entry.bVal, tab, last);
+            outputDiffValuesDiffer(diff, entry.key, entry.a, entry.b, tab, last);
           }
         }
       }
@@ -909,12 +909,12 @@
     });
   }
 
-  function outputDiffValuesDiffer(diff, key, aVal, bVal, tab, last) {
+  function outputDiffValuesDiffer(diff, key, aDesc, bDesc, tab, last) {
     withContext('diff__line--changed', function() {
       outputDiffKey(diff, key, tab, 'diff__token--key');
-      output(dump(bVal), 'diff__token--expected');
+      output(dump(bDesc.val), 'diff__token--expected');
       output(' ', 'diff__token');
-      output(dump(aVal), 'diff__token--actual');
+      output(dump(aDesc.val), 'diff__token--actual');
       outputDiffTrailingComma(last);
       outputDiffChangeMeta(diff, key, 'differs');
     });
@@ -939,20 +939,20 @@
 
   // --- Output Diff Key Helpers
 
-  function outputDiffKeyAdded(diff, key, val, tab, last) {
-    outputDiffKeyChange(diff, 'added', 'actual', key, val, tab, last);
+  function outputDiffKeyAdded(diff, key, desc, tab, last) {
+    outputDiffKeyChange(diff, 'added', 'actual', key, desc, tab, last);
   }
 
-  function outputDiffKeyMissing(diff, key, val, tab, last) {
-    outputDiffKeyChange(diff, 'missing', 'expected', key, val, tab, last);
+  function outputDiffKeyMissing(diff, key, desc, tab, last) {
+    outputDiffKeyChange(diff, 'missing', 'expected', key, desc, tab, last);
   }
 
-  function outputDiffKeyChange(diff, changeType, tokenType, key, val, tab, last) {
+  function outputDiffKeyChange(diff, changeType, tokenType, key, desc, tab, last) {
     withContext('diff__line--' + changeType, function() {
       output(tab, 'diff__token');
       withContext('diff__token--' + tokenType, function() {
         outputDiffKey(diff, key, '');
-        output(dump(val, true), 'diff__token');
+        output(dump(desc.val, !desc.isObj), 'diff__token');
       });
       outputDiffTrailingComma(last);
       outputDiffChangeMeta(diff, key, changeType);
@@ -2258,10 +2258,16 @@
     diff.lines.push({
       type: 'fail',
       key: key,
-      aHas: aHas,
-      bHas: bHas,
-      aVal: aVal,
-      bVal: bVal,
+      a: {
+        val: aVal,
+        has: aHas,
+        isObj: isObjectOrArray(aVal),
+      },
+      b: {
+        val: bVal,
+        has: bHas,
+        isObj: isObjectOrArray(bVal),
+      },
       diff: iDiff
     });
     diff.pass = false;
@@ -2524,7 +2530,11 @@
     } else if (short && isObject(obj)) {
       return '{...}';
     } else if (isObjectOrArray(obj)) {
-      return JSON.stringify(obj);
+      try {
+        return JSON.stringify(obj);
+      } catch(err) {
+        return '[Cyclic Object]';
+      }
     }
     return String(obj);
   }
