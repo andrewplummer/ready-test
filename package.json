@@ -1,6 +1,6 @@
 {
   "name": "ready-test",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "Because JS unit testing shouldn't be complicated.",
   "homepage": "https://andrewplummer.github.io/ready-test/",
   "author": "Andrew Plummer <plummer.andrew@gmail.com>",
@@ -27,16 +27,16 @@
   "browser": "./ready-test.js",
   "dependencies": {
     "argv": "^0.0.2",
-    "chalk": "^2.4.2",
-    "chokidar": "^3.2.1",
+    "chalk": "^4.1.0",
+    "chokidar": "^3.4.1",
     "esm": "^3.2.25",
-    "glob": "^7.1.4"
+    "glob": "^7.1.6"
   },
   "devDependencies": {
-    "es5-shim": "^4.5.12",
-    "json3": "^3.3.2",
-    "nyc": "^12.0.2",
-    "opn": "^5.4.0",
-    "promise-polyfill": "^8.1.0"
+    "es5-shim": "^4.5.14",
+    "json3": "^3.3.3",
+    "nyc": "^15.1.0",
+    "opn": "^6.0.0",
+    "promise-polyfill": "^8.1.3"
   }
 }
