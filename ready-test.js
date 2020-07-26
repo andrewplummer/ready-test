@@ -2196,7 +2196,7 @@
       var aVal = a[key];
       var bVal = b[key];
 
-      if (aHas !== bHas || aVal !== bVal) {
+      if (aHas !== bHas || !isEqual(aVal, bVal)) {
 
         if (isObjectOrArray(aVal, aStack) && isObjectOrArray(bVal, bStack)) {
 

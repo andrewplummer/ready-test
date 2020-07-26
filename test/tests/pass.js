@@ -106,6 +106,7 @@ describe('Assertions', function() {
     assertArrayEqual([1], [1]);
     assertArrayEqual([0], [0]);
     assertArrayEqual([''], ['']);
+    assertArrayEqual([NaN], [NaN]);
     assertArrayEqual([null], [null]);
     assertArrayEqual([undefined], [undefined]);
     assertArrayEqual(users, users.concat());
