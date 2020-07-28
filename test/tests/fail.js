@@ -20,6 +20,7 @@ describe('Failing Assertions', function() {
     assertEqual(new Number(8), 8);
     assertEqual(true, new Boolean(true));
     assertEqual(new Boolean(true), true);
+    assertEqual([], []);
   });
 
   it('assertNotEqual', function() {

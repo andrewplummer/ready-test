@@ -2005,27 +2005,32 @@
   }
 
   function assertTruthy(a, msg) {
-    buildAssertion(!!a, msg, '{a} should be truthy', a);
+    buildAssertion(!!a, msg || '{a} should be truthy', a);
   }
 
   function assertFalsy(a, msg) {
-    buildAssertion(!a, msg, '{a} should be falsy', a);
+    buildAssertion(!a, msg || '{a} should be falsy', a);
   }
 
   function assertType(a, b, msg) {
-    buildAssertion(typeof a === b, msg, '{a} should be of type {b}', a, b);
+    buildAssertion(typeof a === b, msg || '{a} should be of type {b}', a, b);
   }
 
   function assertInstanceOf(a, b, msg) {
-    buildAssertion(isInstanceOf(a, b), msg, '{a} should be an instance of {b}', a, b);
+    buildAssertion(isInstanceOf(a, b), msg || '{a} should be an instance of {b}', a, b);
   }
 
   function assertEqual(a, b, msg) {
-    buildAssertion(isEqual(a, b), msg, '{a} should equal {b}', a, b);
+    var pass = isEqual(a, b);
+    var message = '{a} should equal {b}';
+    if (!pass && String(a) === String(b)) {
+      message = '{a} should strictly equal {b}';
+    }
+    buildAssertion(pass, msg || message, a, b);
   }
 
   function assertNotEqual(a, b, msg) {
-    buildAssertion(!isEqual(a, b), msg, '{a} should not equal {b}', a, b);
+    buildAssertion(!isEqual(a, b), msg || '{a} should not equal {b}', a, b);
   }
 
   function assertError() {
@@ -2038,13 +2043,13 @@
 
   function assertMatch(str, reg, msg) {
     if (runTypeCheck(reg, isRegExp, 'a regex', msg)) {
-      buildAssertion(reg.test(str), msg, '{a} should match {reg}', str, reg);
+      buildAssertion(reg.test(str), msg || '{a} should match {reg}', str, reg);
     }
   }
 
   function assertNoMatch(str, reg, msg) {
     if (runTypeCheck(reg, isRegExp, 'a regex', msg)) {
-      buildAssertion(!reg.test(str), msg, '{a} should not match {reg}', str, reg);
+      buildAssertion(!reg.test(str), msg || '{a} should not match {reg}', str, reg);
     }
   }
 
@@ -2315,13 +2320,13 @@
 
   function runDateAssert(a, b, msg) {
     if (runMatchingTypeCheck(a, b, isDate, 'a date', msg)) {
-      buildAssertion(a.getTime() === b.getTime(), msg, '{a} should equal {b}', a, b);
+      buildAssertion(a.getTime() === b.getTime(), msg || '{a} should equal {b}', a, b);
     }
   }
 
   function runRegExpAssert(a, b, msg) {
     if (runMatchingTypeCheck(a, b, isRegExp, 'a regex', msg)) {
-      buildAssertion(a.toString() === b.toString(), msg, '{a} should equal {b}', a, b);
+      buildAssertion(a.toString() === b.toString(), msg || '{a} should equal {b}', a, b);
     }
   }
 
@@ -2335,7 +2340,7 @@
         break;
       }
     }
-    buildAssertion(pass, msg, '{a} should be one of {b}', a, list);
+    buildAssertion(pass, msg || '{a} should be one of {b}', a, list);
   }
 
   // --- Create Assertion Helpers
@@ -2368,15 +2373,15 @@
     stats.assertTotal++;
   }
 
-  function buildAssertion(pass, msg, message, a, b) {
+  function buildAssertion(pass, message, a, b) {
     var assertion = {
       pass: pass
     };
-    assertion.message = msg || message;
-    if (arguments.length > 3) {
+    assertion.message = message;
+    if (arguments.length > 2) {
       assertion.a = a;
     }
-    if (arguments.length > 4) {
+    if (arguments.length > 3) {
       assertion.b = b;
     }
     pushAssertion(assertion);
@@ -2399,7 +2404,7 @@
 
   function runTypeCheck(obj, checkFn, type, msg) {
     if (!checkFn(obj)) {
-      buildAssertion(false, msg, '{a} should be ' + type, obj);
+      buildAssertion(false, msg || '{a} should be ' + type, obj);
       return false;
     }
     return true;
