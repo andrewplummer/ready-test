@@ -2503,10 +2503,6 @@
 
   // --- Misc Helpers
 
-  function hasOwnToString(obj) {
-    return obj.constructor.prototype.toString !== Object.prototype.toString;
-  }
-
   function hasProp(obj, key) {
     return Object.prototype.hasOwnProperty.call(obj, key);
   }
@@ -2526,7 +2522,7 @@
       return getFunctionName(obj) || 'function';
     } else if (isError(obj)) {
       return obj.name;
-    } else if (isCustomObject(obj) && !hasOwnToString(obj)) {
+    } else if (isCustomObject(obj)) {
       return '[object ' + getFunctionName(obj.constructor) + ']';
     } else if (isWrappedPrimitive(obj)) {
       return '[' + getFunctionName(obj.constructor) + ': ' + dump(obj.valueOf()) + ']';
