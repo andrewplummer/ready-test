@@ -2399,6 +2399,12 @@
       // Handle floating point issues.
       return Math.abs(a - b) < EPSILON;
     }
+    if (isDate(a) && isDate(b)) {
+      return a.getTime() === b.getTime();
+    }
+    if (isRegExp(a) && isRegExp(b)) {
+      return a.toString() === b.toString();
+    }
     return false;
   }
 
