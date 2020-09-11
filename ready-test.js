@@ -862,9 +862,9 @@
 
   function outputDiffEmptyObject(diff, inline, tab) {
     outputDiffOptionalContainer('diff__line--changed', !inline, function() {
-      outputDiffBraceToken(diff.bArr, '[]', '{}', tab, 'diff__token--expected', 'Second');
+      outputDiffBraceToken(diff.bArr, diff.bVal, '[]', '{}', tab, 'diff__token--expected', 'Second');
       output(' ', 'diff__token');
-      outputDiffBraceToken(diff.aArr, '[]', '{}', tab, 'diff__token--actual', 'First');
+      outputDiffBraceToken(diff.aArr, diff.aVal, '[]', '{}', tab, 'diff__token--actual', 'First');
       outputDiffBraceChangeMeta();
     }, 'properties differ');
   }
@@ -971,7 +971,7 @@
 
   function outputDiffOpenBrace(diff, inline, tab) {
     if (diff.sameType) {
-      outputDiffBraceSame(diff.aArr, '[', '{', inline, tab);
+      outputDiffBraceSame(diff, '[', '{', inline, tab);
     } else {
       outputDiffBraceChanged(diff, '[', '{', inline, tab);
     }
@@ -979,30 +979,49 @@
 
   function outputDiffCloseBrace(diff, inline, tab) {
     if (diff.sameType) {
-      outputDiffBraceSame(diff.aArr, ']', '}', inline, tab);
+      outputDiffBraceSame(diff, ']', '}', inline, tab);
     } else {
       outputDiffBraceChanged(diff, ']', '}', inline, tab);
     }
   }
 
-  function outputDiffBraceSame(isArr, arrToken, objToken, inline, tab) {
+  function outputDiffBraceSame(diff, arrToken, objToken, inline, tab) {
     outputDiffOptionalContainer('diff__line', !inline, function() {
-      outputDiffBraceToken(isArr, arrToken, objToken, tab);
+      outputDiffBraceToken(diff.aArr, diff.aVal, arrToken, objToken, tab);
     });
   }
 
   function outputDiffBraceChanged(diff, arrToken, objToken, inline, tab) {
     outputDiffOptionalContainer('diff__line--changed', !inline, function() {
-      outputDiffBraceToken(diff.bArr, arrToken, objToken, tab, 'diff__token--expected');
+      outputDiffBraceToken(diff.bArr, diff.bVal, arrToken, objToken, tab, 'diff__token--expected');
       output(' ', 'diff__token');
-      outputDiffBraceToken(diff.aArr, arrToken, objToken, null, 'diff__token--actual');
+      outputDiffBraceToken(diff.aArr, diff.aVal, arrToken, objToken, null, 'diff__token--actual');
       outputDiffBraceChangeMeta();
     });
   }
 
-  function outputDiffBraceToken(isArr, arrToken, objToken, tab, ctx) {
+  function outputDiffBraceToken(isArr, val, arrToken, objToken, tab, ctx) {
+    var token;
+    if (isArr) {
+      token = arrToken;
+      if (token === '[') {
+        var className = getClassName(val);
+        if (className !== 'Array') {
+          token = className + ' ' + token;
+        }
+      }
+    } else {
+      token = objToken;
+      if (token === '{') {
+        if (isSet(val)) {
+          token = 'Set ' + objToken;
+        } else if (isMap(val)) {
+          token = 'Map ' + objToken;
+        }
+      }
+    }
     output(tab || '');
-    output(isArr ? arrToken : objToken, ctx || 'diff__token');
+    output(token, ctx || 'diff__token');
   }
 
   function outputDiffBraceChangeMeta() {
@@ -2180,12 +2199,26 @@
 
     diff = {
       lines: [],
+      aVal: a,
+      bVal: b,
       aArr: isArray(a),
       bArr: isArray(b)
     };
 
-    diff.sameType = diff.aArr === diff.bArr;
+    if (diff.aArr === diff.bArr) {
+      diff.sameType = toStringInternal(a) === toStringInternal(b);
+    } else {
+      diff.sameType = diff.aArr === diff.bArr;
+    }
     diff.pass = diff.sameType;
+
+    if (isSet(a) && isSet(b)) {
+      a = setToArray(a);
+      b = setToArray(b);
+    } else if (isMap(a) && isMap(b)) {
+      a = mapToObject(a);
+      b = mapToObject(b);
+    }
 
     keys = Object.keys(a).concat(Object.keys(b));
 
@@ -2203,7 +2236,7 @@
 
       if (aHas !== bHas || !isEqual(aVal, bVal)) {
 
-        if (isObjectOrArray(aVal, aStack) && isObjectOrArray(bVal, bStack)) {
+        if (isIterable(aVal) && isIterable(bVal)) {
 
           if (isCyclicObject(aVal, aStack) || isCyclicObject(bVal, bStack)) {
             // Cyclic objects will be traversed once before they are pushed to
@@ -2241,6 +2274,17 @@
     return diff;
   }
 
+  function setToArray(set) {
+    return Array.from(set);
+  }
+
+  function mapToObject(map) {
+    return Array.from(map).reduce(function(obj, entry) {
+      obj[entry[0]] = entry[1];
+      return obj;
+    }, {});
+  }
+
   function isCyclicObject(obj, stack) {
     var i = stack.length;
     while (i--) {
@@ -2266,12 +2310,12 @@
       a: {
         val: aVal,
         has: aHas,
-        isObj: isObjectOrArray(aVal),
+        isObj: isObjectOrArray(aVal)
       },
       b: {
         val: bVal,
         has: bHas,
-        isObj: isObjectOrArray(bVal),
+        isObj: isObjectOrArray(bVal)
       },
       diff: iDiff
     });
@@ -2387,6 +2431,8 @@
     pushAssertion(assertion);
   }
 
+  // Equality for primitives or built-in
+  // types that cannot be traversed into.
   function isEqual(a, b) {
     if (a === b) {
       return true;
@@ -2429,7 +2475,7 @@
     // error types like TypeError and RangeError to prevent false positives
     // with error inheritance. https://goo.gl/QVZi4j
     if (isRootBuiltInClass(klass)) {
-      var str = toStringInternal(obj);
+      var str = toBaseStringInternal(obj);
       try {
         return str === toStringInternal(new klass());
       } catch (e) {
@@ -2445,6 +2491,20 @@
 
   function toStringInternal(obj) {
     return Object.prototype.toString.call(obj);
+  }
+
+  function getClassName(obj) {
+    var str = toStringInternal(obj);
+    return str.match(/^\[object (\w+)\]$/, '$1')[1];
+  }
+
+  // Normalized non-inherited built-in types.
+  // Note: Error types are inherited so handling them differently.
+  function toBaseStringInternal(obj) {
+    var str = toStringInternal(obj);
+    str = str.replace(/(Float|Int|Uint)(8|16|32|64)(Clamped)?Array/, 'Array');
+    str = str.replace(/Weak(Map|Set)/, '$1');
+    return str;
   }
 
   function isBuiltInClass(klass) {
@@ -2491,8 +2551,20 @@
     return isInstanceOf(obj, Error);
   }
 
+  function isSet(obj) {
+    return isInstanceOf(obj, typeof Set !== 'undefined' && Set);
+  }
+
+  function isMap(obj) {
+    return isInstanceOf(obj, typeof Map !== 'undefined' && Map);
+  }
+
   function isObjectOrArray(obj) {
     return isObject(obj) || isArray(obj);
+  }
+
+  function isIterable(obj) {
+    return isObject(obj) || isArray(obj) || isSet(obj) || isMap(obj);
   }
 
   function isCustomObject(obj) {
@@ -2520,6 +2592,7 @@
   // --- Stringify helpers
 
   function dump(obj, short) {
+    var values;
     if (obj === '') {
       return '""';
     } else if (isString(obj)) {
@@ -2530,6 +2603,16 @@
       return obj.name;
     } else if (isCustomObject(obj)) {
       return '[object ' + getFunctionName(obj.constructor) + ']';
+    } else if (isSet(obj)) {
+      values = Array.from(obj).map(function(val) {
+        return dump(val);
+      });
+      return '[Set: ' + values.join(',') + ']';
+    } else if (isMap(obj)) {
+      values = Array.from(obj).map(function(entry) {
+        return entry.join(' => ');
+      });
+      return '[Map: ' + values.join(',') + ']';
     } else if (isWrappedPrimitive(obj)) {
       return '[' + getFunctionName(obj.constructor) + ': ' + dump(obj.valueOf()) + ']';
     } else if (short && isArray(obj)) {
@@ -2539,7 +2622,7 @@
     } else if (isObjectOrArray(obj)) {
       try {
         return JSON.stringify(obj);
-      } catch(err) {
+      } catch (err) {
         return '[Cyclic Object]';
       }
     }

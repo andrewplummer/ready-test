@@ -95,6 +95,11 @@ describe('Failing Assertions', function() {
     assertObjectEqual(cyclicObjFoo, cyclicObjFooNum);
     assertObjectEqual(cyclicObjFoo, cyclicObjBar);
     assertObjectEqual(cyclicObjFoo, cyclicObjFooNested);
+    assertObjectEqual({a: new Date(2020, 9, 11)}, {a: new Date(2020, 9, 12)});
+    assertObjectEqual({a: new Set([1,2,3])}, {a: new Set([1,2,4])});
+    assertObjectEqual({a: new Map([[1,2]])}, {a: new Map([[1,3]])});
+    assertObjectEqual({a: new Uint8Array([1])}, {a: new Uint8Array([2])});
+    assertObjectEqual({a: new Uint8Array([1])}, {a: new Uint16Array([1])});
   });
 
   it('assertArrayEqual', function() {

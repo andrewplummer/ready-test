@@ -98,6 +98,11 @@ describe('Assertions', function() {
     assertObjectEqual(cyclicObjFoo, cyclicObjFoo);
     assertObjectEqual(cyclicObjFoo, cyclicObjFooCopy);
     assertObjectEqual(cyclicObjFooNested, cyclicObjFooNestedCopy);
+    assertObjectEqual({a: new Date(2020, 9, 11)}, {a: new Date(2020, 9, 11)});
+    assertObjectEqual({a: new Uint8Array([1])}, {a: new Uint8Array([1])});
+    assertObjectEqual({a: new Set([1,2,3])}, {a: new Set([1,2,3])});
+    assertObjectEqual({a: new Map([[1,2]])}, {a: new Map([[1,2]])});
+    // Note: cannot test WeakSet or WeakMap as they are not enumerable
   });
 
   it('assertArrayEqual', function() {
