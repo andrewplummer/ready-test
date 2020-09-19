@@ -409,8 +409,11 @@
 
   // --- Perf Helpers
 
-  var HAS_PERF_API = typeof performance !== 'undefined' && performance.now;
-  var HAS_HRTIME   = typeof process !== 'undefined' && !!process.hrtime;
+  // Hold a reference to global variables, as mocking libraries like
+  // Sinon will overwrite these but we still want to time the suites.
+  var tDate = typeof Date !== 'undefined' && Date;
+  var tProcess = typeof process !== 'undefined' && process;
+  var tPerformance = typeof performance !== 'undefined' && performance;
   var NS_IN_MS     = 1000000;
 
   function markBlockStart(block) {
@@ -422,23 +425,23 @@
   }
 
   function getPerfMark(mark) {
-    if (HAS_HRTIME) {
-      return process.hrtime(mark);
-    } else if (HAS_PERF_API) {
-      return performance.now();
+    if (tProcess) {
+      return tProcess.hrtime(mark);
+    } else if (tPerformance) {
+      return tPerformance.now();
     } else {
-      return Date.now();
+      return tDate.now();
     }
   }
 
   function getPerfDelta(mark) {
     var delta;
-    if (HAS_HRTIME) {
-      delta = process.hrtime(mark)[1] / NS_IN_MS;
-    } else if (HAS_PERF_API) {
-      delta = performance.now() - mark;
+    if (tProcess) {
+      delta = tProcess.hrtime(mark)[1] / NS_IN_MS;
+    } else if (tPerformance) {
+      delta = tPerformance.now() - mark;
     } else {
-      delta = Date.now() - mark;
+      delta = tDate.now() - mark;
     }
     return delta;
   }
@@ -2164,11 +2167,16 @@
 
 
   function runObjectAssert(a, b, msg) {
-    if (runMatchingTypeCheck(a, b, isObject, 'an object', msg)) {
-      pushAssertion({
-        diff: createDiff(a, b),
-        message: msg || 'objects should be equal'
-      });
+    if (runMatchingTypeCheck(a, b, isObjectType, 'an object', msg)) {
+      if (isWrappedPrimitive(a) && a.valueOf() !== b.valueOf()) {
+        // Handle sparse arrays as custom assertion.
+        buildAssertion(false, msg || 'wrapped primitive should be {b} but was {a}', a, b);
+      } else {
+        pushAssertion({
+          diff: createDiff(a, b),
+          message: msg || 'objects should be equal'
+        });
+      }
     }
   }
 
@@ -2177,11 +2185,10 @@
       var diff = createDiff(a, b);
       if (diff.pass && a.length !== b.length) {
         // Handle sparse arrays as custom assertion.
-        buildAssertion(false, msg, {
-          a: a.length,
-          b: b.length,
-          message: 'array length should be {b} but was {a}'
-        });
+        buildAssertion(false, msg || 'length should be {b} but was {a}', a.length, b.length);
+      } else if (diff.pass && a.byteLength !== b.byteLength) {
+        // Handle ArrayBuffer
+        buildAssertion(false, msg || 'byteLength should be {b} but was {a}', a.byteLength, b.byteLength);
       } else {
         pushAssertion({
           diff: diff,
@@ -2364,7 +2371,7 @@
 
   function runDateAssert(a, b, msg) {
     if (runMatchingTypeCheck(a, b, isDate, 'a date', msg)) {
-      buildAssertion(a.getTime() === b.getTime(), msg || '{a} should equal {b}', a, b);
+      buildAssertion(isEqual(a.getTime(), b.getTime()), msg || '{a} should equal {b}', a, b);
     }
   }
 
@@ -2503,6 +2510,7 @@
   function toBaseStringInternal(obj) {
     var str = toStringInternal(obj);
     str = str.replace(/(Float|Int|Uint)(8|16|32|64)(Clamped)?Array/, 'Array');
+    str = str.replace(/ArrayBuffer/, 'Array');
     str = str.replace(/Weak(Map|Set)/, '$1');
     return str;
   }
@@ -2537,6 +2545,10 @@
 
   function isObject(obj) {
     return obj && (!obj.constructor || obj.constructor === Object);
+  }
+
+  function isObjectType(obj) {
+    return obj && typeof obj === 'object';
   }
 
   function isDate(obj) {
