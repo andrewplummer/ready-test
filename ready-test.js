@@ -2633,7 +2633,13 @@
       return '{...}';
     } else if (isObjectOrArray(obj)) {
       try {
-        return JSON.stringify(obj);
+        return JSON.stringify(obj, function (key, val) {
+          // RegExp stringify to "{}" so override here.
+          if (isRegExp(val)) {
+            val = val.toString();
+          }
+          return val;
+        }, 2);
       } catch (err) {
         return '[Cyclic Object]';
       }

@@ -219,6 +219,7 @@ h1,h2,h3,h4,h5,h6 {
   border-radius: 3px;
   padding: .1em .3em;
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 /* ------------] Diff Context [------------ */
@@ -232,7 +233,7 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1.4;
   color: #bbb;
   overflow: auto;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .diff__line {
