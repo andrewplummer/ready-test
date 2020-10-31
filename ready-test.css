@@ -356,10 +356,14 @@ h1,h2,h3,h4,h5,h6 {
   padding: 0 0 .5em 1.2em;
 }
 
+.stats__totals {
+  margin-bottom: .5em;
+}
+
 .stats__extra {
-  font-size: .85em;
-  margin-top: .5em;
   color: #666;
+  font-size: .85em;
+  line-height: 1.5;
 }
 
 .stat--skipped {
@@ -369,11 +373,15 @@ h1,h2,h3,h4,h5,h6 {
 /* ------------] Link Context [------------ */
 
 .link {
-  margin-left: 0.6em;
   color: #6188b1;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
+  margin-left: 0.6em;
+}
+
+.link:first-child {
+  margin-left: 0;
 }
 
 /* ------------] Fold Mode Context [------------ */

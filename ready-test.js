@@ -1249,6 +1249,7 @@
     withContext('stats', function() {
       outputTotals();
       outputExtraStats();
+      outputRandomization();
     });
   }
 
@@ -1289,8 +1290,13 @@
   function outputExtraStats() {
     withContext('stats__extra', function() {
       output('Tests ran in ' + humanizeTime(rootSuite.runtime));
+    });
+  }
+
+  function outputRandomization() {
+    withContext('stats__extra', function() {
       if (randomize) {
-        output(', randomized with seed ' + runSeed);
+        output('Randomized with seed ' + runSeed);
         if (storageHas(OPT_SEED)) {
           outputLink('link', 'Unlock', function() {
             storageRemove(OPT_SEED);
