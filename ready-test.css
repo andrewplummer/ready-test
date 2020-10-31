@@ -361,7 +361,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .stats__extra {
-  color: #666;
+  color: #b1b1b1;
   font-size: .85em;
   line-height: 1.5;
 }
@@ -378,6 +378,11 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 14px;
   font-weight: 500;
   margin-left: 0.6em;
+  opacity: .5;
+}
+
+.link:hover {
+  opacity: 1;
 }
 
 .link:first-child {
