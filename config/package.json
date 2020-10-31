@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ready-test",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "ESLint config for Ready Test.",
   "homepage": "https://andrewplummer.github.io/ready-test/",
   "author": "Andrew Plummer <plummer.andrew@gmail.com>",
