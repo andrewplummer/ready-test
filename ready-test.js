@@ -419,6 +419,7 @@
   var tDate = typeof Date !== 'undefined' && Date;
   var tProcess = typeof process !== 'undefined' && process;
   var tPerformance = typeof performance !== 'undefined' && performance;
+  var tSetTimeout = typeof setTimeout !== 'undefined' && setTimeout;
   var NS_IN_MS     = 1000000;
 
   function markBlockStart(block) {
@@ -429,9 +430,9 @@
     block.runtime = getPerfDelta(block.startMark);
   }
 
-  function getPerfMark(mark) {
+  function getPerfMark() {
     if (tProcess) {
-      return tProcess.hrtime(mark);
+      return tProcess.hrtime();
     } else if (tPerformance) {
       return tPerformance.now();
     } else {
@@ -1727,10 +1728,10 @@
   function allowPaint(fn) {
     if (IS_BROWSER && HAS_PROMISES) {
       return new Promise(function(resolve) {
-        setTimeout(resolve, 16);
+        tSetTimeout(resolve, 0);
       }).then(fn);
     } else {
-      fn();
+      return fn();
     }
   }
 
