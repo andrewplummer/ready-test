@@ -3,6 +3,11 @@
 
   var IS_BROWSER = typeof window !== 'undefined';
 
+  var OPT_RANDOMIZE = 'randomize';
+  var OPT_FOLD_MODE = 'foldMode';
+  var OPT_AUTO_RUN  = 'autoRun';
+  var OPT_SEED      = 'seed';
+
   // --- Runner
 
   var rootSuite;
@@ -789,9 +794,7 @@
     output(stack, 'stack');
 
     // Provide a link to rethrow the error to make it easier to debug.
-    if (IS_BROWSER) {
-      createThrowLink('Throw', 'throw', err);
-    }
+    createThrowLink('throw', 'Throw', err);
   }
 
   function outputFailureAssertions(failure) {
@@ -1284,11 +1287,36 @@
   }
 
   function outputExtraStats() {
-    var msg = 'Tests ran in ' + humanizeTime(rootSuite.runtime);
-    if (runSeed) {
-      msg += ', randomized with seed ' + runSeed;
-    }
-    output(msg, 'stats__extra');
+    withContext('stats__extra', function() {
+      output('Tests ran in ' + humanizeTime(rootSuite.runtime));
+      if (randomize) {
+        output(', randomized with seed ' + runSeed);
+        if (storageHas(OPT_SEED)) {
+          outputLink('link', 'Unlock', function() {
+            storageRemove(OPT_SEED);
+            setSeed(null);
+            run();
+          });
+        } else {
+          outputLink('link', 'Lock', function(evt) {
+            storageSet(OPT_SEED, runSeed);
+            setSeed(runSeed);
+            evt.target.innerHTML = 'Locked';
+          });
+        }
+        outputLink('link', 'Reset', function() {
+          storageRemove(OPT_RANDOMIZE);
+          setRandomize(false);
+          run();
+        });
+      } else {
+        outputLink('link', 'Randomize', function() {
+          storageSet(OPT_RANDOMIZE, true);
+          setRandomize(true);
+          run();
+        });
+      }
+    });
   }
 
   function getOptionalStat(stat, type, verb) {
@@ -1303,13 +1331,19 @@
 
   // --- Output Link Helpers
 
-  function createThrowLink(text, ctx, err) {
-    openContext(ctx);
-    outputBrowser(text);
-    addEventListener(getContextElement(), 'click', function() {
+  function createThrowLink(ctx, text, err) {
+    outputLink(ctx, text, function() {
       throw err;
     });
-    closeContext();
+  }
+
+  function outputLink(ctx, text, fn) {
+    if (IS_BROWSER) {
+      openContext(ctx);
+      outputBrowser(text);
+      addEventListener(getContextElement(), 'click', fn);
+      closeContext();
+    }
   }
 
   // --- Output Base Helpers
@@ -1354,42 +1388,66 @@
   function setupBrowser() {
     if (IS_BROWSER) {
       loadFavicon();
-      loadScriptAttributes();
+      loadOptions();
       setupWindowLoad();
-
-      // Local storage overrides data attributes
-      // so make sure it comes after script setup.
-      setFoldModeFromStorage();
-
       createFoldModeDropdown();
       setupStateElement();
     }
   }
 
-  function loadScriptAttributes() {
+  function loadOptions() {
 
-    // Note IE may not handle currentScript or have dataset.
-    var el = document.currentScript;
-    var dataset = el && el.dataset;
+    var set = getOptionSet();
 
-    if (dataset) {
-
-      if (hasProp(dataset, 'foldMode')) {
-        setFoldMode(dataset.foldMode);
-      }
-      if (hasProp(dataset, 'seed')) {
-        setSeed(+dataset.seed);
-      }
-
-      // Boolean flags are always true unless explicitly "false"
-      if (hasProp(dataset, 'autoRun')) {
-        setAutoRun(dataset.autoRun !== 'false');
-      }
-      if (hasProp(dataset, 'randomize')) {
-        setRandomize(dataset.randomize !== 'false');
-      }
-
+    if (set.has(OPT_FOLD_MODE)) {
+      setFoldMode(set.get(OPT_FOLD_MODE));
     }
+    if (set.has(OPT_SEED)) {
+      setSeed(+set.get(OPT_SEED));
+    }
+
+    // Boolean flags are always true unless explicitly "false"
+    if (set.has(OPT_AUTO_RUN)) {
+      setAutoRun(set.get(OPT_AUTO_RUN));
+    }
+    if (set.has(OPT_RANDOMIZE)) {
+      setRandomize(set.get(OPT_RANDOMIZE));
+    }
+
+  }
+
+  function getOptionSet() {
+    function getOption(key) {
+      var val = storageGet(key);
+      if (val == null) {
+        // Note IE may not handle currentScript or have dataset.
+        var el = document.currentScript;
+        var dataset = el && el.dataset;
+
+        if (dataset) {
+          val = dataset[key];
+          if (val === '') {
+            val = 'true';
+          }
+        }
+      }
+      return val;
+    }
+    return {
+      has: function(key) {
+        var val = getOption(key);
+        return val != null;
+      },
+      get: function(key) {
+        var val = getOption(key);
+        if (val === 'true') {
+          val = true;
+        } else if (val === 'false') {
+          val = false;
+        }
+        return val;
+      }
+    };
   }
 
   function loadFavicon() {
@@ -1425,7 +1483,6 @@
   // --- Browser Fold Mode Helpers
 
   var HAS_LOCAL_STORAGE = typeof localStorage !== 'undefined';
-  var LOCAL_STORAGE_KEY = 'foldMode';
 
   var FOLD_MODES = [
     {
@@ -1461,7 +1518,7 @@
     addEventListener(getContextElement(), 'change', function(evt) {
       var select = evt.target || evt.srcElement;
       var mode = select.options[select.selectedIndex].value;
-      storageSet(LOCAL_STORAGE_KEY, mode);
+      storageSet(OPT_FOLD_MODE, mode);
       cancel(function() {
         setFoldMode(mode);
         run();
@@ -1472,10 +1529,9 @@
     closeContext();
   }
 
-  function setFoldModeFromStorage() {
-    var mode = storageGet(LOCAL_STORAGE_KEY);
-    if (mode) {
-      setFoldMode(mode);
+  function storageGet(key) {
+    if (HAS_LOCAL_STORAGE) {
+      return localStorage.getItem(key);
     }
   }
 
@@ -1485,9 +1541,15 @@
     }
   }
 
-  function storageGet(key) {
+  function storageRemove(key) {
     if (HAS_LOCAL_STORAGE) {
-      return localStorage.getItem(key);
+      return localStorage.removeItem(key);
+    }
+  }
+
+  function storageHas(key) {
+    if (HAS_LOCAL_STORAGE) {
+      return localStorage.getItem(key) !== null;
     }
   }
 
@@ -1559,6 +1621,7 @@
 
       case 'test':
       case 'text':
+      case 'link':
       case 'stat':
       case 'icon':
       case 'diff__meta':
@@ -2633,7 +2696,7 @@
       return '{...}';
     } else if (isObjectOrArray(obj)) {
       try {
-        return JSON.stringify(obj, function (key, val) {
+        return JSON.stringify(obj, function(key, val) {
           // RegExp stringify to "{}" so override here.
           if (isRegExp(val)) {
             val = val.toString();

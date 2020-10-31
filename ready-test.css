@@ -366,6 +366,16 @@ h1,h2,h3,h4,h5,h6 {
   color: #b1b1b1;
 }
 
+/* ------------] Link Context [------------ */
+
+.link {
+  margin-left: 0.6em;
+  color: #6188b1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 /* ------------] Fold Mode Context [------------ */
 
 .fold-mode {
