@@ -332,15 +332,15 @@
 
 <p><img src="images/screenshots/node.png" alt="Node Test Run" class="screenshot__image" srcset="images/screenshots/node.png 1x, images/screenshots/node@2x.png 2x" width="377" height="220" /></p>
 
-<p>By default the runner will find tests like <code class="highlighter-rouge">test/userTest.js</code>,
-<code class="highlighter-rouge">test/tests/user.js</code>, <code class="highlighter-rouge">spec/userSpec.js</code> <code class="highlighter-rouge">spec/specs/user.js</code>
+<p>By default the runner will find tests like <code class="language-plaintext highlighter-rouge">test/userTest.js</code>,
+<code class="language-plaintext highlighter-rouge">test/tests/user.js</code>, <code class="language-plaintext highlighter-rouge">spec/userSpec.js</code> <code class="language-plaintext highlighter-rouge">spec/specs/user.js</code>
 etc.</p>
 
-<p>You can also add it to your <code class="highlighter-rouge">package.json</code> file to run with
-<code class="highlighter-rouge">npm test</code>:</p>
+<p>You can also add it to your <code class="language-plaintext highlighter-rouge">package.json</code> file to run with
+<code class="language-plaintext highlighter-rouge">npm test</code>:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readytest"</span><span class="w">
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready-test"</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <h2 id="usage">Usage</h2>
@@ -349,8 +349,8 @@ etc.</p>
   <li>Define tests with familiar describe and it blocks:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
-  <span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="nx">assertTrue</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">());</span>
     <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -360,7 +360,7 @@ etc.</p>
   <li>Test your code with readable assertion methods:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">());</span><span class="o">*</span>
   <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span><span class="o">*</span>
 <span class="p">});</span></code></pre></figure>
@@ -369,19 +369,28 @@ etc.</p>
   <li>Focus or skip tests or suites with a single character:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="o">*</span><span class="p">(</span><span class="s1">'Focused test'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">xit</span><span class="o">*</span><span class="p">(</span><span class="s1">'Skipped test'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">fdescribe</span><span class="o">*</span><span class="p">(</span><span class="s1">'Focused suite'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="o">*</span><span class="nx">xdescribe</span><span class="o">*</span><span class="p">(</span><span class="s1">'Skipped suite'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="o">*</span><span class="p">(</span><span class="dl">'</span><span class="s1">Focused test</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">xit</span><span class="o">*</span><span class="p">(</span><span class="dl">'</span><span class="s1">Skipped test</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">fdescribe</span><span class="o">*</span><span class="p">(</span><span class="dl">'</span><span class="s1">Focused suite</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="o">*</span><span class="nx">xdescribe</span><span class="o">*</span><span class="p">(</span><span class="dl">'</span><span class="s1">Skipped suite</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
 
 <ul>
   <li>Return a promise to wait for code to run:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="k">return</span> <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>Or with async/await:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="o">*</span><span class="k">async</span><span class="o">*</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="o">*</span>
+  <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
 <span class="p">});</span></code></pre></figure>
 
 <ul>

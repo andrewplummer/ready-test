@@ -481,9 +481,9 @@
   </h2>
   
 <p>ReadyTest methods are accessible as globals by default. In the browser they
-are defined on <code class="highlighter-rouge">window</code>. In node they are defined on the <code class="highlighter-rouge">global</code> object, but
-this behavior can be turned off, requiring methods to be accessed via <code class="highlighter-rouge">require</code>
-or <code class="highlighter-rouge">import</code> statments.</p>
+are defined on <code class="language-plaintext highlighter-rouge">window</code>. In node they are defined on the <code class="language-plaintext highlighter-rouge">global</code> object, but
+this behavior can be turned off, requiring methods to be accessed via <code class="language-plaintext highlighter-rouge">require</code>
+or <code class="language-plaintext highlighter-rouge">import</code> statments.</p>
 
 
 </div>
@@ -501,11 +501,11 @@ or <code class="highlighter-rouge">import</code> statments.</p>
     </a>
   </h2>
   
-<p>Defines a suite of tests. <code class="highlighter-rouge">describe</code> blocks can be nested. Code inside a
-<code class="highlighter-rouge">describe</code> block but outside of tests will be run only once. Returning a
+<p>Defines a suite of tests. <code class="language-plaintext highlighter-rouge">describe</code> blocks can be nested. Code inside a
+<code class="language-plaintext highlighter-rouge">describe</code> block but outside of tests will be run only once. Returning a
 promise will wait for this code to run.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Tests...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -530,7 +530,7 @@ promise will wait for this code to run.</p>
 <p>Flags a test suite as "focused". If this flag is enabled, other suites will be
 ignored.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fdescribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Tests...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -554,7 +554,7 @@ ignored.</p>
   
 <p>Flags a suite as "skipped", which is useful for temporarily disabling tests.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xdescribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Tests...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -578,10 +578,10 @@ ignored.</p>
   
 <p>Flags a suite as "perf". If this flag is enabled, tests will additionally evaluate
 runtime performance and output results at the end. Perf suites can also carry
-"focused" or "skipped" flags like other suites using <code class="highlighter-rouge">fpdescribe</code>, <code class="highlighter-rouge">xpdescribe</code>,
-<code class="highlighter-rouge">pfdescribe</code> or <code class="highlighter-rouge">pxdescribe</code>.</p>
+"focused" or "skipped" flags like other suites using <code class="language-plaintext highlighter-rouge">fpdescribe</code>, <code class="language-plaintext highlighter-rouge">xpdescribe</code>,
+<code class="language-plaintext highlighter-rouge">pfdescribe</code> or <code class="language-plaintext highlighter-rouge">pxdescribe</code>.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pdescribe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pdescribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Tests...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -603,9 +603,9 @@ runtime performance and output results at the end. Perf suites can also carry
     </a>
   </h2>
   
-<p>Defines a test. <code class="highlighter-rouge">it</code> blocks can not be nested or used outside <code class="highlighter-rouge">describe</code> blocks.</p>
+<p>Defines a test. <code class="language-plaintext highlighter-rouge">it</code> blocks can not be nested or used outside <code class="language-plaintext highlighter-rouge">describe</code> blocks.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Assertions...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -630,7 +630,7 @@ runtime performance and output results at the end. Perf suites can also carry
 <p>Flags a test as "focused". If this flag is enabled, other tests will be
 ignored.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">fit</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Assertions...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -654,7 +654,7 @@ ignored.</p>
   
 <p>Flags a test as "skipped", which is useful for temporarily disabling tests.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xit</span><span class="p">(</span><span class="s1">'should save'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">xit</span><span class="p">(</span><span class="dl">'</span><span class="s1">should save</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Assertions...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -678,10 +678,10 @@ ignored.</p>
   
 <p>Flags a test as "perf". If this flag is enabled, it will additionally evaluate
 runtime performance and output results at the end. Perf tests can also carry
-"focused" or "skipped" flags like other tests using <code class="highlighter-rouge">fpit</code>, <code class="highlighter-rouge">xpit</code>,
-<code class="highlighter-rouge">pfit</code> or <code class="highlighter-rouge">pxit</code>.</p>
+"focused" or "skipped" flags like other tests using <code class="language-plaintext highlighter-rouge">fpit</code>, <code class="language-plaintext highlighter-rouge">xpit</code>,
+<code class="language-plaintext highlighter-rouge">pfit</code> or <code class="language-plaintext highlighter-rouge">pxit</code>.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
   <span class="c1">// Assertions...</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -704,11 +704,11 @@ runtime performance and output results at the end. Perf tests can also carry
   </h2>
   
 <p>Defines a block that will run before all tests in the suite start. This method
-is functionally the same as code directly in the <code class="highlighter-rouge">describe</code> block, except that it
+is functionally the same as code directly in the <code class="language-plaintext highlighter-rouge">describe</code> block, except that it
 will run each time the suite is re-run instead of only once on init.
 Before blocks always run outside in when inside nested suites.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes before all tests start.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -736,7 +736,7 @@ Before blocks always run outside in when inside nested suites.</p>
 Before blocks always run outside in when inside nested
 suites.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes before each test.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -764,7 +764,7 @@ suites.</p>
 are finished. After blocks always run inside out when inside
 nested suites.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes after all tests finish.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -792,7 +792,7 @@ nested suites.</p>
 After blocks always run inside out when inside nested
 suites.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes after each test.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -818,7 +818,7 @@ suites.</p>
   
 <p>Alias for <a href="#beforeEach">beforeEach</a>.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">setup</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes before each test.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -844,7 +844,7 @@ suites.</p>
   
 <p>Alias for <a href="#afterEach">afterEach</a>.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="s1">'User'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">teardown</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
     <span class="c1">// Executes after each test.</span>
   <span class="o">*</span><span class="p">});</span><span class="o">*</span>
@@ -873,13 +873,13 @@ suites.</p>
 it is equivalent to <a href="#assertEqual">assertEqual</a>. An optional
 third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span>    <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span>    <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>     <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span><span class="o">*</span>     <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assert(arg1, [arg2], [msg])</p>
@@ -900,10 +900,10 @@ third argument will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts that the passed argument is <code class="highlighter-rouge">true</code>. An optional second argument
+<p>Asserts that the passed argument is <code class="language-plaintext highlighter-rouge">true</code>. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
@@ -926,10 +926,10 @@ will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts that the passed argument is <code class="highlighter-rouge">false</code>. An optional second argument
+<p>Asserts that the passed argument is <code class="language-plaintext highlighter-rouge">false</code>. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertFalse</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertFalse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
@@ -952,12 +952,12 @@ will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts both arguments are strictly equal. Equivalent to the <code class="highlighter-rouge">===</code> operator. An
+<p>Asserts both arguments are strictly equal. Equivalent to the <code class="language-plaintext highlighter-rouge">===</code> operator. An
 optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertEqual(arg1, arg2, [msg])</p>
@@ -978,12 +978,12 @@ optional third argument will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts both arguments are not strictly equal. Equivalent to the <code class="highlighter-rouge">!==</code> operator.
+<p>Asserts both arguments are not strictly equal. Equivalent to the <code class="language-plaintext highlighter-rouge">!==</code> operator.
 An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertNotEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
@@ -1005,10 +1005,10 @@ An optional third argument will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts that the passed argument is <code class="highlighter-rouge">null</code>. An optional second argument
+<p>Asserts that the passed argument is <code class="language-plaintext highlighter-rouge">null</code>. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="o">*</span>       <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>          <span class="c1">// Fail</span>
   <span class="o">*</span><span class="nx">assertNull</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
@@ -1032,10 +1032,10 @@ will output a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts that the passed argument is <code class="highlighter-rouge">undefined</code>. An optional second argument
+<p>Asserts that the passed argument is <code class="language-plaintext highlighter-rouge">undefined</code>. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>         <span class="c1">// Fail</span>
   <span class="o">*</span><span class="nx">assertUndefined</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="o">*</span>      <span class="c1">// Fail</span>
@@ -1062,11 +1062,11 @@ will output a custom message.</p>
 <p>Asserts that the passed argument is truthy. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertTruthy</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertTruthy(arg, [msg])</p>
@@ -1090,11 +1090,11 @@ will output a custom message.</p>
 <p>Asserts that the passed argument is falsy. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertFalsy</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertFalsy(arg, [msg])</p>
@@ -1118,9 +1118,9 @@ will output a custom message.</p>
 <p>Asserts that the string passed as the first argument matches the regex passed as
 the second argument. An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertMatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertMatch(str, reg, [msg])</p>
@@ -1144,9 +1144,9 @@ the second argument. An optional third argument will output a custom message.</p
 <p>Asserts that the string passed as the first argument does not match the regex
 passed as the second argument. An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/^foo$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertNoMatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/^bar$/</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertNoMatch(str, reg, [msg])</p>
@@ -1171,7 +1171,7 @@ passed as the second argument. An optional third argument will output a custom m
 second argument will restrict the assertion to only checking for a specific error
 type. An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">throwsError</span><span class="p">);</span><span class="o">*</span>                 <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">throwsTypeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertError</span><span class="p">(</span><span class="nx">doesNotThrowError</span><span class="p">);</span><span class="o">*</span>           <span class="c1">// Fail</span>
@@ -1200,7 +1200,7 @@ type. An optional third argument will output a custom message.</p>
 error. The second argument will restrict the assertion to only checking for
 a specific error type. An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">doesNotThrowError</span><span class="p">);</span><span class="o">*</span>           <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">throwsRangeError</span><span class="p">,</span> <span class="nx">TypeError</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertNoError</span><span class="p">(</span><span class="nx">throwsError</span><span class="p">);</span><span class="o">*</span>                 <span class="c1">// Fail</span>
@@ -1226,7 +1226,7 @@ a specific error type. An optional third argument will output a custom message.<
   </h2>
   
 <p>Asserts that both objects are deeply equal. This method will recursively
-check each property and perform a strict equality check <code class="highlighter-rouge">===</code> on all properties
+check each property and perform a strict equality check <code class="language-plaintext highlighter-rouge">===</code> on all properties
 that are not themselves objects. If any property is not equivalent, a diff will
 be output highlighting all properties that differ. This assertion will fail if
 either argument is not an object, and only enumerable, non-inherited properties
@@ -1236,11 +1236,11 @@ will be compared. An optional third argument will output a custom message.</p>
 messages like "property missing" which are more readable when the expected object
 is the second argument.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({},</span> <span class="p">{});</span><span class="o">*</span>         <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">});</span><span class="o">*</span>   <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">});</span><span class="o">*</span>      <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="s1">'1'</span><span class="p">});</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertObjectEqual</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">});</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertObjectEqual(obj1, obj2, [msg])</p>
@@ -1266,11 +1266,11 @@ output a custom message. With the exception of testing that array lengths
 are equal up front, this method is an alias for
 <a href="#assertObjectEqual">assertObjectEqual</a>.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([],</span> <span class="p">[]);</span><span class="o">*</span>     <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="o">*</span>   <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="o">*</span>    <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">'1'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertArrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertArrayEqual(arr1, arr2, [msg])</p>
@@ -1293,9 +1293,9 @@ are equal up front, this method is an alias for
   
 <p>Asserts that both dates are equivalent. An optional third argument will output a
 custom message. This method is required as dates do not have enumerable properties
-exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code> will not work.</p>
+exposing their state, so <code class="language-plaintext highlighter-rouge">assertObjectEqual</code> will not work.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertDateEqual</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="o">*</span> <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertDateEqual</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
@@ -1320,9 +1320,9 @@ exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code
   
 <p>Asserts that both regexes are equivalent. An optional third argument will output a
 custom message. This method is required as regexes do not have enumerable properties
-exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code> will not work.</p>
+exposing their state, so <code class="language-plaintext highlighter-rouge">assertObjectEqual</code> will not work.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertRegExpEqual</span><span class="p">(</span><span class="sr">/a/</span><span class="p">,</span> <span class="sr">/a/</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertRegExpEqual</span><span class="p">(</span><span class="sr">/a/</span><span class="p">,</span> <span class="sr">/a/i</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
@@ -1348,9 +1348,9 @@ exposing their state, so <code class="highlighter-rouge">assertObjectEqual</code
 <p>Asserts that the object passed as the first argument is an instance of the class
 passed as the second. An optional third argument will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertInstanceOf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">Number</span><span class="p">);</span><span class="o">*</span>   <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertInstanceOf</span><span class="p">(</span><span class="s1">'3'</span><span class="p">,</span> <span class="nb">Number</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertInstanceOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">3</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Number</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertInstanceOf(instance, class, [msg])</p>
@@ -1371,13 +1371,13 @@ passed as the second. An optional third argument will output a custom message.</
     </a>
   </h2>
   
-<p>Asserts that the first argument is strictly equal <code class="highlighter-rouge">===</code> to at least one of the
+<p>Asserts that the first argument is strictly equal <code class="language-plaintext highlighter-rouge">===</code> to at least one of the
 elements in an array passed as the second. An optional third argument will output
 a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Pass</span>
-  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="s1">'d'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Pass</span>
+  <span class="o">*</span><span class="nx">assertOneOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">d</span><span class="dl">'</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">]);</span><span class="o">*</span> <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertOneOf(arg, arr, [msg])</p>
@@ -1398,13 +1398,13 @@ a custom message.</p>
     </a>
   </h2>
   
-<p>Asserts that the passed argument is <code class="highlighter-rouge">NaN</code>. An optional second argument
+<p>Asserts that the passed argument is <code class="language-plaintext highlighter-rouge">NaN</code>. An optional second argument
 will output a custom message.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="s1">'...'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="o">*</span><span class="nx">assertNaN</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Pass</span>
   <span class="o">*</span><span class="nx">assertNaN</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="o">*</span> <span class="c1">// Fail</span>
-  <span class="o">*</span><span class="nx">assertNaN</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
+  <span class="o">*</span><span class="nx">assertNaN</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span>  <span class="c1">// Fail</span>
 <span class="p">});</span></code></pre></figure>
 
 <p class="docs__signature">assertNaN(arg, [msg])</p>
@@ -1430,14 +1430,14 @@ any number of arguments and returns an object with the following properties:</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">pass</code>: Whether or not the test has passed.</p>
+    <p><code class="language-plaintext highlighter-rouge">pass</code>: Whether or not the test has passed.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">message</code>: The failure message. Any properties set on the return object can be
+    <p><code class="language-plaintext highlighter-rouge">message</code>: The failure message. Any properties set on the return object can be
 referenced here by wrapping them in curly braces.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">diff</code>: An optional object that outputs the diff on failure. If the <code class="highlighter-rouge">pass</code>
+    <p><code class="language-plaintext highlighter-rouge">diff</code>: An optional object that outputs the diff on failure. If the <code class="language-plaintext highlighter-rouge">pass</code>
 property is not set, it will be implied by the state of the diff. For more, see
 <a href="#createDiff">createDiff</a>.</p>
   </li>
@@ -1446,7 +1446,7 @@ property is not set, it will be implied by the state of the diff. For more, see
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">assertEven</span> <span class="o">=</span> <span class="nx">createAssertion</span><span class="p">(</span><span class="nx">arg</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
     <span class="na">pass</span><span class="p">:</span> <span class="nx">arg</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="na">message</span><span class="p">:</span> <span class="s1">'{num} should be an even number'</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{num} should be an even number</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">num</span><span class="p">:</span> <span class="nx">arg</span>
   <span class="p">};</span>
 <span class="p">});</span>
@@ -1474,12 +1474,12 @@ property is not set, it will be implied by the state of the diff. For more, see
   
 <p>Creates a diff object that can be attached to a custom assertion to output the
 diff of two objects (or arrays) on test failure. Both arguments must be
-non-primitives of <code class="highlighter-rouge">object</code> type.</p>
+non-primitives of <code class="language-plaintext highlighter-rouge">object</code> type.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">createAssertion</span><span class="p">(</span><span class="nx">obj</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
     <span class="na">diff</span><span class="p">:</span> <span class="nx">createDiff</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">expected</span><span class="p">),</span>
-    <span class="na">message</span><span class="p">:</span> <span class="s1">'object must match expected'</span>
+    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object must match expected</span><span class="dl">'</span>
   <span class="p">};</span>
 <span class="p">});</span><span class="o">*</span></code></pre></figure>
 
@@ -1504,12 +1504,12 @@ non-primitives of <code class="highlighter-rouge">object</code> type.</p>
   </h2>
   
 <p>ReadyTest has a few settings that can configure the runner behvaior. In the
-browser these are exposed as methods on the <code class="highlighter-rouge">ReadyTest</code> global as well as
+browser these are exposed as methods on the <code class="language-plaintext highlighter-rouge">ReadyTest</code> global as well as
 data attributes on the loading script tag. In node they can be used via
-<code class="highlighter-rouge">require</code> or <code class="highlighter-rouge">import</code> as well as options to the shell script.</p>
+<code class="language-plaintext highlighter-rouge">require</code> or <code class="language-plaintext highlighter-rouge">import</code> as well as options to the shell script.</p>
 
 <p>Note that the shell script also has some additional configurations like the
-ability to watch and re-run. Run this script with the <code class="highlighter-rouge">--help</code> flag for more
+ability to watch and re-run. Run this script with the <code class="language-plaintext highlighter-rouge">--help</code> flag for more
 details.</p>
 
 
@@ -1531,7 +1531,7 @@ details.</p>
 <p>In the browser the test runner will start on page load, however for various reasons
 you may want to manually control when the runner starts. You can achieve this using
 this method together with <a href="#run">run</a>. This setting can be retrieved with
-<code class="highlighter-rouge">getAutoRun</code>.</p>
+<code class="language-plaintext highlighter-rouge">getAutoRun</code>.</p>
 
 <p>In the browser:</p>
 
@@ -1543,7 +1543,7 @@ this method together with <a href="#run">run</a>. This setting can be retrieved 
 
 <p>In node this flag has no effect as the shell script always begins the run once tests are
 loaded. To manually run tests you can simply create your own runner by requiring the main
-script and calling <code class="highlighter-rouge">run</code> as needed.</p>
+script and calling <code class="language-plaintext highlighter-rouge">run</code> as needed.</p>
 
 <p class="docs__signature">setAutoRun(bool)</p>
 
@@ -1563,18 +1563,18 @@ script and calling <code class="highlighter-rouge">run</code> as needed.</p>
     </a>
   </h2>
   
-<p>Setting the fold mode will change the way test result output is displayed. <code class="highlighter-rouge">none</code>
-will output all nested suites. Conversely, <code class="highlighter-rouge">all</code> will output all tests together
-as if they were part of a single suite. <code class="highlighter-rouge">top</code> will only output the top level suites.
-The default setting is <code class="highlighter-rouge">none</code> except when using the shell script in node which sets
-the default to <code class="highlighter-rouge">all</code>. This setting can be retrieved with <code class="highlighter-rouge">getFoldMode</code>.</p>
+<p>Setting the fold mode will change the way test result output is displayed. <code class="language-plaintext highlighter-rouge">none</code>
+will output all nested suites. Conversely, <code class="language-plaintext highlighter-rouge">all</code> will output all tests together
+as if they were part of a single suite. <code class="language-plaintext highlighter-rouge">top</code> will only output the top level suites.
+The default setting is <code class="language-plaintext highlighter-rouge">none</code> except when using the shell script in node which sets
+the default to <code class="language-plaintext highlighter-rouge">all</code>. This setting can be retrieved with <code class="language-plaintext highlighter-rouge">getFoldMode</code>.</p>
 
 <p>Note that this only affects output. The execution order of tests as well as
-<code class="highlighter-rouge">before</code> and <code class="highlighter-rouge">after</code> blocks will remain the same.</p>
+<code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> blocks will remain the same.</p>
 
 <p>In the browser:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="dl">'</span><span class="s1">all</span><span class="dl">'</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
 
 <p>This setting can also be a data attribute on the loading script tag:</p>
 
@@ -1586,8 +1586,8 @@ the default to <code class="highlighter-rouge">all</code>. This setting can be r
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
-<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setFoldMode</span><span class="p">(</span><span class="dl">'</span><span class="s1">all</span><span class="dl">'</span><span class="p">);</span></code></pre></figure>
 
 <p class="docs__signature">setFoldMode(str)</p>
 
@@ -1613,7 +1613,7 @@ tests and re-run them in a specific order so you can track down a failure. Runni
 with randomization on will randomize all tests differently on each run. The final
 output will show the seed that was used, which can then be passed back into the
 runner using <a href="#setSeed">setSeed</a> to run the tests in the same order.
-This setting can be retrieved with <code class="highlighter-rouge">getRandomize</code>.</p>
+This setting can be retrieved with <code class="language-plaintext highlighter-rouge">getRandomize</code>.</p>
 
 <p>In the browser:</p>
 
@@ -1629,7 +1629,7 @@ This setting can be retrieved with <code class="highlighter-rouge">getRandomize<
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setRandomize</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span></code></pre></figure>
 
 <p class="docs__signature">setRandomize(bool)</p>
@@ -1653,7 +1653,7 @@ This setting can be retrieved with <code class="highlighter-rouge">getRandomize<
 <p>Use this method to fix the order of a test run that was randomized using
 <a href="#setRandomize">setRandomize</a>. The seed used will be shown along
 with the final output when a run was randomized. This setting can be retrieved
-with <code class="highlighter-rouge">getSeed</code>.</p>
+with <code class="language-plaintext highlighter-rouge">getSeed</code>.</p>
 
 <p>In the browser:</p>
 
@@ -1669,7 +1669,7 @@ with <code class="highlighter-rouge">getSeed</code>.</p>
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">setSeed</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span></code></pre></figure>
 
 <p class="docs__signature">setRandomize(num)</p>
@@ -1693,8 +1693,8 @@ with <code class="highlighter-rouge">getSeed</code>.</p>
   </h2>
   
 <p>Utils are most commonly used to create a custom test runner. They are exposed
-in the browser through a <code class="highlighter-rouge">ReadyTest</code> global, and in node as methods that can be
-used through <code class="highlighter-rouge">require</code> or <code class="highlighter-rouge">import</code>.</p>
+in the browser through a <code class="language-plaintext highlighter-rouge">ReadyTest</code> global, and in node as methods that can be
+used through <code class="language-plaintext highlighter-rouge">require</code> or <code class="language-plaintext highlighter-rouge">import</code>.</p>
 
 
 </div>
@@ -1722,7 +1722,7 @@ run is complete. In the browser this function should be used with
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">onRunComplete</span><span class="p">);</span><span class="o">*</span></code></pre></figure>
 
 <p class="docs__signature">run([fn])</p>
@@ -1752,7 +1752,7 @@ dynamically reloading tests and is used by the shell script to watch and reload.
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">clear()</p>
@@ -1783,7 +1783,7 @@ function can be passed that will run when the cancel operation has completed.</p
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">onCancelComplete</span><span class="p">);</span></code></pre></figure>
 
 <p class="docs__signature">cancel([fn])</p>
@@ -1815,7 +1815,7 @@ completed.</p>
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">isRunning</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">isRunning()</p>
@@ -1838,9 +1838,9 @@ completed.</p>
   
 <p>This method is useful in custom test runners to export all methods onto the
 global object so that tests do not have to require them. It has no effect in the
-browser as methods are already exported on the <code class="highlighter-rouge">window</code> object.</p>
+browser as methods are already exported on the <code class="language-plaintext highlighter-rouge">window</code> object.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">exportGlobals</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">exportGlobals()</p>
@@ -1861,7 +1861,7 @@ browser as methods are already exported on the <code class="highlighter-rouge">w
     </a>
   </h2>
   
-<p>Returns the name of the current test running or <code class="highlighter-rouge">null</code>.</p>
+<p>Returns the name of the current test running or <code class="language-plaintext highlighter-rouge">null</code>.</p>
 
 <p>In the browser:</p>
 
@@ -1869,7 +1869,7 @@ browser as methods are already exported on the <code class="highlighter-rouge">w
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentTest</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">getCurrentTest()</p>
@@ -1890,7 +1890,7 @@ browser as methods are already exported on the <code class="highlighter-rouge">w
     </a>
   </h2>
   
-<p>Returns the name of the current suite running or <code class="highlighter-rouge">null</code>.</p>
+<p>Returns the name of the current suite running or <code class="language-plaintext highlighter-rouge">null</code>.</p>
 
 <p>In the browser:</p>
 
@@ -1898,7 +1898,7 @@ browser as methods are already exported on the <code class="highlighter-rouge">w
 
 <p>In a custom node runner:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ready-test'</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="kd">const</span> <span class="nx">ReadyTest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready-test</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">ReadyTest</span><span class="p">.</span><span class="nx">getCurrentSuite</span><span class="p">();</span></code></pre></figure>
 
 <p class="docs__signature">getCurrentSuite()</p>
