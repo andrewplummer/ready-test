@@ -679,13 +679,21 @@ ignored.</p>
 <p>Flags a test as "perf". If this flag is enabled, it will additionally evaluate
 runtime performance and output results at the end. Perf tests can also carry
 "focused" or "skipped" flags like other tests using <code class="language-plaintext highlighter-rouge">fpit</code>, <code class="language-plaintext highlighter-rouge">xpit</code>,
-<code class="language-plaintext highlighter-rouge">pfit</code> or <code class="language-plaintext highlighter-rouge">pxit</code>.</p>
+<code class="language-plaintext highlighter-rouge">pfit</code> or <code class="language-plaintext highlighter-rouge">pxit</code>. An optional number may be passed as the first argument to
+allow multiple iterations of the test. This can be useful to exaggerate
+differences in performance for comparison.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
-  <span class="c1">// Assertions...</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="dl">'</span><span class="s1">should be fast</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Runs once and calculates performance.</span>
+<span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">*</span><span class="nx">pit</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="dl">'</span><span class="s1">should be fast</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="o">*</span>
+  <span class="c1">// Runs 1000 times and calculates performance.</span>
 <span class="o">*</span><span class="p">});</span><span class="o">*</span></code></pre></figure>
 
 <p class="docs__signature">pit(str, fn)</p>
+
+<p class="docs__signature">pit(num, str, fn)</p>
 
 
 </div>
