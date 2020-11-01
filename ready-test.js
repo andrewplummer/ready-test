@@ -273,7 +273,38 @@
 
   function executeTest() {
     markBlockStart(currentTest);
-    return executeFunction(currentTest.fn, onTestError, onTestExecuted);
+    if (currentTest.iterations > 1) {
+      return iterateSynchronous();
+    } else {
+      return executeFunction(currentTest.fn, onTestError, onTestExecuted);
+    }
+  }
+
+  function iterateSynchronous() {
+    // When running perf tests with iterations, large numbers will hit
+    // "maximum call stack size exceeded" errors, so we need to avoid
+    // recursion. Asynchronous tests must still be handled with recursion
+    // however, so attempt to iterate in a loop and fall back to recursive
+    // iteration if the test returns a promise.
+    for (var i = 0; i < currentTest.iterations; i++) {
+      var promise = executeFunction(currentTest.fn, onTestError);
+      if (promise) {
+        return setPromiseHandlers(promise, onTestError, function() {
+          return iterateRecursive(i + 1);
+        });
+      }
+    }
+    return onTestExecuted();
+  }
+
+  function iterateRecursive(i) {
+    if (i < currentTest.iterations) {
+      return executeFunction(currentTest.fn, onTestError, function() {
+        return iterateRecursive(i + 1);
+      });
+    } else {
+      return onTestExecuted();
+    }
   }
 
   function onTestError(err) {
@@ -1267,7 +1298,7 @@
   }
 
   function outputStat(stat, suffix, ctx) {
-    var str = stat + ' ' + suffix;
+    var str = stat.toLocaleString() + ' ' + suffix;
     ctx = 'stat--' + (ctx || suffix);
     output(str, ctx);
   }
@@ -1328,7 +1359,7 @@
 
   function getOptionalStat(stat, type, verb) {
     if (stat) {
-      return stat + ' ' + pluralize(stat, type) + ' ' + verb;
+      return stat.toLocaleString() + ' ' + pluralize(stat, type) + ' ' + verb;
     }
   }
 
@@ -1951,16 +1982,25 @@
     currentSuite.suites.push(suite);
   }
 
-  function pushTest(name, fn, flags) {
+  function pushTest(name, fn, flags, iterations) {
     assertCurrentSuite();
     var test = {
       fn: fn,
       name: name,
       flags: flags,
-      parent: currentSuite
+      parent: currentSuite,
+      iterations: iterations || 1
     };
     setBranchFlags(test);
     currentSuite.tests.push(test);
+  }
+
+  function pushPerfTest(arg1, arg2, arg3, flags) {
+    if (isNumber(arg1)) {
+      pushTest(arg2, arg3, flags, arg1);
+    } else {
+      pushTest(arg1, arg2, flags);
+    }
   }
 
   function assertCurrentSuite() {
@@ -2036,16 +2076,16 @@
     pushTest(name, fn, FLAG_SKIP);
   }
 
-  function pit(name, fn) {
-    pushTest(name, fn, FLAG_PERF);
+  function pit(arg1, arg2, arg3) {
+    pushPerfTest(arg1, arg2, arg3, FLAG_PERF);
   }
 
-  function fpit(name, fn) {
-    pushTest(name, fn, FLAG_FOCUS | FLAG_PERF);
+  function fpit(arg1, arg2, arg3) {
+    pushPerfTest(arg1, arg2, arg3, FLAG_FOCUS | FLAG_PERF);
   }
 
-  function xpit(name, fn) {
-    pushTest(name, fn, FLAG_SKIP | FLAG_PERF);
+  function xpit(arg1, arg2, arg3) {
+    pushPerfTest(arg1, arg2, arg3, FLAG_SKIP | FLAG_PERF);
   }
 
   // --- Test Helper Public Methods

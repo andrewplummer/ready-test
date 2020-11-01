@@ -86,6 +86,21 @@ describe('Performance', function() {
 
   });
 
+  describe('Iterations', function() {
+
+    pit(10, 'should be able to pass a number of iterations', function() {
+      assert(1, 1);
+    });
+
+    pit(10, 'should be able to pass iterations with asynchronous', async function() {
+      return wait(function() {
+        assert(1, 1);
+      });
+    });
+
+  });
+
+
   pdescribe('Warnings', function() {
 
     it('should not display warnings when no assertions', function() {
