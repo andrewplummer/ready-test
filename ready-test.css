@@ -85,7 +85,7 @@ h1,h2,h3,h4,h5,h6 {
 /* ------------] Suite Context [------------ */
 
 .suite {
-  padding: 1em 1.5em 1.2em 1.5em;
+  padding: 1em 1.5em 2em 1.5em;
   border-radius: 4px;
   margin-bottom: 1.5em;
   background-color: #fff;
@@ -93,7 +93,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .suite__name {
-  margin: 0 0 .6em 0;
+  margin: 0 0 .4em 0;
+  font-size: 1.4em;
+}
+
+.suite .suite .suite__name {
   font-size: 1.2em;
 }
 
@@ -101,9 +105,10 @@ h1,h2,h3,h4,h5,h6 {
   display: inline-block;
   text-align: center;
   cursor: default;
-  padding: 0 .15em;
-  line-height: 1.4;
+  width: .8rem;
+  vertical-align: middle;
   font-weight: bold;
+  line-height: 1.6rem;
 }
 
 .test--pass {
@@ -114,7 +119,7 @@ h1,h2,h3,h4,h5,h6 {
 .test--error {
   color: #8c2929;
   background-color: #fd8b9e;
-  padding: 0 .1em;
+  font-size: .9em;
 }
 
 .test--skip {
@@ -133,21 +138,16 @@ h1,h2,h3,h4,h5,h6 {
 
 /* ------------] Nested Suite Context [------------ */
 
-.subsuites {
-  margin: 2em 1em;
-}
-
 .suite .suite {
   border: none;
   border-radius: 0;
   background: transparent;
   border-left: 1px solid #ddd;
-  padding-top: 0;
-  padding-right: 0;
   margin: 0;
+  padding: 0 0 .5em 1.5em;
 }
 
-.subsuites .suite:first-child {
+.subsuites {
   margin-top: 1em;
 }
 
