@@ -119,7 +119,6 @@ h1,h2,h3,h4,h5,h6 {
 .test--error {
   color: #8c2929;
   background-color: #fd8b9e;
-  font-size: .9em;
 }
 
 .test--skip {
